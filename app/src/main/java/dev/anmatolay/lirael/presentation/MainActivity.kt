@@ -1,8 +1,11 @@
 package dev.anmatolay.lirael.presentation
 
 import android.os.Bundle
+import androidx.activity.OnBackPressedCallback
+import androidx.navigation.NavOptions
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
@@ -13,17 +16,17 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<Event>() {
 
     override val viewModel by viewModel<MainActivityViewModel>()
-    lateinit var binding: ActivityMainBinding
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.bottomNavView
         val navController = findNavigationController()
 
-        navView.setupWithNavController(navController)
+        binding.bottomNavView.setupWithNavController(navController)
+        //        binding.toolbar.setupWithNavController(navController, AppBarConfiguration(navController.graph))
     }
 
     // Activity.findNavController(viewId: Int) throw IllegalStateException if used with FragmentContainerView

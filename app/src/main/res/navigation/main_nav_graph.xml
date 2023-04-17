@@ -19,7 +19,7 @@
 
     <fragment
         android:id="@+id/favourites_fragment"
-        android:name="dev.anmatolay.lirael.presentation.custom.CustomFragment"
+        android:name="dev.anmatolay.lirael.presentation.favourites.FavouritesFragment"
         android:label="@string/title_favourites"
         tools:layout="@layout/fragment_favourites" />
 

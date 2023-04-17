@@ -7,12 +7,11 @@ import android.view.ViewGroup
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentFavouritesBinding
 import dev.anmatolay.lirael.presentation.Event
-import dev.anmatolay.lirael.presentation.custom.CustomViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class FavouritesFragment : BaseFragment<Event>() {
 
-    override val viewModel by viewModel<CustomViewModel>()
+    override val viewModel by viewModel<FavouritesViewModel>()
     private lateinit var binding: FragmentFavouritesBinding
 
     override fun onCreateView(
