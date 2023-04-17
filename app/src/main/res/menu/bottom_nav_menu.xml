@@ -3,21 +3,21 @@
 
     <item
         android:id="@+id/statistics_fragment"
-        android:icon="@drawable/ic_table_chart_view"
+        android:icon="@drawable/ic_nav_bottom_statistics"
         android:title="@string/title_statistics" />
 
     <item
         android:id="@+id/recipes_fragment"
-        android:icon="@drawable/ic_find_recipes"
+        android:icon="@drawable/ic_nav_bottom_recipes"
         android:title="@string/title_recipes" />
 
     <item
         android:id="@+id/favourites_fragment"
-        android:icon="@drawable/ic_bookmarks"
+        android:icon="@drawable/ic_nav_bottom_favourites"
         android:title="@string/title_favourites" />
 
     <item
         android:id="@+id/custom_fragment"
-        android:icon="@drawable/ic_custom"
+        android:icon="@drawable/ic_nav_bottom_custom"
         android:title="@string/title_custom" />
 </menu>
