@@ -10,4 +10,7 @@
     <string name="confirm_exit_dialog_show">Never show this again</string>
     <string name="confirm_exit_dialog_button_positive">Sure</string>
     <string name="confirm_exit_dialog_button_negative">Nope</string>
+    <string name="title_settings">Settings</string>
+    <string name="dark_mode_settings">Dark mode</string>
+    <string name="title_settings_profile">Profile Settings</string>
 </resources>
