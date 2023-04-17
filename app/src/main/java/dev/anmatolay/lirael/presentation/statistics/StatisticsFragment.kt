@@ -31,18 +31,6 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             .apply { binding = this }
             .root
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        activity?.run {
-            onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
-                override fun handleOnBackPressed() {
-                    finish()
-                }
-            })
-        }
-    }
-
     override fun onResume() {
         super.onResume()
 
