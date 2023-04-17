@@ -2,17 +2,33 @@
     <!-- Base application theme. -->
     <style name="Theme.Lirael" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
-        <item name="colorPrimaryVariant">@color/purple_900</item>
-        <item name="colorOnPrimary">@color/white</item>
         <item name="colorSecondary">@color/lavender_300</item>
-        <item name="colorSecondaryVariant">@color/lavender_700</item>
-        <item name="colorOnSecondary">@color/white</item>
         <item name="colorTertiary">@color/brown_500</item>
-        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/red_800</item>
+        <item name="colorPrimaryVariant">@color/purple_900</item>
+        <item name="colorSecondaryVariant">@color/lavender_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorOnSecondary">@color/white</item>
+        <item name="colorOnTertiary">@color/white</item>
+        <item name="colorOnSurface">@color/black_900</item>
         <item name="colorOnError">@color/white</item>
         <item name="android:colorBackground">@color/white</item>
         <item name="colorOnBackground">@color/black</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Lirael.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Lirael.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Lirael.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Lirael.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Lirael.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Lirael.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Lirael.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Lirael.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Lirael.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Lirael.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Lirael.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Lirael.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Lirael.Overline</item>
     </style>
 </resources>

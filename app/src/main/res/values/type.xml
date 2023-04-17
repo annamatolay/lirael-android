@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="TextAppearance.Lirael.Headline1" parent="TextAppearance.MaterialComponents.Headline1">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:fontFamily">@font/ubuntu_light</item>
+        <item name="android:textSize">99sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Headline2" parent="TextAppearance.MaterialComponents.Headline2">
+        <item name="fontFamily">@font/ubuntu_light</item>
+        <item name="android:fontFamily">@font/ubuntu_light</item>
+        <item name="android:textSize">62sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Headline3" parent="TextAppearance.MaterialComponents.Headline3">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">49sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Headline4" parent="TextAppearance.MaterialComponents.Headline4">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">35sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Headline5" parent="TextAppearance.MaterialComponents.Headline5">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">25sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Headline6" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">21sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Body1" parent="TextAppearance.MaterialComponents.Body1">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Body2" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="TextAppearance.Lirael.Caption" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="TextAppearance.Lirael.Overline" parent="TextAppearance.MaterialComponents.Overline">
+        <item name="fontFamily">@font/ubuntu_regular</item>
+        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+</resources>

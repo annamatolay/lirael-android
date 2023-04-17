@@ -2,16 +2,18 @@
     <!-- Base application theme. -->
     <style name="Theme.Lirael" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryVariant">@color/purple_500</item>
-        <item name="colorOnPrimary">@color/purple_900</item>
         <item name="colorSecondary">@color/lavender_300</item>
-        <item name="colorSecondaryVariant">@color/lavender_300</item>
-        <item name="colorOnSecondary">@color/lavender_900</item>
+        <item name="colorPrimaryVariant">@color/purple_500</item>
         <item name="colorTertiary">@color/orange_100</item>
-        <item name="colorOnTertiary">@color/brown_900</item>
+        <item name="colorSurface">@color/black</item>
         <item name="colorError">@color/red_200</item>
+        <item name="colorSecondaryVariant">@color/lavender_300</item>
+        <item name="colorOnPrimary">@color/purple_900</item>
+        <item name="colorOnSecondary">@color/lavender_900</item>
+        <item name="colorOnTertiary">@color/brown_900</item>
+        <item name="colorOnSurface">@color/red_50</item>
         <item name="colorOnError">@color/red_900</item>
-        <item name="android:colorBackground">@color/black</item>
+        <item name="android:colorBackground">@color/black_900</item>
         <item name="colorOnBackground">@color/white</item>
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
     </style>

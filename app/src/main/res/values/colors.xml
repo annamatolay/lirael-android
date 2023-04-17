@@ -9,9 +9,11 @@
     <color name="brown_500">#80543D</color>
     <color name="brown_900">#4b2714</color>
     <color name="orange_100">#F4BA9E</color>
+    <color name="red_50">#EAE0E3</color>
     <color name="red_200">#FFB4AB</color>
     <color name="red_800">#BA1A1A</color>
     <color name="red_900">#690005</color>
+    <color name="black_900">#1F1A1D</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
