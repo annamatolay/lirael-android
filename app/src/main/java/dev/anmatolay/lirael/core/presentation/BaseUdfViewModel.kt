@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.jakewharton.rxrelay3.PublishRelay
+import io.reactivex.rxjava3.annotations.CheckReturnValue
 import io.reactivex.rxjava3.core.BackpressureStrategy
 import io.reactivex.rxjava3.core.Observable
 import io.reactivex.rxjava3.disposables.CompositeDisposable
@@ -22,10 +23,15 @@ abstract class BaseUdfViewModel<State : UiState, Event : UiEvent> : ViewModel() 
     private var aliveDisposables = CompositeDisposable()
     private var foregroundDisposables = CompositeDisposable()
 
+    /*
+    * Handled by base view layer by default.
+    * See [BaseActivity], [BaseFragment], [BaseDialogFragment]
+    */
     fun setEventObserver(relay: PublishRelay<out UiEvent>) {
         eventRelay = relay.toFlowable(BackpressureStrategy.LATEST).toObservable()
     }
 
+    @CheckReturnValue
     protected fun doOnUiEventReceived(action: (UiEvent) -> Unit) = eventRelay.doOnNext { action(it) }
 
     protected fun triggerUiStateChange(state: State) {
