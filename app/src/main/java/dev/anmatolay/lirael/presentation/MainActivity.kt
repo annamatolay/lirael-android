@@ -1,16 +1,13 @@
 package dev.anmatolay.lirael.presentation
 
 import android.os.Bundle
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
-import dev.anmatolay.lirael.databinding.ActivityMainBinding
 import dev.anmatolay.lirael.core.presentation.BaseActivity
+import dev.anmatolay.lirael.databinding.ActivityMainBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : BaseActivity<Event>() {
@@ -23,7 +20,7 @@ class MainActivity : BaseActivity<Event>() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val navView: BottomNavigationView = binding.navView
+        val navView: BottomNavigationView = binding.bottomNavView
         val navController = findNavigationController()
 
         navView.setupWithNavController(navController)

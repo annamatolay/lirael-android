@@ -7,6 +7,7 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentSplashBinding
@@ -30,21 +31,22 @@ class SplashFragment : BaseFragment<SplashEvent>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setAppBarLayoutVisibility(INVISIBLE)
+        setAppBarAndBottomNavigationVisibility(INVISIBLE)
 
         viewModel.uiState.observe { state ->
             if (!state.isIdle) {
-                navigateTo(SplashFragmentDirections.actionToHomeFragment())
+                navigateTo(SplashFragmentDirections.actionToStatisticsFragment())
             }
         }
     }
 
-    override fun onDetach() {
-        super.onDetach()
-        setAppBarLayoutVisibility(VISIBLE)
+    override fun onDestroyView() {
+        setAppBarAndBottomNavigationVisibility(VISIBLE)
+        super.onDestroyView()
     }
 
-    private fun setAppBarLayoutVisibility(visibility: Int) {
+    private fun setAppBarAndBottomNavigationVisibility(visibility: Int) {
         requireActivity().findViewById<AppBarLayout>(R.id.app_bar).visibility = visibility
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = visibility
     }
 }

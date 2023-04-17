@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.presentation.home
+package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.R
 import io.github.kakaocup.kakao.screen.Screen

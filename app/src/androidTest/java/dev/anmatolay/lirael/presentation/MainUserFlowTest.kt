@@ -4,7 +4,7 @@ import androidx.lifecycle.Lifecycle
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.InstrumentedTest
-import dev.anmatolay.lirael.presentation.home.HomeScreen
+import dev.anmatolay.lirael.presentation.statistics.HomeScreen
 import dev.anmatolay.lirael.presentation.splash.SplashScreen
 import io.github.kakaocup.kakao.screen.Screen.Companion.onScreen
 import org.junit.Assert.*
@@ -27,7 +27,7 @@ class MainUserFlowTest : InstrumentedTest() {
         Thread.sleep(3000)
         onScreen<HomeScreen> {
             text.run {
-                hasText(R.string.title_home)
+                hasText(R.string.title_statistics)
                 isVisible()
             }
         }

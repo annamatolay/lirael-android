@@ -1,19 +1,17 @@
-package dev.anmatolay.lirael.presentation.home
+package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
-import dev.anmatolay.lirael.presentation.home.HomeEvent
-import dev.anmatolay.lirael.presentation.home.HomeState
 
-class HomeViewModel : BaseUdfViewModel<HomeState, HomeEvent>() {
+class StatisticsViewModel : BaseUdfViewModel<StatisticsState, StatisticsEvent>() {
 
     override fun onViewResumed() {
         super.onViewResumed()
 
         doOnUiEventReceived { uiEvent ->
             when (uiEvent) {
-                HomeEvent.ScreenOnClicked -> {
+                StatisticsEvent.ScreenOnClicked -> {
                     val isTextVisible = uiState.value?.isTextVisible ?: false
-                    triggerUiStateChange(HomeState(!isTextVisible))
+                    triggerUiStateChange(StatisticsState(!isTextVisible))
                 }
             }
         }.subscribe().disposeOnPause()

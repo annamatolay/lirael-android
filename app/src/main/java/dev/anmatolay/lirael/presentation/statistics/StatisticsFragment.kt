@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.presentation.home
+package dev.anmatolay.lirael.presentation.statistics
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,20 +6,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import dev.anmatolay.lirael.core.presentation.BaseFragment
-import dev.anmatolay.lirael.databinding.FragmentHomeBinding
+import dev.anmatolay.lirael.databinding.FragmentStatisticsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeFragment : BaseFragment<HomeEvent>() {
+class StatisticsFragment : BaseFragment<StatisticsEvent>() {
 
-    override val viewModel by viewModel<HomeViewModel>()
-    private lateinit var binding: FragmentHomeBinding
+    override val viewModel by viewModel<StatisticsViewModel>()
+    private lateinit var binding: FragmentStatisticsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View =
-        FragmentHomeBinding.inflate(inflater, container, false)
+        FragmentStatisticsBinding.inflate(inflater, container, false)
             .apply { binding = this }
             .root
 
@@ -31,7 +31,7 @@ class HomeFragment : BaseFragment<HomeEvent>() {
         }
 
         binding.layout.setOnClickListener {
-            triggerEvent(HomeEvent.ScreenOnClicked)
+            triggerEvent(StatisticsEvent.ScreenOnClicked)
         }
     }
 }
