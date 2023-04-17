@@ -38,7 +38,7 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             binding.text.isVisible = state.isTextVisible
         }
 
-        binding.layout.setOnClickListener {
+        binding.layoutStatistics.setOnClickListener {
             triggerEvent(StatisticsEvent.ScreenOnClicked)
         }
     }

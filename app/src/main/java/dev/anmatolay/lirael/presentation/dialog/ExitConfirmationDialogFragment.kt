@@ -20,9 +20,7 @@ class ExitConfirmationDialogFragment : BaseDialogFragment<ExitConfirmationEvent>
         savedInstanceState: Bundle?
     ): View =
         FragmentDialogConfirmExitBinding.inflate(inflater, container, false)
-            .apply {
-                binding = this
-            }
+            .apply { binding = this }
             .root
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
