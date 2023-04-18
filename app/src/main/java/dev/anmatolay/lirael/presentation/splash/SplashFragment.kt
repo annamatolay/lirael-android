@@ -3,9 +3,9 @@ package dev.anmatolay.lirael.presentation.splash
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.INVISIBLE
-import android.view.View.VISIBLE
+import android.view.View.*
 import android.view.ViewGroup
+import androidx.constraintlayout.motion.widget.MotionLayout
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
@@ -31,12 +31,49 @@ class SplashFragment : BaseFragment<SplashEvent>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setAppBarAndBottomNavigationVisibility(INVISIBLE)
+        setAppBarAndBottomNavigationVisibility(GONE)
 
         viewModel.uiState.observe { state ->
             if (!state.isIdle) {
+                binding.layoutSplash.jumpToState(R.id.end)
                 navigateTo(SplashFragmentDirections.actionToStatisticsFragment())
             }
+        }
+
+        binding.layoutSplash.run {
+            transitionToState(R.id.middle)
+            setTransitionDuration(1000)
+            setTransitionListener(object : MotionLayout.TransitionListener {
+                override fun onTransitionCompleted(motionLayout: MotionLayout?, currentId: Int) {
+                    // Optimised time you can wait to start ending animation
+                    // Otherwise motion animation will conflict with navigation transition animation
+                    Thread.sleep(1440)
+                    binding.layoutSplash.transitionToState(R.id.end)
+
+                }
+
+                override fun onTransitionStarted(motionLayout: MotionLayout?, startId: Int, endId: Int) {
+
+                }
+
+                override fun onTransitionChange(
+                    motionLayout: MotionLayout?,
+                    startId: Int,
+                    endId: Int,
+                    progress: Float
+                ) {
+
+                }
+
+                override fun onTransitionTrigger(
+                    motionLayout: MotionLayout?,
+                    triggerId: Int,
+                    positive: Boolean,
+                    progress: Float
+                ) {
+
+                }
+            })
         }
     }
 
