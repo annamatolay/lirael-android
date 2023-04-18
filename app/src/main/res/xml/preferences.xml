@@ -1,0 +1,94 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_settings_personal"
+        android:summary="These are only saved on your phone."
+        app:title="Personal">
+
+        <EditTextPreference
+            android:defaultValue="Guest"
+            android:iconSpaceReserved="false"
+            app:allowDividerAbove="true"
+            app:key="@string/key_pref_signature"
+            app:title="Your name"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            app:defaultValue="no_diet"
+            app:entries="@array/diet_entries"
+            app:entryValues="@array/diet_values"
+            app:key="@string/key_pref_diet"
+            app:title="Diet (Coming soon)"
+            app:useSimpleSummaryProvider="true" />
+
+        <ListPreference
+            android:enabled="false"
+            app:key="food_allergy"
+            app:title="Food allergy - Not supported yet"
+            app:useSimpleSummaryProvider="true" />
+
+        <SwitchPreferenceCompat
+            app:key="@string/key_pref_premium"
+            app:summary="More recipes, better instructions, real filtering by diet and food allergy, custom recipe sharing and shopping list creation"
+            app:title="Interested in premium features" />
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:icon="@drawable/ic_settings_report"
+        android:summary="Everything sent anonymously"
+        app:allowDividerBelow="true"
+        app:title="Tracking">
+
+        <Preference
+            app:enabled="false"
+            app:selectable="false"
+            app:summary="You agreed all these when you accepted Terms and Conditions during onboarding."
+            app:title="Kind reminder" />
+
+        <Preference app:title="Open T&amp;C web page">
+            <intent
+                android:action="android.intent.action.VIEW"
+                android:data="http://www.google.com" />
+        </Preference>
+
+        <SwitchPreferenceCompat
+            app:key="@string/key_pref_firebase_all"
+            app:singleLineTitle="false"
+            app:summaryOff="You help making this app better.\nThank you so much!"
+            app:summaryOn="You won't help making this app better :("
+            app:title="Disable sending anonymous data" />
+
+        <SwitchPreferenceCompat
+            app:dependency="@string/key_pref_firebase_all"
+            app:key="@string/key_pref_firebase_signIn"
+            app:singleLineTitle="false"
+            app:summaryOff="Sending your own random generated ID that helps anonymously identify you, but nothing more"
+            app:summaryOn="Don't sending any random generated ID"
+            app:title="Disable Anonymous sign in" />
+
+        <SwitchPreferenceCompat
+            app:dependency="@string/key_pref_firebase_all"
+            app:key="@string/key_pref_firebase_analytics"
+            app:singleLineTitle="false"
+            app:summaryOff="Send anonymous user data to help creating better user experience"
+            app:summaryOn="Don't sending any user data. Not even a little"
+            app:title="Disable Analytics" />
+
+        <SwitchPreferenceCompat
+            app:dependency="@string/key_pref_firebase_all"
+            app:key="@string/key_pref_firebase_crashlytics"
+            app:singleLineTitle="false"
+            app:summaryOff="Sending anonymous crash report to help fixing bugs"
+            app:summaryOn="Don't sending anonymous crash report"
+            app:title="Disable Crashlytics" />
+
+        <SwitchPreferenceCompat
+            app:dependency="@string/key_pref_firebase_all"
+            app:key="@string/key_pref_firebase_performance"
+            app:singleLineTitle="false"
+            app:summaryOff="Sending anonymous performance monitoring data to help optimising the app"
+            app:summaryOn="Don't sending anonymous performance monitoring data"
+            app:title="Disable Performance monitoring" />
+    </PreferenceCategory>
+</PreferenceScreen>

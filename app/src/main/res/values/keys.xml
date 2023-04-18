@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="key_pref_signature">key_pref_signature</string>
+    <string name="key_pref_diet">key_pref_diet</string>
+    <string name="key_pref_ui_mode">key_pref_ui_mode</string>
+    <string name="key_pref_premium">key_pref_premium</string>
+    <string name="key_pref_firebase_all">key_pref_firebase_all</string>
+    <string name="key_pref_firebase_signIn">key_pref_firebase_signIn</string>
+    <string name="key_pref_firebase_analytics">key_pref_firebase_analytics</string>
+    <string name="key_pref_firebase_crashlytics">key_pref_firebase_crashlytics</string>
+    <string name="key_pref_firebase_performance">key_pref_firebase_performance</string>
+</resources>

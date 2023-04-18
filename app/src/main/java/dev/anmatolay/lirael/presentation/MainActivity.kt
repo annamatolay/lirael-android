@@ -20,7 +20,7 @@ import dev.anmatolay.lirael.presentation.dialog.ExitConfirmationDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class MainActivity : BaseActivity<Event>() {
+class MainActivity : BaseActivity<MainActivityEvent>() {
 
     var shouldShowExitConfirmationDialog = true
     override val viewModel by viewModel<MainActivityViewModel>()
@@ -32,6 +32,7 @@ class MainActivity : BaseActivity<Event>() {
 
         viewModel.uiState.observe { state ->
             shouldShowExitConfirmationDialog = !state.exitConfirmationDialogState.isGone
+            setUiMode(state.isDarkModeEnabled)
         }
 
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -42,18 +43,18 @@ class MainActivity : BaseActivity<Event>() {
         binding.bottomNavView.setupWithNavController(navController)
         appBarConfiguration = AppBarConfiguration(setOf(R.id.statistics_fragment))
         setSupportActionBar(binding.toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.run {
             setupWithNavController(navController, appBarConfiguration)
             setOnMenuItemClickListener { item ->
                 return@setOnMenuItemClickListener when (item.itemId) {
-                    R.id.profile_settings_item ->
+                    R.id.settings_item -> {
+                        navController.navigate(MainActivityDirections.actionToSettingsContainerFragment())
                         true
-                    R.id.dark_light_mode_item -> {
-                        if (isDarkModeEnable()) {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-                        } else {
-                            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-                        }
+                    }
+                    R.id.ui_mode_item -> {
+                        setUiMode(!isDarkModeEnable())
+                        triggerEvent(MainActivityEvent.UiModeChanged(!isDarkModeEnable()))
                         true
                     }
                     else -> false
@@ -114,6 +115,14 @@ class MainActivity : BaseActivity<Event>() {
 
     private fun NavController.isCurrentFragmentLabel(@StringRes label: Int) =
         this.currentBackStackEntry?.destination?.label == getString(label)
+
+    private fun setUiMode(isDarkModeEnabled: Boolean) {
+        if (isDarkModeEnabled) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+    }
 
     private fun isDarkModeEnable() = when (resources.configuration.uiMode) {
         // When you change UI mode in setting and warm start app

@@ -3,14 +3,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/dark_light_mode_item"
+        android:id="@+id/ui_mode_item"
         android:icon="@drawable/ic_toolbar_mode_light"
         android:title="@string/dark_mode_settings"
         app:showAsAction="ifRoom"/>
 
     <item
-        android:id="@+id/profile_settings_item"
-        android:icon="@drawable/ic_toolbar_settings_profile"
+        android:id="@+id/settings_item"
+        android:icon="@drawable/ic_toolbar_settings"
         android:title="@string/title_settings_profile"
         app:showAsAction="always"/>
 </menu>

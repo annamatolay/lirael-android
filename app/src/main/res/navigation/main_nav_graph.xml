@@ -5,6 +5,16 @@
     android:id="@+id/main_nav_graph"
     app:startDestination="@+id/statistics_fragment">
 
+    <activity
+        android:id="@+id/main_activity"
+        android:name="dev.anmatolay.lirael.presentation.MainActivity"
+        tools:layout="@layout/activity_main">
+
+        <!--        <action-->
+        <!--            android:id="@+id/action_to_settingsContainerFragment"-->
+        <!--            app:destination="@id/settingsContainerFragment" />-->
+    </activity>
+
     <fragment
         android:id="@+id/statistics_fragment"
         android:name="dev.anmatolay.lirael.presentation.statistics.StatisticsFragment"
@@ -28,4 +38,14 @@
         android:name="dev.anmatolay.lirael.presentation.custom.CustomFragment"
         android:label="@string/title_custom"
         tools:layout="@layout/fragment_custom" />
+
+    <fragment
+        android:id="@+id/settings_container_fragment"
+        android:name="dev.anmatolay.lirael.presentation.settings.SettingsContainerFragment"
+        android:label="@string/title_settings"
+        tools:layout="@layout/fragment_container_settings" />
+
+    <action
+        android:id="@+id/action_to_settingsContainerFragment"
+        app:destination="@id/settings_container_fragment" />
 </navigation>

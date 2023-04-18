@@ -4,5 +4,6 @@ import dev.anmatolay.lirael.core.presentation.UiState
 import dev.anmatolay.lirael.presentation.dialog.ExitConfirmationDialogState
 
 data class MainActivityState(
-    val exitConfirmationDialogState: ExitConfirmationDialogState
+    val exitConfirmationDialogState: ExitConfirmationDialogState,
+    val isDarkModeEnabled: Boolean,
 ) : UiState

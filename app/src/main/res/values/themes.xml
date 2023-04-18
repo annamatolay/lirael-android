@@ -3,6 +3,7 @@
     <style name="Theme.Lirael" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorSecondary">@color/lavender_300</item>
+        <item name="colorAccent">@color/purple_500</item>
         <item name="colorTertiary">@color/brown_500</item>
         <item name="colorSurface">@color/white</item>
         <item name="colorError">@color/red_800</item>

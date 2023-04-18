@@ -7,10 +7,11 @@ import dev.anmatolay.lirael.presentation.custom.CustomViewModel
 import dev.anmatolay.lirael.presentation.dialog.ExitConfirmationViewModel
 import dev.anmatolay.lirael.presentation.favourites.FavouritesViewModel
 import dev.anmatolay.lirael.presentation.splash.SplashViewModel
+import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    factory { MainActivityViewModel(get()) }
+    factory { MainActivityViewModel(get(), androidContext().resources) }
     factory { SplashViewModel(get()) }
     factory { StatisticsViewModel() }
     factory { RecipesViewModel() }
