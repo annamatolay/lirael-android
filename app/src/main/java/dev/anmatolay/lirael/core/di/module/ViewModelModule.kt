@@ -13,7 +13,7 @@ import org.koin.dsl.module
 val viewModelModule = module {
     factory { MainActivityViewModel(get(), androidContext().resources) }
     factory { SplashViewModel(get()) }
-    factory { StatisticsViewModel() }
+    factory { StatisticsViewModel(get(), get()) }
     factory { RecipesViewModel() }
     factory { FavouritesViewModel() }
     factory { CustomViewModel() }

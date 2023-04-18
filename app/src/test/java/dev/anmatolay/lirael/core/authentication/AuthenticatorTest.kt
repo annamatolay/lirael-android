@@ -1,7 +1,7 @@
 package dev.anmatolay.lirael.core.authentication
 
 import dev.anmatolay.lirael.BaseTest
-import dev.anmatolay.lirael.data.local.CacheUserIdUseCase
+import dev.anmatolay.lirael.domain.usecase.CacheUserIdUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
 import dev.anmatolay.lirael.util.Constants.USER_DEFAULT_ID
 import dev.anmatolay.lirael.util.TestConstants.TEST_USER_ID

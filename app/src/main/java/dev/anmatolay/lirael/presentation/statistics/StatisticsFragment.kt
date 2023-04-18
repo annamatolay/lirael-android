@@ -35,11 +35,11 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         super.onResume()
 
         viewModel.uiState.observe { state ->
-            binding.text.isVisible = state.isTextVisible
-        }
-
-        binding.layoutStatistics.setOnClickListener {
-            triggerEvent(StatisticsEvent.ScreenOnClicked)
+            binding.run {
+                numberCooked.text = state.userRecipeStat.cooked.toString()
+                numberSaved.text = state.userRecipeStat.saved.toString()
+                numberCreated.text = state.userRecipeStat.created.toString()
+            }
         }
     }
 }

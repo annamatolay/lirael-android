@@ -1,6 +1,5 @@
 package dev.anmatolay.lirael.domain.usecase
 
-import dev.anmatolay.lirael.data.local.GetUserUseCase
 import dev.anmatolay.lirael.data.repository.UserCacheRepository
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.util.Constants.USER_DEFAULT_ID

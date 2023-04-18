@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.data.local
+package dev.anmatolay.lirael.domain.usecase
 
 import dev.anmatolay.lirael.data.repository.UserCacheRepository
 
