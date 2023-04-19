@@ -4,12 +4,13 @@ import android.app.AlertDialog
 import android.os.Bundle
 import android.view.View
 import androidx.preference.EditTextPreference
-import androidx.preference.PreferenceFragmentCompat
+import androidx.preference.Preference
 import androidx.preference.SwitchPreferenceCompat
+import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.*
-import dev.anmatolay.lirael.presentation.Event
-import dev.anmatolay.lirael.presentation.State
+import dev.anmatolay.lirael.presentation.dialog.deletion.DeletionConfirmationDialogFragment
+import dev.anmatolay.lirael.util.extension.mainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class SettingsFragment : BasePreferenceFragment<SettingsEvent>() {
@@ -18,6 +19,29 @@ class SettingsFragment : BasePreferenceFragment<SettingsEvent>() {
     }
 
     override val viewModel by viewModel<SettingsViewModel>()
+
+    override fun onResume() {
+        super.onResume()
+
+        viewModel.uiState.observe { state ->
+            if (state.isUserDeletionComplete)
+                mainActivity()
+                    .makeSnackbar(R.string.user_deletion_completed)
+                    .addCallback(object : Snackbar.Callback() {
+                        override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {
+                            super.onDismissed(transientBottomBar, event)
+                            mainActivity().finish()
+                        }
+                    })
+                    .show()
+            if (state.error != null)
+                mainActivity()
+                    .makeErrorSnackbar(R.string.user_deletion_error) {
+                        triggerEvent(SettingsEvent.RetryDeleteUserOnClicked)
+                    }
+                    .show()
+        }
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -43,6 +67,13 @@ class SettingsFragment : BasePreferenceFragment<SettingsEvent>() {
         findPreference<EditTextPreference>(resources.getString(R.string.key_pref_user_name))
             ?.setOnPreferenceChangeListener { _, newValue ->
                 triggerEvent(SettingsEvent.UsernameChanged(newValue as String))
+                true
+            }
+
+        findPreference<Preference>(resources.getString(R.string.key_pref_user_delete))
+            ?.setOnPreferenceClickListener {
+                DeletionConfirmationDialogFragment()
+                    .show(mainActivity().supportFragmentManager, null)
                 true
             }
     }

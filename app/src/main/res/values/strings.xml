@@ -22,5 +22,9 @@
     <string name="stat_card_text_saved">Saved</string>
     <string name="stat_card_text_cooked">Cooked</string>
     <string name="stat_read_error">Failed to read your statistics :(</string>
-    <string name="stat_read_error_retry">Retry</string>
+    <string name="snackbar_error_retry">Retry</string>
+    <string name="user_deletion_completed">You successfully deleted yourself</string>
+    <string name="user_deletion_error">Something went wrong during user deleteion</string>
+    <string name="confirm_deletion_dialog_title">Confirm Deletion</string>
+    <string name="confirm_deletion_dialog_description">Are you sure you want to delete everything?</string>
 </resources>

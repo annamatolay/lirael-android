@@ -62,8 +62,7 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         if (error != null)
             when (error) {
                 StatisticsState.Error.STAT_READ_ERROR ->
-                    mainActivity().makeSnackbar(R.string.stat_read_error, Snackbar.LENGTH_LONG)
-                        .setAction(R.string.stat_read_error_retry) {
+                    mainActivity().makeErrorSnackbar(R.string.stat_read_error) {
                             triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
                         }
                         .show()

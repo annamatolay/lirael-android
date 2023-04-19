@@ -2,7 +2,7 @@ package dev.anmatolay.lirael
 
 import android.app.Application
 import dev.anmatolay.lirael.core.di.KoinInitializer
-import dev.anmatolay.lirael.domain.usecase.GetUserUseCase
+import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
 import org.koin.android.ext.android.inject
 

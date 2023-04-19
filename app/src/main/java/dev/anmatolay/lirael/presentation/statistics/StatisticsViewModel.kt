@@ -2,7 +2,7 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
-import dev.anmatolay.lirael.domain.usecase.GetUserUseCase
+import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.presentation.statistics.StatisticsState.Error.STAT_READ_ERROR
 import timber.log.Timber
 

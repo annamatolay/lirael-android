@@ -4,7 +4,7 @@ import android.content.res.Resources
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.SharedPrefHandler
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
-import dev.anmatolay.lirael.presentation.dialog.ExitConfirmationDialogState
+import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationDialogState
 import dev.anmatolay.lirael.util.Constants
 
 class MainActivityViewModel(

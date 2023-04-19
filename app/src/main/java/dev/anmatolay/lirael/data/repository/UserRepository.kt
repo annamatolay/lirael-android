@@ -41,6 +41,8 @@ class UserRepository(
             .flatMap { userDao.read(it) }
             .flatMapCompletable { userDao.update(it.copy(recipeStatistic = recipeStatistic)) }
 
+    fun delete() = userDao.deleteAll()
+
     private fun createDefaultUser() =
         User(Constants.USER_DEFAULT_ID, resources.getString(R.string.user_default_name))
 }

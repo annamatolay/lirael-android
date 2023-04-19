@@ -1,16 +1,15 @@
-package dev.anmatolay.lirael.domain.usecase
+package dev.anmatolay.lirael.domain.usecase.user
 
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
 import dev.anmatolay.lirael.data.repository.UserRepository
 
-class GetUserUseCase(
+class SaveUserUseCase(
     private val schedulerProvider: SchedulerProvider,
     private val repository: UserRepository,
 ) {
 
-    fun getCachedUserIdOrDefault() = repository.getCachedUserIdOrDefault()
-
-    operator fun invoke() =
-        repository.getUserOrDefault()
+    operator fun invoke(id: String) =
+        repository.cache(id)
+            .andThen(repository.save(id))
             .subscribeOn(schedulerProvider.io())
 }

@@ -37,7 +37,6 @@
     <PreferenceCategory
         android:icon="@drawable/ic_settings_report"
         android:summary="Everything sent anonymously"
-        app:allowDividerBelow="true"
         app:title="Tracking">
 
         <Preference
@@ -91,4 +90,11 @@
             app:summaryOn="Don't sending anonymous performance monitoring data"
             app:title="Disable Performance monitoring" />
     </PreferenceCategory>
+
+    <Preference
+        app:key="@string/key_pref_user_delete"
+        app:title="Delete your data"
+        app:allowDividerAbove="true"
+        app:summary="This will delete everything related to your profile and close the app"
+        app:icon="@drawable/ic_settings_delete"/>
 </PreferenceScreen>

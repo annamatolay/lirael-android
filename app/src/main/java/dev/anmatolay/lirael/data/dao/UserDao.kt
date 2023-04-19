@@ -18,6 +18,7 @@ interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(user: User): Completable
 
-    @Delete
-    fun delete(user: User): Completable
+    // If user turns off anonymous data sharing there will be two user entry
+    @Query("DELETE FROM user")
+    fun deleteAll(): Completable
 }

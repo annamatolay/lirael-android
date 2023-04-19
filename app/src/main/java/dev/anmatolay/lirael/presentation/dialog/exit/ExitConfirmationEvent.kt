@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.presentation.dialog
+package dev.anmatolay.lirael.presentation.dialog.exit
 
 import dev.anmatolay.lirael.core.presentation.UiEvent
 

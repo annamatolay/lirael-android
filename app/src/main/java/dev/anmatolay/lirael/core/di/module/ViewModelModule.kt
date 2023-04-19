@@ -4,7 +4,8 @@ import dev.anmatolay.lirael.presentation.MainActivityViewModel
 import dev.anmatolay.lirael.presentation.recipes.RecipesViewModel
 import dev.anmatolay.lirael.presentation.statistics.StatisticsViewModel
 import dev.anmatolay.lirael.presentation.custom.CustomViewModel
-import dev.anmatolay.lirael.presentation.dialog.ExitConfirmationViewModel
+import dev.anmatolay.lirael.presentation.dialog.deletion.DeletionConfirmationViewModel
+import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationViewModel
 import dev.anmatolay.lirael.presentation.favourites.FavouritesViewModel
 import dev.anmatolay.lirael.presentation.settings.SettingsViewModel
 import dev.anmatolay.lirael.presentation.splash.SplashViewModel
@@ -18,5 +19,6 @@ val viewModelModule = module {
     factory { FavouritesViewModel() }
     factory { CustomViewModel() }
     factory { ExitConfirmationViewModel(get()) }
-    factory { SettingsViewModel(get(), get()) }
+    factory { SettingsViewModel(get(), get(), get()) }
+    factory { DeletionConfirmationViewModel(get(), get()) }
 }
