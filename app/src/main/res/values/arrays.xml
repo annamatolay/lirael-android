@@ -8,9 +8,9 @@
     </string-array>
 
     <string-array name="diet_values">
+        <item>no_diet</item>
         <item>vegan</item>
         <item>vegetarian</item>
         <item>pescetarian</item>
-        <item>no_diet</item>
     </string-array>
 </resources>

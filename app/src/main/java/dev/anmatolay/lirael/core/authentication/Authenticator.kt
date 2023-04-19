@@ -3,6 +3,7 @@ package dev.anmatolay.lirael.core.authentication
 import dev.anmatolay.lirael.data.local.UserIdDataSource
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
 import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 import org.koin.java.KoinJavaComponent.inject
 import kotlin.properties.Delegates
 
@@ -19,7 +20,7 @@ abstract class Authenticator {
         }
     }
 
-    abstract fun signInAnonymously(): Completable
+    abstract fun signInAnonymously(): Single<String>
 
     private fun UserProvider?.getUserId() =
         when (this) {

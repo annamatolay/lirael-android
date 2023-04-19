@@ -5,14 +5,16 @@ import com.google.firebase.auth.FirebaseUser
 import dev.anmatolay.lirael.core.authentication.Authenticator
 import dev.anmatolay.lirael.core.authentication.UnknownAuthErrorException
 import dev.anmatolay.lirael.core.authentication.UserProvider
+import dev.anmatolay.lirael.util.Constants
 import io.reactivex.rxjava3.core.Completable
+import io.reactivex.rxjava3.core.Single
 import timber.log.Timber
 
 class FirebaseAuthenticatorImpl(
     private val firebaseAuth: FirebaseAuth,
 ) : Authenticator() {
 
-    override fun signInAnonymously() = Completable.create { emitter ->
+    override fun signInAnonymously() = Single.create<String> { emitter ->
         firebaseAuth.signInAnonymously()
             .addOnCompleteListener { task ->
                 val currentUser = firebaseAuth.currentUser
@@ -21,7 +23,7 @@ class FirebaseAuthenticatorImpl(
                     Timber
                         .tag(TAG)
                         .i("User anonymously signed in with ID: ${currentUser.uid}")
-                    emitter.onComplete()
+                    emitter.onSuccess(firebaseAuth.currentUser?.uid ?: Constants.USER_DEFAULT_ID)
                 } else {
                     val exception = task.exception
                     Timber.tag(TAG).e(exception)

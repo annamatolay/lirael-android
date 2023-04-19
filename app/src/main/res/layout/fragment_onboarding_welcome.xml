@@ -42,6 +42,7 @@
         app:layout_constraintTop_toBottomOf="@+id/subtitle" />
 
     <ImageView
+        android:id="@+id/image"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:adjustViewBounds="true"
@@ -58,13 +59,26 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_32dp"
+        android:fontFamily="@font/ubuntu_medium"
         android:padding="@dimen/spacing_8dp"
         android:text="@string/onboarding_welcome_terms_accept"
         android:textAppearance="?attr/textAppearanceOverline"
+        android:textColor="?attr/colorPrimaryVariant"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/term_link"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:switchPadding="@dimen/spacing_16dp" />
+
+    <ProgressBar
+        android:id="@+id/loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/description" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/term_link"

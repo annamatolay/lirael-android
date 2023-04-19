@@ -68,9 +68,8 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
         navController.addOnDestinationChangedListener { _, destination, _ ->
             when (destination.id) {
                 R.id.splash_fragment -> {
-                    // Onboarding flow over and popUpTo main_nav_graph, so dropping the "leftover" onboarding_nav_graph
-                    // So when user press back (s)he won't try to go back to a fragment that already popped up
-                    if (firstLaunch) firstLaunch = false else navController.setGraph(R.navigation.main_nav_graph)
+                    // Disable navigation back to splash screen form onboarding
+                    if (firstLaunch) firstLaunch = false else finish()
                 }
             }
         }
@@ -125,6 +124,12 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
 
     private fun NavController.isCurrentFragmentLabel(@StringRes label: Int) =
         this.currentBackStackEntry?.destination?.label == getString(label)
+
+    private fun NavController.isOnBoarding(): Boolean =
+        this.isCurrentFragmentLabel(R.string.onboarding_welcome_title) ||
+                this.isCurrentFragmentLabel(R.string.onboarding_name_title) ||
+                this.isCurrentFragmentLabel(R.string.onboarding_diet_title) ||
+                this.isCurrentFragmentLabel(R.string.onboarding_premium_title)
 
     private fun setUiMode(isDarkModeEnabled: Boolean) {
         if (isDarkModeEnabled) {

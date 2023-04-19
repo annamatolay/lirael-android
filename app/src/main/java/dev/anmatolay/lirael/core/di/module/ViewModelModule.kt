@@ -17,10 +17,10 @@ import org.koin.dsl.module
 
 val viewModelModule = module {
     factory { MainActivityViewModel(get(), get()) }
-    factory { SplashViewModel(get()) }
-    factory { WelcomeViewModel() }
-    factory { NameViewModel() }
-    factory { DietViewModel() }
+    factory { SplashViewModel(get(), get()) }
+    factory { WelcomeViewModel(get(), get(), get()) }
+    factory { NameViewModel(get(), get()) }
+    factory { DietViewModel(get(), get()) }
     factory { PremiumViewModel() }
     factory { StatisticsViewModel(get(), get()) }
     factory { RecipesViewModel() }

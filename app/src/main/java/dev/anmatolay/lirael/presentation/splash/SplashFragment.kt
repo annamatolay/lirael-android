@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
@@ -31,12 +32,15 @@ class SplashFragment : BaseFragment<SplashEvent>() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        setAppBarAndBottomNavigationVisibility(GONE)
+        setAppBarAndBottomNavigationVisibilityToGone()
 
         viewModel.uiState.observe { state ->
             if (!state.isIdle) {
                 binding.layoutSplash.jumpToState(R.id.end)
-                navigateTo(SplashFragmentDirections.actionToStatisticsFragment())
+                if (state.isUserExist)
+                    navigateTo(SplashFragmentDirections.actionToStatisticsFragment())
+                else
+                    navigateTo(SplashFragmentDirections.actionToWelcomeFragment())
             }
         }
 
@@ -78,12 +82,15 @@ class SplashFragment : BaseFragment<SplashEvent>() {
     }
 
     override fun onDestroyView() {
-        setAppBarAndBottomNavigationVisibility(VISIBLE)
+        requireActivity().findViewById<AppBarLayout>(R.id.app_bar).visibility = VISIBLE
+        // Disable toolbar actions during onboarding
+        activity?.findViewById<View>(R.id.settings_item)?.isVisible = false
+        activity?.findViewById<View>(R.id.ui_mode_item)?.isVisible = false
         super.onDestroyView()
     }
 
-    private fun setAppBarAndBottomNavigationVisibility(visibility: Int) {
-        requireActivity().findViewById<AppBarLayout>(R.id.app_bar).visibility = visibility
-        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = visibility
+    private fun setAppBarAndBottomNavigationVisibilityToGone() {
+        requireActivity().findViewById<AppBarLayout>(R.id.app_bar).visibility = GONE
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = GONE
     }
 }
