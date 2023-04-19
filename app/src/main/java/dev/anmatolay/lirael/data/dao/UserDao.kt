@@ -18,11 +18,6 @@ interface UserDao {
     @Update(onConflict = OnConflictStrategy.REPLACE)
     fun update(user: User): Completable
 
-    // TODO: remove comment if this working
-//    @Update(entity = User.RecipeStatistic::class, onConflict = OnConflictStrategy.REPLACE)
-    @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun update(recipeStatistic: User.RecipeStatistic): Completable
-
     @Delete
     fun delete(user: User): Completable
 }

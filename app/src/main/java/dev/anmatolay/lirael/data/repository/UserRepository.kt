@@ -33,7 +33,15 @@ class UserRepository(
 
     fun update(user: User) = userDao.update(user)
 
-    fun update(recipeStatistic: User.RecipeStatistic) = userDao.update(recipeStatistic)
+    fun update(name: String): Completable =
+        getCachedUserIdOrDefault()
+            .flatMap { userDao.read(it) }
+            .flatMapCompletable { userDao.update(it.copy(name = name)) }
+
+    fun update(recipeStatistic: User.RecipeStatistic): Completable =
+        getCachedUserIdOrDefault()
+            .flatMap { userDao.read(it) }
+            .flatMapCompletable { userDao.update(it.copy(recipeStatistic = recipeStatistic)) }
 
     private fun createDefaultUser() =
         User(Constants.USER_DEFAULT_ID, resources.getString(R.string.user_default_name))
