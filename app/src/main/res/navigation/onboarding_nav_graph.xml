@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/onboarding_nav_graph"
     app:startDestination="@id/splash_fragment">
+
     <fragment
         android:id="@+id/splash_fragment"
         android:name="dev.anmatolay.lirael.presentation.splash.SplashFragment"
@@ -11,6 +12,64 @@
 
         <action
             android:id="@+id/action_to_statistics_fragment"
+            app:destination="@id/main_nav_graph"
+            app:enterAnim="@anim/from_right_fade_in"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/main_nav_graph"
+            app:popUpToInclusive="true" />
+
+        <action
+            android:id="@+id/action_to_welcomeFragment"
+            app:destination="@id/welcomeFragment"
+            app:enterAnim="@anim/from_right_fade_in"
+            app:exitAnim="@anim/to_left"
+            app:popUpTo="@id/welcomeFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/welcomeFragment"
+        android:name="dev.anmatolay.lirael.presentation.onboarding.welcome.WelcomeFragment"
+        android:label="@string/onboarding_welcome_title"
+        tools:layout="@layout/fragment_onboarding_welcome">
+        <action
+            android:id="@+id/action_to_nameFragment"
+            app:destination="@id/nameFragment"
+            app:enterAnim="@anim/from_right_fade_in"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nameFragment"
+        android:name="dev.anmatolay.lirael.presentation.onboarding.name.NameFragment"
+        android:label="@string/onboarding_name_title"
+        tools:layout="@layout/fragment_onboarding_name">
+        <action
+            android:id="@+id/action_to_dietFragment"
+            app:destination="@id/dietFragment"
+            app:enterAnim="@anim/from_right_fade_in"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/dietFragment"
+        android:name="dev.anmatolay.lirael.presentation.onboarding.diet.DietFragment"
+        android:label="@string/onboarding_diet_title"
+        tools:layout="@layout/fragment_onboarding_diet">
+        <action
+            android:id="@+id/action_to_premiumFragment"
+            app:destination="@id/premiumFragment"
+            app:enterAnim="@anim/from_right_fade_in"
+            app:exitAnim="@anim/to_left" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/premiumFragment"
+        android:name="dev.anmatolay.lirael.presentation.onboarding.premium.PremiumFragment"
+        android:label="@string/onboarding_premium_title"
+        tools:layout="@layout/fragment_onboarding_premium">
+        <action
+            android:id="@+id/action_to_main_nav_graph"
             app:destination="@id/main_nav_graph"
             app:enterAnim="@anim/from_right_fade_in"
             app:exitAnim="@anim/to_left"

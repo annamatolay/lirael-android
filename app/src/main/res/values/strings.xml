@@ -27,4 +27,25 @@
     <string name="user_deletion_error">Something went wrong during user deleteion</string>
     <string name="confirm_deletion_dialog_title">Confirm Deletion</string>
     <string name="confirm_deletion_dialog_description">Are you sure you want to delete everything?</string>
+    <string name="onboarding_button_next">Next</string>
+    <string name="onboarding_button_skip">Skip</string>
+    <string name="onboarding_button_finish">Finish</string>
+    <string name="onboarding_welcome_title">Welcome</string>
+    <string name="onboarding_welcome_subtitle">Your on the best way to become the next chef!</string>
+    <string name="onboarding_welcome_description">Home cook or professional. Does it matter?\n<b>What is really important to learn and love cooking.</b>\n\n<u>And we, the kittens, are here to help!\n\n</u><b>Please, accept Terms and Conditions, so we can get through the boring part and start the real deal. &#128572;</b></string>
+    <string name="onboarding_welcome_terms_link"><u>Open Terms and Conditions</u></string>
+    <string name="onboarding_welcome_terms_accept"><![CDATA[Accept T&C]]></string>
+    <string name="onboarding_name_title">Introduction</string>
+    <string name="onboarding_name_subtitle">How can we call you?</string>
+    <string name="onboarding_name_description">We only save this locally.\nSo, surely you can give us any name.\n\nOr nothing and be our guest! &#128573;</string>
+    <string name="onboarding_name_hint">Give something nice or leave it like that ;)</string>
+    <string name="onboarding_diet_title">Diet Info</string>
+    <string name="onboarding_diet_subtitle">Do you follow any diet?</string>
+    <string name="onboarding_diet_description"><![CDATA[Currently we can\'t and don\'t do anything with this information. But we planning to.\n\nGive it if you want and see what happens. &#128568;]]></string>
+    <string name="onboarding_premium_title">Premium</string>
+    <string name="onboarding_premium_subtitle">Do you interested in premium features?</string>
+    <string name="onboarding_premium_description">More recipes, better instructions, real filtering by diet and food allergy, custom recipe sharing and shopping list creation.\n\nThose are costing money…\n\n<i>Perhaps this is too early to ask. You can set it later if you change your mind.\n\nThese cats will love you anyway.</i> &#128571;</string>
+    <string name="onboarding_button_premium_positive">Sure</string>
+    <string name="onboarding_button_premium_negative">Nope</string>
+    <string name="onboarding_button_premium_neutral">Not sure</string>
 </resources>

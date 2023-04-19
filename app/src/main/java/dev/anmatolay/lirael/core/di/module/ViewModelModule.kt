@@ -7,6 +7,10 @@ import dev.anmatolay.lirael.presentation.custom.CustomViewModel
 import dev.anmatolay.lirael.presentation.dialog.deletion.DeletionConfirmationViewModel
 import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationViewModel
 import dev.anmatolay.lirael.presentation.favourites.FavouritesViewModel
+import dev.anmatolay.lirael.presentation.onboarding.diet.DietViewModel
+import dev.anmatolay.lirael.presentation.onboarding.name.NameViewModel
+import dev.anmatolay.lirael.presentation.onboarding.premium.PremiumViewModel
+import dev.anmatolay.lirael.presentation.onboarding.welcome.WelcomeViewModel
 import dev.anmatolay.lirael.presentation.settings.SettingsViewModel
 import dev.anmatolay.lirael.presentation.splash.SplashViewModel
 import org.koin.dsl.module
@@ -14,6 +18,10 @@ import org.koin.dsl.module
 val viewModelModule = module {
     factory { MainActivityViewModel(get(), get()) }
     factory { SplashViewModel(get()) }
+    factory { WelcomeViewModel() }
+    factory { NameViewModel() }
+    factory { DietViewModel() }
+    factory { PremiumViewModel() }
     factory { StatisticsViewModel(get(), get()) }
     factory { RecipesViewModel() }
     factory { FavouritesViewModel() }
