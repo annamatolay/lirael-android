@@ -29,9 +29,7 @@ class UserRepository(
     fun cache(id: String): Completable =
         Completable.fromAction { dataSource.putUserId(id) }
 
-    fun save(user: User) = userDao.create(user)
-
-    fun update(user: User) = userDao.update(user)
+    fun save(id: String) = userDao.create(User(id))
 
     fun update(name: String): Completable =
         getCachedUserIdOrDefault()

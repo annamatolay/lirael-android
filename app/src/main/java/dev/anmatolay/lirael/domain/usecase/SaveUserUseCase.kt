@@ -11,10 +11,6 @@ class SaveUserUseCase(
 
     operator fun invoke(id: String) =
         repository.cache(id)
-            .andThen(repository.save(User(id)))
-            .subscribeOn(schedulerProvider.io())
-
-    operator fun invoke(user: User) =
-        repository.save(user)
+            .andThen(repository.save(id))
             .subscribeOn(schedulerProvider.io())
 }

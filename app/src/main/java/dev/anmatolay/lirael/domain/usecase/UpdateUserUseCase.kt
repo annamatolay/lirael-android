@@ -9,10 +9,6 @@ class UpdateUserUseCase(
     private val repository: UserRepository,
 ) {
 
-    operator fun invoke(user: User) =
-        repository.update(user)
-            .subscribeOn(schedulerProvider.io())
-
     operator fun invoke(name: String) =
         repository.update(name)
             .subscribeOn(schedulerProvider.io())
