@@ -24,6 +24,8 @@ class MonitoringUseCase(
 
     fun setUpAnalyticsAndLogging(userId: String?) {
         analyticsWrapper.setUserId(userId)
+        // If Timber already set by Application, remove to avoid duplicated logs
+        Timber.uprootAll()
         Timber.plant(
             if (BuildConfig.DEBUG)
                 DiamondDebugTree()
