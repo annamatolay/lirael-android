@@ -4,17 +4,12 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.animation.AlphaAnimation
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
-import android.widget.Toast
-import androidx.activity.OnBackPressedCallback
-import androidx.core.view.doOnPreDraw
-import androidx.core.view.isVisible
-import com.google.android.material.transition.MaterialFadeThrough
+import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentStatisticsBinding
+import dev.anmatolay.lirael.domain.model.User
+import dev.anmatolay.lirael.util.extension.mainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
@@ -35,11 +30,43 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         super.onResume()
 
         viewModel.uiState.observe { state ->
-            binding.run {
-                numberCooked.text = state.userRecipeStat.cooked.toString()
-                numberSaved.text = state.userRecipeStat.saved.toString()
-                numberCreated.text = state.userRecipeStat.created.toString()
-            }
+            updateName(state.name)
+
+            updateRecipeStatistics(state.userRecipeStat)
+
+            showErrorSnackbarIfErrorNotNull(state.error)
         }
+    }
+
+    private fun updateName(data: String?) {
+        val name = data ?: getString(R.string.user_default_name)
+        binding.greeting.text = getString(R.string.stat_greetings, name)
+    }
+
+    private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?) {
+        if (userRecipeStat != null)
+            binding.run {
+                numberCooked.text = userRecipeStat.cooked.toString()
+                numberSaved.text = userRecipeStat.saved.toString()
+                numberCreated.text = userRecipeStat.created.toString()
+            }
+        else
+            binding.run {
+                numberCooked.text = "?"
+                numberSaved.text = "?"
+                numberCreated.text = "?"
+            }
+    }
+
+    private fun showErrorSnackbarIfErrorNotNull(error: StatisticsState.Error?) {
+        if (error != null)
+            when (error) {
+                StatisticsState.Error.STAT_READ_ERROR ->
+                    mainActivity().makeSnackbar(R.string.stat_read_error, Snackbar.LENGTH_LONG)
+                        .setAction(R.string.stat_read_error_retry) {
+                            triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
+                        }
+                        .show()
+            }
     }
 }

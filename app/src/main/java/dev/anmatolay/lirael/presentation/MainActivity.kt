@@ -7,12 +7,17 @@ import android.view.MenuInflater
 import androidx.activity.OnBackPressedCallback
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.coordinatorlayout.widget.CoordinatorLayout
+import androidx.core.view.setPadding
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.snackbar.BaseTransientBottomBar
+import com.google.android.material.snackbar.Snackbar
+import com.google.android.material.snackbar.Snackbar.SnackbarLayout
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseActivity
 import dev.anmatolay.lirael.databinding.ActivityMainBinding
@@ -104,6 +109,10 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
     override fun onSupportNavigateUp(): Boolean {
         return findNavigationController().navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
+
+    fun makeSnackbar(@StringRes messageResId: Int, length: Int) =
+        Snackbar.make(binding.snackbarContainer, messageResId, length)
+            .setAnimationMode(BaseTransientBottomBar.ANIMATION_MODE_SLIDE)
 
     // Activity.findNavController(viewId: Int) throw IllegalStateException if used with FragmentContainerView
     // This is the official workaround. More info here:  https://issuetracker.google.com/issues/142847973#comment15

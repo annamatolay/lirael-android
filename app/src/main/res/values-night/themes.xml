@@ -17,5 +17,19 @@
         <item name="android:colorBackground">@color/black_900</item>
         <item name="colorOnBackground">@color/white</item>
         <item name="android:statusBarColor">?attr/colorOnPrimary</item>
+
+        <item name="textAppearanceHeadline1">@style/TextAppearance.Lirael.Headline1</item>
+        <item name="textAppearanceHeadline2">@style/TextAppearance.Lirael.Headline2</item>
+        <item name="textAppearanceHeadline3">@style/TextAppearance.Lirael.Headline3</item>
+        <item name="textAppearanceHeadline4">@style/TextAppearance.Lirael.Headline4</item>
+        <item name="textAppearanceHeadline5">@style/TextAppearance.Lirael.Headline5</item>
+        <item name="textAppearanceHeadline6">@style/TextAppearance.Lirael.Headline6</item>
+        <item name="textAppearanceSubtitle1">@style/TextAppearance.Lirael.Subtitle1</item>
+        <item name="textAppearanceSubtitle2">@style/TextAppearance.Lirael.Subtitle2</item>
+        <item name="textAppearanceBody1">@style/TextAppearance.Lirael.Body1</item>
+        <item name="textAppearanceBody2">@style/TextAppearance.Lirael.Body2</item>
+        <item name="textAppearanceButton">@style/TextAppearance.Lirael.Button</item>
+        <item name="textAppearanceCaption">@style/TextAppearance.Lirael.Caption</item>
+        <item name="textAppearanceOverline">@style/TextAppearance.Lirael.Overline</item>
     </style>
 </resources>

@@ -12,6 +12,6 @@ class UserIdDataSource(private val sharedPrefHandler: SharedPrefHandler) {
             .getString(KEY_USER_ID)
             .toMaybe()
 
-    fun putUserId(id: String) =
+    fun putUserId(id: String) = //FIXME
         sharedPrefHandler.putString(KEY_USER_ID, id)
 }

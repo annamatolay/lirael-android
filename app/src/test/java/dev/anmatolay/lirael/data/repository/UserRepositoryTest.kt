@@ -12,10 +12,10 @@ import io.mockk.verify
 import io.reactivex.rxjava3.core.Maybe
 import org.junit.Test
 
-class UserCacheRepositoryTest : BaseTest() {
+class UserRepositoryTest : BaseTest() {
 
     private val dataSource = mockk<UserIdDataSource>()
-    private val repository = UserCacheRepository(dataSource)
+    private val repository = UserRepository(dataSource)
 
     @Test
     fun `Given user id cached When getCachedOrDefaultUser called Then return with User`() {
@@ -23,7 +23,7 @@ class UserCacheRepositoryTest : BaseTest() {
         every { dataSource.getUserId() } returns Maybe.just(TEST_USER_ID)
 
         // Then
-        val result = repository.getCachedOrDefaultUser().test()
+        val result = repository.getUserOrDefault().test()
 
         // When
         result.run {
@@ -39,7 +39,7 @@ class UserCacheRepositoryTest : BaseTest() {
         every { dataSource.getUserId() } returns Maybe.empty()
 
         // Then
-        val result = repository.getCachedOrDefaultUser().test()
+        val result = repository.getUserOrDefault().test()
 
         // When
         result.run {
@@ -54,7 +54,7 @@ class UserCacheRepositoryTest : BaseTest() {
         justRun { dataSource.putUserId(TEST_USER_ID) }
 
         // Then
-        val result = repository.cacheUserId(TEST_USER_ID).test()
+        val result = repository.cache(TEST_USER_ID).test()
 
         // When
         result.run {

@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import dev.anmatolay.lirael.core.presentation.BaseDialogFragment
 import dev.anmatolay.lirael.databinding.FragmentDialogConfirmExitBinding
 import dev.anmatolay.lirael.presentation.MainActivity
+import dev.anmatolay.lirael.util.extension.mainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class ExitConfirmationDialogFragment : BaseDialogFragment<ExitConfirmationEvent>() {
@@ -35,7 +37,7 @@ class ExitConfirmationDialogFragment : BaseDialogFragment<ExitConfirmationEvent>
         }
 
         viewModel.uiState.observe { state ->
-            (activity as? MainActivity)?.shouldShowExitConfirmationDialog = !state.isGone
+            mainActivity().shouldShowExitConfirmationDialog = !state.isGone
         }
     }
 }

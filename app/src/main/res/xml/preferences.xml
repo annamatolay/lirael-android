@@ -7,10 +7,10 @@
         app:title="Personal">
 
         <EditTextPreference
-            android:defaultValue="Guest"
+            android:defaultValue="@string/user_default_name"
             android:iconSpaceReserved="false"
             app:allowDividerAbove="true"
-            app:key="@string/key_pref_signature"
+            app:key="@string/key_pref_user_name"
             app:title="Your name"
             app:useSimpleSummaryProvider="true" />
 

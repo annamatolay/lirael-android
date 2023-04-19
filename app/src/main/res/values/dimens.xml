@@ -10,7 +10,8 @@
     <dimen name="spacing_24dp">24dp</dimen>
     <dimen name="spacing_32dp">32dp</dimen>
     <dimen name="spacing_56dp">56dp</dimen>
-
-    <dimen name="m3_dialog_margin">16dp</dimen>
-    <dimen name="m3_dialog_icon_size">24dp</dimen>
+    <!--Material3 based dimens-->
+    <dimen name="m3_icon_padding">2dp</dimen>
+    <dimen name="m3_dialog_margin">@dimen/spacing_16dp</dimen>
+    <dimen name="m3_dialog_icon_size">@dimen/spacing_24dp</dimen>
 </resources>

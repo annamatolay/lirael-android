@@ -6,6 +6,7 @@ import dev.anmatolay.lirael.core.di.KoinInitializer
 import dev.anmatolay.lirael.domain.usecase.GetUserUseCase
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
+import dev.anmatolay.lirael.util.Constants
 import org.koin.android.ext.android.inject
 import timber.log.Timber
 
@@ -15,7 +16,7 @@ class LiraelApplication : Application() {
     private val getUserUseCase by inject<GetUserUseCase>()
     private val monitoringUseCase by inject<MonitoringUseCase>()
 
-    private var user: User? = null
+    private var userId: String? = null
 
     override fun onCreate() {
         super.onCreate()
@@ -24,18 +25,20 @@ class LiraelApplication : Application() {
 
         monitoringUseCase.isCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
 
-        getUserUseCase()
-            .doOnSuccess { user = it }
+        getUserUseCase.getCachedUserIdOrDefault()
+            .doOnSuccess { userId = it }
             .subscribe()
             .dispose()
 
-        monitoringUseCase.setUpAnalyticsAndLogging(user?.id)
+        monitoringUseCase.setUpAnalyticsAndLogging(userId)
 
-        if (user?.id == null) {
+        if (userId == Constants.USER_DEFAULT_ID) {
             monitoringUseCase.setUserProperties()
             authenticator.signInAnonymously()
-                .doOnError { Timber.tag("App init - signInAnonymously").e(it) }
-                .subscribe()
+                .subscribe(
+                    { Timber.i("Anonymous sign in completed!") },
+                    { Timber.tag("App init - signInAnonymously").e(it) }
+                )
                 .dispose()
         }
     }

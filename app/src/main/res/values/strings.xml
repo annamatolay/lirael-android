@@ -5,15 +5,22 @@
     <string name="title_recipes">Recipes</string>
     <string name="title_favourites">Favourites</string>
     <string name="title_custom">Custom</string>
+    <string name="title_settings">Settings</string>
     <string name="confirm_exit_dialog_title">Confirm exit</string>
     <string name="confirm_exit_dialog_description">Are you sure you want to exit?</string>
     <string name="confirm_exit_dialog_show">Never show this again</string>
     <string name="confirm_exit_dialog_button_positive">Sure</string>
     <string name="confirm_exit_dialog_button_negative">Nope</string>
-    <string name="title_settings">Settings</string>
     <string name="dark_mode_settings">Dark mode</string>
     <string name="title_settings_profile">Profile Settings</string>
-    <string name="card_text_created">Created</string>
-    <string name="card_text_saved">Saved</string>
-    <string name="card_text_cooked">Cooked</string>
+    <string name="user_default_name">Guest</string>
+    <string name="stat_greetings">Welcome %s!</string>
+    <string name="stat_section_title_recipes">Recipes</string>
+    <string name="stat_section_title_random">Random ideas</string>
+    <string name="stat_section_title_more">More details</string>
+    <string name="stat_card_text_created">Created</string>
+    <string name="stat_card_text_saved">Saved</string>
+    <string name="stat_card_text_cooked">Cooked</string>
+    <string name="stat_read_error">Failed to read your statistics :(</string>
+    <string name="stat_read_error_retry">Retry</string>
 </resources>

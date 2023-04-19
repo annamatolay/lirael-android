@@ -8,17 +8,32 @@
     tools:context=".presentation.statistics.StatisticsFragment">
 
     <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/greeting"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:drawableEnd="@drawable/ic_dialog_waving_hand"
+        android:drawablePadding="@dimen/m3_icon_padding"
+        android:gravity="center"
+        android:text="@string/stat_greetings"
+        android:textAppearance="?attr/textAppearanceHeadline5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.textview.MaterialTextView
         android:id="@+id/recipes"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/spacing_16dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Recipes"
+        android:text="@string/stat_section_title_recipes"
         android:textAppearance="?attr/textAppearanceOverline"
-        android:textSize="20sp"
+        android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/greeting" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,7 +66,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_margin="@dimen/spacing_8dp"
-                    android:text="@string/card_text_cooked"
+                    android:text="@string/stat_card_text_cooked"
                     android:textAppearance="?attr/textAppearanceCaption"
                     android:textColor="?attr/colorSurface"
                     android:textSize="20sp"
@@ -63,13 +78,14 @@
                     android:id="@+id/image_cooked"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_8dp"
+                    android:layout_margin="@dimen/m3_dialog_margin"
                     android:elevation="@dimen/spacing_8dp"
-                    android:padding="@dimen/spacing_16dp"
+                    android:padding="@dimen/m3_icon_padding"
                     android:src="@drawable/ic_stat_recipe_cooked"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_cooked"
+                    app:tint="?attr/colorSurface"
                     tools:ignore="ContentDescription" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -111,7 +127,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_margin="@dimen/spacing_8dp"
-                    android:text="@string/card_text_saved"
+                    android:text="@string/stat_card_text_saved"
                     android:textAppearance="?attr/textAppearanceCaption"
                     android:textColor="?attr/colorSurface"
                     android:textSize="20sp"
@@ -123,13 +139,14 @@
                     android:id="@+id/image_saved"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_8dp"
+                    android:layout_margin="@dimen/m3_dialog_margin"
                     android:elevation="@dimen/spacing_8dp"
-                    android:padding="@dimen/spacing_16dp"
+                    android:padding="@dimen/m3_icon_padding"
                     android:src="@drawable/ic_stat_recipe_saved"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_saved"
+                    app:tint="?attr/colorSurface"
                     tools:ignore="ContentDescription" />
 
                 <com.google.android.material.textview.MaterialTextView
@@ -171,7 +188,7 @@
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|center"
                     android:layout_margin="@dimen/spacing_8dp"
-                    android:text="@string/card_text_created"
+                    android:text="@string/stat_card_text_created"
                     android:textAppearance="?attr/textAppearanceCaption"
                     android:textColor="?attr/colorSurface"
                     android:textSize="20sp"
@@ -183,13 +200,14 @@
                     android:id="@+id/image_created"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_margin="@dimen/spacing_8dp"
+                    android:layout_margin="@dimen/m3_dialog_margin"
                     android:elevation="@dimen/spacing_8dp"
-                    android:padding="@dimen/spacing_16dp"
+                    android:padding="@dimen/m3_icon_padding"
                     android:src="@drawable/ic_stat_recipe_created"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/text_created"
+                    app:tint="?attr/colorSurface"
                     tools:ignore="ContentDescription" />
 
                 <com.google.android.material.textview.MaterialTextView

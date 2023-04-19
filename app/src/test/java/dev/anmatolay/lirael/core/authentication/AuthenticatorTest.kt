@@ -1,7 +1,7 @@
 package dev.anmatolay.lirael.core.authentication
 
 import dev.anmatolay.lirael.BaseTest
-import dev.anmatolay.lirael.domain.usecase.CacheUserIdUseCase
+import dev.anmatolay.lirael.domain.usecase.SaveUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
 import dev.anmatolay.lirael.util.Constants.USER_DEFAULT_ID
 import dev.anmatolay.lirael.util.TestConstants.TEST_USER_ID
@@ -12,20 +12,20 @@ import org.junit.Test
 
 class AuthenticatorTest : BaseTest() {
 
-    private val cacheUserIdUseCase = mockk<CacheUserIdUseCase>()
+    private val saveUserUseCase = mockk<SaveUserUseCase>()
     private val monitoringUseCase = mockk<MonitoringUseCase>()
 
     @Before
     override fun setUp() {
         startTestKoin {
-            factory { cacheUserIdUseCase }
+            factory { saveUserUseCase }
             factory { monitoringUseCase }
         }
     }
 
     @Test
     fun `When userProvider changed Then cacheUserId and setUpAnalyticsAndLogging`() {
-        every { cacheUserIdUseCase(TEST_USER_ID) } returns Completable.complete()
+        every { saveUserUseCase(TEST_USER_ID) } returns Completable.complete()
         justRun { monitoringUseCase.setUpAnalyticsAndLogging(TEST_USER_ID) }
         fakeAuthenticator.userId = TEST_USER_ID
         fakeAuthenticator.isSuccessful = true
@@ -39,7 +39,7 @@ class AuthenticatorTest : BaseTest() {
             assertComplete()
         }
         verifyAll {
-            cacheUserIdUseCase(TEST_USER_ID)
+            saveUserUseCase(TEST_USER_ID)
             monitoringUseCase.setUpAnalyticsAndLogging(TEST_USER_ID)
         }
     }
@@ -58,7 +58,7 @@ class AuthenticatorTest : BaseTest() {
             assertNotComplete()
             assertFailure(UnknownAuthErrorException::class.java)
         }
-        verify(exactly = 0) { cacheUserIdUseCase(TEST_USER_ID) }
+        verify(exactly = 0) { saveUserUseCase(TEST_USER_ID) }
         verify(exactly = 0) { monitoringUseCase.setUpAnalyticsAndLogging(TEST_USER_ID) }
     }
 }

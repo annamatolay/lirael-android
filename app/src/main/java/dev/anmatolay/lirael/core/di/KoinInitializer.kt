@@ -18,6 +18,7 @@ object KoinInitializer {
                 useCaseModule,
                 repositoryModule,
                 dataSourceModule,
+                databaseModule,
             )
         }
     }

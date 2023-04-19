@@ -1,5 +1,6 @@
 package dev.anmatolay.lirael.core.di.module
 
+import android.content.res.Resources
 import dev.anmatolay.lirael.core.analytic.AnalyticsWrapper
 import dev.anmatolay.lirael.core.analytic.impl.FirebaseAnalyticsImpl
 import dev.anmatolay.lirael.core.authentication.Authenticator
@@ -22,4 +23,5 @@ val appModule = module {
     single { ApiClientFactory.createRetrofit() }
     factory { SharedPrefHandler(androidContext()) }
     factory<UserProperty> { UserPropertyImpl }
+    factory<Resources> { androidContext().resources }
 }
