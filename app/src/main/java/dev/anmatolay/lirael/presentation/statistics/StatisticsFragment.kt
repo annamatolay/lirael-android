@@ -32,7 +32,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        mainActivity().run{
+        activity?.run{
+            // FIXME NullPointerException when change ui mode
             findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.VISIBLE
             findViewById<View>(R.id.settings_item)?.isInvisible = false
             findViewById<View>(R.id.ui_mode_item)?.isInvisible = false
@@ -58,13 +59,13 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
 
     private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?) {
         if (userRecipeStat != null)
-            binding.run {
+            binding.layoutRecipeStats.run {
                 numberCooked.text = userRecipeStat.cooked.toString()
                 numberSaved.text = userRecipeStat.saved.toString()
                 numberCreated.text = userRecipeStat.created.toString()
             }
         else
-            binding.run {
+            binding.layoutRecipeStats.run {
                 numberCooked.text = "?"
                 numberSaved.text = "?"
                 numberCreated.text = "?"

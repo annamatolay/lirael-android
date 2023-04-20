@@ -31,8 +31,8 @@
         <item name="android:textSize">21sp</item>
     </style>
     <style name="TextAppearance.Lirael.Subtitle1" parent="TextAppearance.MaterialComponents.Subtitle1">
-        <item name="fontFamily">@font/ubuntu_regular</item>
-        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
         <item name="android:textSize">16sp</item>
     </style>
     <style name="TextAppearance.Lirael.Subtitle2" parent="TextAppearance.MaterialComponents.Subtitle2">
@@ -62,8 +62,8 @@
         <item name="android:textSize">12sp</item>
     </style>
     <style name="TextAppearance.Lirael.Overline" parent="TextAppearance.MaterialComponents.Overline">
-        <item name="fontFamily">@font/ubuntu_regular</item>
-        <item name="android:fontFamily">@font/ubuntu_regular</item>
+        <item name="fontFamily">@font/ubuntu_medium</item>
+        <item name="android:fontFamily">@font/ubuntu_medium</item>
         <item name="android:textSize">10sp</item>
         <item name="android:textAllCaps">true</item>
     </style>

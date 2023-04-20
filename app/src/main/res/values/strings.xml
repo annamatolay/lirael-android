@@ -16,7 +16,7 @@
     <string name="user_default_name">Guest</string>
     <string name="stat_greetings">Welcome %s!</string>
     <string name="stat_section_title_recipes">Recipes</string>
-    <string name="stat_section_title_random">Random ideas</string>
+    <string name="stat_section_title_random">Get Inspired</string>
     <string name="stat_section_title_more">More details</string>
     <string name="stat_card_text_created">Created</string>
     <string name="stat_card_text_saved">Saved</string>
