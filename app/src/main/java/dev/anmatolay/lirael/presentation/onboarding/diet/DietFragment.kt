@@ -13,6 +13,7 @@ import dev.anmatolay.lirael.presentation.Event
 import dev.anmatolay.lirael.presentation.custom.CustomViewModel
 import dev.anmatolay.lirael.util.extension.navigateTo
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class DietFragment : BaseFragment<DietEvent>() {
 
@@ -35,6 +36,7 @@ class DietFragment : BaseFragment<DietEvent>() {
         binding.run {
             nextButton.setOnClickListener {
                 triggerEvent(DietEvent.DietSelected(spinner.selectedItemPosition))
+                Timber.d("spinner.selectedItemPosition: ${spinner.selectedItemPosition}")
                 navigateTo(DietFragmentDirections.actionToPremiumFragment())
             }
         }

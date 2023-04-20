@@ -4,6 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
@@ -25,6 +28,16 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         FragmentStatisticsBinding.inflate(inflater, container, false)
             .apply { binding = this }
             .root
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        mainActivity().run{
+            findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.VISIBLE
+            findViewById<View>(R.id.settings_item)?.isInvisible = false
+            findViewById<View>(R.id.ui_mode_item)?.isInvisible = false
+        }
+    }
 
     override fun onResume() {
         super.onResume()

@@ -2,7 +2,7 @@ package dev.anmatolay.lirael.domain.usecase
 
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import dev.anmatolay.lirael.BuildConfig
-import dev.anmatolay.lirael.core.analytic.AnalyticsWrapper
+import dev.anmatolay.lirael.core.analytics.AnalyticsWrapper
 import dev.anmatolay.lirael.core.logging.CrashlyticsLogTree
 import dev.anmatolay.lirael.core.logging.DiamondDebugTree
 import dev.anmatolay.lirael.util.UserProperty

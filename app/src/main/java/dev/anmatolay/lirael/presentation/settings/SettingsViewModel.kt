@@ -36,6 +36,4 @@ class SettingsViewModel(
             }
         }.subscribe().disposeOnPause()
     }
-
-    fun triggerUiStateChangeFromDialog(state: SettingsState) = this.triggerUiStateChange(state)
 }

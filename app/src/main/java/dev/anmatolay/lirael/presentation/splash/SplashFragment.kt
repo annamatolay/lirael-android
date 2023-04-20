@@ -6,6 +6,7 @@ import android.view.View
 import android.view.View.*
 import android.view.ViewGroup
 import androidx.constraintlayout.motion.widget.MotionLayout
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -84,8 +85,8 @@ class SplashFragment : BaseFragment<SplashEvent>() {
     override fun onDestroyView() {
         requireActivity().findViewById<AppBarLayout>(R.id.app_bar).visibility = VISIBLE
         // Disable toolbar actions during onboarding
-        activity?.findViewById<View>(R.id.settings_item)?.isVisible = false
-        activity?.findViewById<View>(R.id.ui_mode_item)?.isVisible = false
+        activity?.findViewById<View>(R.id.settings_item)?.isInvisible = false
+        activity?.findViewById<View>(R.id.ui_mode_item)?.isInvisible = false
         super.onDestroyView()
     }
 

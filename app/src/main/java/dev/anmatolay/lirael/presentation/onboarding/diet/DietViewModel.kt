@@ -16,6 +16,7 @@ class DietViewModel(
         super.onViewResumed()
 
 
+        // FIXME: premium data not persisted in shared pref correctly (Settings not picking it up)
         doOnUiEventReceived {uiEvent ->
             when(uiEvent) {
                 is DietEvent.DietSelected -> {

@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.core.analytic
+package dev.anmatolay.lirael.core.analytics
 
 import android.os.Bundle
 

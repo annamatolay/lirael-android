@@ -21,7 +21,7 @@ val viewModelModule = module {
     factory { WelcomeViewModel(get(), get(), get()) }
     factory { NameViewModel(get(), get()) }
     factory { DietViewModel(get(), get()) }
-    factory { PremiumViewModel() }
+    factory { PremiumViewModel(get(), get(), get()) }
     factory { StatisticsViewModel(get(), get()) }
     factory { RecipesViewModel() }
     factory { FavouritesViewModel() }

@@ -1,8 +1,8 @@
-package dev.anmatolay.lirael.core.analytic.impl
+package dev.anmatolay.lirael.core.analytics.impl
 
 import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
-import dev.anmatolay.lirael.core.analytic.AnalyticsWrapper
+import dev.anmatolay.lirael.core.analytics.AnalyticsWrapper
 
 class FirebaseAnalyticsImpl(private val firebaseAnalytics: FirebaseAnalytics) : AnalyticsWrapper {
 
