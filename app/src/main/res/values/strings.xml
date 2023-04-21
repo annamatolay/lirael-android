@@ -51,4 +51,6 @@
     <string name="onboarding_button_premium_negative">Nope</string>
     <string name="onboarding_button_premium_neutral">Not sure</string>
     <string name="onboarding_name_error">Should not be empty and should contains only letters and no space.</string>
+    <string name="recipe_card_ingredients">%d ingredients</string>
+    <string name="recipe_card_steps">%d steps</string>
 </resources>

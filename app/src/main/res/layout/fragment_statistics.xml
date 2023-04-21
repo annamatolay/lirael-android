@@ -1,70 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_statistics"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".presentation.statistics.StatisticsFragment">
+    android:layout_height="match_parent">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/greeting"
-        android:layout_width="wrap_content"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layout_statistics"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:drawableEnd="@drawable/ic_dialog_waving_hand"
-        android:drawablePadding="@dimen/m3_icon_padding"
-        android:gravity="center"
-        android:text="@string/stat_greetings"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:context=".presentation.statistics.StatisticsFragment">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/recipes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/stat_section_title_recipes"
-        android:textAppearance="?attr/textAppearanceOverline"
-        android:textSize="21sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greeting" />
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/greeting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:drawableEnd="@drawable/ic_dialog_waving_hand"
+            android:drawablePadding="@dimen/m3_icon_padding"
+            android:gravity="center"
+            android:text="@string/stat_greetings"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/layout_container_recipe_stats"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/recipes">
-        <include android:id="@+id/layout_recipe_stats" layout="@layout/layout_recipe_stats" />
-    </FrameLayout>
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/recipes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/stat_section_title_recipes"
+            android:textAppearance="?attr/textAppearanceOverline"
+            android:textSize="21sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/greeting" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/random"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/stat_section_title_random"
-        android:textAppearance="?attr/textAppearanceOverline"
-        android:textSize="21sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_container_recipe_stats" />
+        <FrameLayout
+            android:id="@+id/layout_container_recipe_stats"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/recipes">
 
-    <FrameLayout
-        android:id="@+id/layout_container_random_recipes"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/random">
-        <include android:id="@+id/layout_random_recipes" layout="@layout/layout_random_recipes" />
-    </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <include
+                android:id="@+id/layout_recipe_stats"
+                layout="@layout/layout_recipe_stats" />
+        </FrameLayout>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/random"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/stat_section_title_random"
+            android:textAppearance="?attr/textAppearanceOverline"
+            android:textSize="21sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_container_recipe_stats" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/random_recipes_recycle_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:orientation="horizontal"
+            android:padding="@dimen/spacing_8dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/random"
+            tools:itemCount="1"
+            tools:listitem="@layout/layout_item_random_recipe" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/more_stat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_16dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@string/stat_section_title_more"
+            android:textAppearance="?attr/textAppearanceOverline"
+            android:textSize="21sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/random_recipes_recycle_view" />
+
+        <CalendarView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:padding="@dimen/spacing_8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/more_stat" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>
