@@ -6,6 +6,7 @@ import dev.anmatolay.lirael.core.analytics.AnalyticsWrapper
 
 class FirebaseAnalyticsImpl(private val firebaseAnalytics: FirebaseAnalytics) : AnalyticsWrapper {
 
+    override fun setAnalyticsCollectionEnabled(isEnabled: Boolean) = firebaseAnalytics.setAnalyticsCollectionEnabled(isEnabled)
     override fun setUserId(userId: String?) {
         firebaseAnalytics.setUserId(userId)
     }

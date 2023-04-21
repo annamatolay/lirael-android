@@ -4,9 +4,11 @@ import android.os.Bundle
 
 interface AnalyticsWrapper {
 
-  fun setUserId(userId: String?)
+    fun setAnalyticsCollectionEnabled(isEnabled: Boolean)
 
-  fun setUserProperty(name: String, value: String)
+    fun setUserId(userId: String?)
 
-  fun logEven(name: String, bundle: Bundle)
+    fun setUserProperty(name: String, value: String)
+
+    fun logEven(name: String, bundle: Bundle)
 }

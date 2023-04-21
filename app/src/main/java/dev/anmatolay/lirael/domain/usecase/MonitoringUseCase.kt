@@ -16,6 +16,8 @@ class MonitoringUseCase(
     private val crashlytics: FirebaseCrashlytics,
     private val userProperty: UserProperty,
 ) {
+    fun setAnalyticsCollectionEnabled(isEnabled: Boolean) = analyticsWrapper.setAnalyticsCollectionEnabled(isEnabled)
+
     fun setUserProperties() {
         analyticsWrapper.setUserProperty(KEY_APP_VERSION, userProperty.version)
         analyticsWrapper.setUserProperty(KEY_ANDROID_VERSION, userProperty.osVersion)
@@ -34,5 +36,5 @@ class MonitoringUseCase(
         )
     }
 
-    fun isCrashlyticsCollectionEnabled(isEnabled: Boolean) = crashlytics.setCrashlyticsCollectionEnabled(isEnabled)
+    fun setCrashlyticsCollectionEnabled(isEnabled: Boolean) = crashlytics.setCrashlyticsCollectionEnabled(isEnabled)
 }

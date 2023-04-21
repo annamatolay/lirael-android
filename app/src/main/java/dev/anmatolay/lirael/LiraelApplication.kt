@@ -20,7 +20,8 @@ class LiraelApplication : Application(), ImageLoaderFactory {
 
         KoinInitializer.init(this)
 
-        monitoringUseCase.isCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
+        monitoringUseCase.setCrashlyticsCollectionEnabled(!BuildConfig.DEBUG)
+        monitoringUseCase.setAnalyticsCollectionEnabled(!BuildConfig.DEBUG)
 
         getUserUseCase.getCachedUserIdOrDefault()
             .doOnSuccess { userId = it }
