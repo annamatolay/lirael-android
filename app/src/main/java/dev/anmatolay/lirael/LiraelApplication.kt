@@ -3,6 +3,9 @@ package dev.anmatolay.lirael
 import android.app.Application
 import coil.ImageLoader
 import coil.ImageLoaderFactory
+import coil.transform.RoundedCornersTransformation
+import coil.transition.CrossfadeTransition
+import coil.transition.Transition
 import dev.anmatolay.lirael.core.di.KoinInitializer
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
@@ -37,6 +40,7 @@ class LiraelApplication : Application(), ImageLoaderFactory {
     override fun newImageLoader(): ImageLoader {
         return ImageLoader.Builder(this)
             .crossfade(true)
+            .placeholder(R.drawable.ic_loading_image)
             .build()
     }
 }

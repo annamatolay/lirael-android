@@ -1,5 +1,6 @@
 package dev.anmatolay.lirael.core.di.module
 
+import dev.anmatolay.lirael.domain.usecase.GetRandomRecipeUseCase
 import dev.anmatolay.lirael.domain.usecase.user.SaveUserUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
@@ -13,4 +14,5 @@ val useCaseModule = module {
     factory { UpdateUserUseCase(get(), get()) }
     factory { DeleteUserUseCase(get(), get()) }
     factory { MonitoringUseCase(get(), get(), get()) }
+    factory { GetRandomRecipeUseCase(get(), get()) }
 }

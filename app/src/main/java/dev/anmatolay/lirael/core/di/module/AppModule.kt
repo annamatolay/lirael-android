@@ -20,7 +20,7 @@ val appModule = module {
     factory<AnalyticsWrapper> { FirebaseAnalyticsImpl(get()) }
     factory<SchedulerProvider> { SchedulerProviderImpl() }
     single { MoshiFactory.create() }
-    single { ApiClientFactory.createRetrofit() }
+    single { ApiClientFactory }
     factory { SharedPrefHandler(androidContext()) }
     factory<UserProperty> { UserPropertyImpl }
     factory<Resources> { androidContext().resources }

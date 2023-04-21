@@ -16,7 +16,7 @@ data class Recipe(
     val imageUrl: HttpUrl? = null,
     val servings: String? = null,
 ) {
-    constructor(title: String, ingredients: List<String>, instructions: List<String>, imageUrl: HttpUrl) : this(
+    constructor(title: String, ingredients: List<String>, instructions: List<String>, imageUrl: HttpUrl?) : this(
         id = 0,
         title = title,
         ingredients = ingredients,

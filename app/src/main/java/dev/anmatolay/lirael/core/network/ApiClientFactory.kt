@@ -35,15 +35,15 @@ object ApiClientFactory {
             .writeTimeout(timeOutInSeconds, TimeUnit.SECONDS)
             .addInterceptor(loggingInterceptor)
 
-    fun createRetrofit(): Retrofit.Builder {
+    fun <T> createApiImplementation(service: Class<T>, url: String = BuildConfig.API_URL): T {
         interceptorList.forEach { okHttpClientBuilder.addInterceptor(it) }
 
         return Retrofit.Builder()
             .client(okHttpClientBuilder.build())
-            .baseUrl(BuildConfig.API_URL)
+            .baseUrl(url)
             .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
             .addConverterFactory(MoshiConverterFactory.create(moshi))
+            .build()
+            .create(service)
     }
-
-
 }

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
+import coil.transform.RoundedCornersTransformation
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.databinding.LayoutItemRandomRecipeBinding
 import dev.anmatolay.lirael.domain.model.Recipe
@@ -26,9 +27,11 @@ class RandomRecipeAdapter(private val dataSet: List<Recipe>) : RecyclerView.Adap
             binding.ingredientsCount.text =
                 context.getString(R.string.recipe_card_ingredients, recipe.ingredients.size)
             binding.instructionsCount.text =
-                context.getString(R.string.recipe_card_ingredients, recipe.ingredients.size)
+                context.getString(R.string.recipe_card_instructions, recipe.instructions.size)
             val image = recipe.imageUrl ?: R.drawable.cat_error_not_found
-            binding.image.load(image)
+            binding.image.load(image) {
+                transformations(RoundedCornersTransformation(16f))
+            }
         }
         holder.itemView.setOnClickListener {
             // TODO: start cooking flow

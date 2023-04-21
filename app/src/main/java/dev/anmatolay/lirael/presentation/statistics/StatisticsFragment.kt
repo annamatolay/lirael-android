@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isInvisible
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -16,6 +17,7 @@ import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.util.extension.mainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
 
@@ -45,30 +47,19 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     override fun onResume() {
         super.onResume()
 
+        triggerEvent(StatisticsEvent.GetRandomRecipes)
+
         viewModel.uiState.observe { state ->
-            updateName(state.name)
-
-            updateRecipeStatistics(state.userRecipeStat)
-
-            showErrorSnackbarIfErrorNotNull(state.error)
-
-            val data = listOf(
-                Recipe("Spaghetti", listOf(), listOf(), ""),
-                Recipe("Paste", listOf(), listOf(), ""),
-                Recipe("Something very long tittle with nothing meaningful", listOf(), listOf(), "")
-            )
-            binding.randomRecipesRecycleView.run {
-                layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
-                adapter = RandomRecipeAdapter(data)
-                addItemDecoration(
-                    DividerItemDecoration(
-                        this.context,
-                        LinearLayoutManager.HORIZONTAL
-                    ).apply {
-                        setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.item_divider, null)!!)
-                    }
-                )
+            when (state) {
+                is StatisticsState.UserDataState -> {
+                    updateName(state.name)
+                    updateRecipeStatistics(state.userRecipeStat)
+                }
+                is StatisticsState.RecipesState -> updateRecipes(state.recipes)
+                is StatisticsState.ErrorState -> showErrorSnackbarIfErrorNotNull(state.error)
             }
+
+            binding.recipesRecycleView.isVisible = !state.isRecipesLoading
         }
     }
 
@@ -92,14 +83,37 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             }
     }
 
+    private fun updateRecipes(recipes: List<Recipe>?) {
+        if (recipes != null) {
+            binding.recipesRecycleView.run {
+                layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+                adapter = RandomRecipeAdapter(recipes)
+                addItemDecoration(
+                    DividerItemDecoration(
+                        this.context,
+                        LinearLayoutManager.HORIZONTAL
+                    ).apply {
+                        setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.item_divider, null)!!)
+                    }
+                )
+            }
+            binding.recipeProgressBar.isVisible = false
+        }
+    }
+
     private fun showErrorSnackbarIfErrorNotNull(error: StatisticsState.Error?) {
         if (error != null)
-            when (error) {
-                StatisticsState.Error.STAT_READ_ERROR ->
-                    mainActivity().makeErrorSnackbar(R.string.stat_read_error) {
-                        triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
-                    }
-                        .show()
+            with(mainActivity()) {
+                when (error) {
+                    StatisticsState.Error.STAT_READ_ERROR ->
+                        makeErrorSnackbar(R.string.stat_read_error) {
+                            triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
+                        }.show()
+                    StatisticsState.Error.RECIPES_READ_ERROR ->
+                        makeErrorSnackbar(R.string.recipes_read_error) {
+                            triggerEvent(StatisticsEvent.RetryGetRandomRecipes)
+                        }.show()
+                }
             }
     }
 }

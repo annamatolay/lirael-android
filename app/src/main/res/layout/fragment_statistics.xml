@@ -65,18 +65,35 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_container_recipe_stats" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/random_recipes_recycle_view"
+        <FrameLayout
+            android:id="@+id/recipes_container"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="@dimen/spacing_8dp"
-            android:orientation="horizontal"
             android:padding="@dimen/spacing_8dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/random"
-            tools:itemCount="1"
-            tools:listitem="@layout/layout_item_random_recipe" />
+            app:layout_constraintTop_toBottomOf="@+id/random">
+
+            <ProgressBar
+                android:id="@+id/recipe_progress_bar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_56dp"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recipes_recycle_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:itemCount="1"
+                tools:listitem="@layout/layout_item_random_recipe"
+                tools:visibility="gone" />
+        </FrameLayout>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/more_stat"
@@ -89,7 +106,7 @@
             android:textAppearance="?attr/textAppearanceOverline"
             android:textSize="21sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/random_recipes_recycle_view" />
+            app:layout_constraintTop_toBottomOf="@id/recipes_container" />
 
         <CalendarView
             android:layout_width="match_parent"

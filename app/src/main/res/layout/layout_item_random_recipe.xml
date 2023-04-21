@@ -40,6 +40,7 @@
                 android:layout_width="150dp"
                 android:layout_height="150dp"
                 android:adjustViewBounds="true"
+                android:layout_marginBottom="@dimen/spacing_8dp"
                 android:scaleType="fitCenter"
                 app:layout_constraintBottom_toTopOf="@+id/ingredientsCount"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -47,7 +48,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/title"
                 app:shapeAppearanceOverlay="@style/RoundedCardImage"
                 tools:ignore="ContentDescription"
-                tools:src="@drawable/cat_error_not_found" />
+                tools:src="@drawable/ic_loading_image" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/ingredientsCount"
