@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="@dimen/spacing_16dp"
-    android:weightSum="3">
+    android:weightSum="3"
+    android:baselineAligned="false">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
@@ -13,7 +14,7 @@
         android:background="@drawable/bg_oval_gradient_shadow">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_cooked"
+            android:id="@+id/text_current_streak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
@@ -34,7 +35,7 @@
             android:src="@drawable/ic_stat_recipe_cooked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_cooked"
+            app:layout_constraintTop_toBottomOf="@+id/text_current_streak"
             app:tint="?attr/colorSurface"
             tools:ignore="ContentDescription" />
 
