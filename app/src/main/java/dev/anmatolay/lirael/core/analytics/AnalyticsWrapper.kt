@@ -1,6 +1,6 @@
 package dev.anmatolay.lirael.core.analytics
 
-import android.os.Bundle
+import com.google.firebase.analytics.ktx.ParametersBuilder
 
 interface AnalyticsWrapper {
 
@@ -10,5 +10,5 @@ interface AnalyticsWrapper {
 
     fun setUserProperty(name: String, value: String)
 
-    fun logEven(name: String, bundle: Bundle)
+    fun logEven(name: String, params: (ParametersBuilder) -> Unit)
 }

@@ -2,6 +2,7 @@ package dev.anmatolay.lirael.presentation.onboarding.premium
 
 import android.content.res.Resources
 import android.os.Bundle
+import com.google.firebase.analytics.ktx.ParametersBuilder
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.SharedPrefHandler
 import dev.anmatolay.lirael.core.analytics.AnalyticsConstants.KEY_ANALYTICS_PREMIUM
@@ -24,18 +25,20 @@ class PremiumViewModel(
             when (event) {
                 is PremiumEvent.OnPositiveButtonClicked -> {
                     sharedPrefHandler.putBoolean(prefKey, true)
-                    val bundle = Bundle().apply { putString(KEY_ANALYTICS_PREMIUM, Value.INTERESTED.name) }
-                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM, bundle)
+                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM) {
+                        it.param(KEY_ANALYTICS_PREMIUM, Value.INTERESTED.name)
+                    }
                 }
                 is PremiumEvent.OnNegativeButtonClicked -> {
                     sharedPrefHandler.putBoolean(prefKey, false)
-                    val bundle = Bundle().apply { putString(KEY_ANALYTICS_PREMIUM, Value.NOT_INTERESTED.name) }
-                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM, bundle)
+                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM) {
+                        it.param(KEY_ANALYTICS_PREMIUM, Value.NOT_INTERESTED.name)
+                    }
                 }
-                is PremiumEvent.OnNeutralButtonClicked -> {
-                    val bundle = Bundle().apply { putString(KEY_ANALYTICS_PREMIUM, Value.NOT_SURE.name) }
-                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM, bundle)
-                }
+                is PremiumEvent.OnNeutralButtonClicked ->
+                    analyticsWrapper.logEven(KEY_ANALYTICS_PREMIUM) {
+                        it.param(KEY_ANALYTICS_PREMIUM, Value.NOT_SURE.name)
+                    }
             }
             triggerUiStateChange(PremiumState(isDataPersisted = true))
         }.subscribe().disposeOnDestroy()

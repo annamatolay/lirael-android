@@ -1,7 +1,8 @@
 package dev.anmatolay.lirael.core.analytics.impl
 
-import android.os.Bundle
 import com.google.firebase.analytics.FirebaseAnalytics
+import com.google.firebase.analytics.ktx.ParametersBuilder
+import com.google.firebase.analytics.ktx.logEvent
 import dev.anmatolay.lirael.core.analytics.AnalyticsWrapper
 
 class FirebaseAnalyticsImpl(private val firebaseAnalytics: FirebaseAnalytics) : AnalyticsWrapper {
@@ -16,7 +17,7 @@ class FirebaseAnalyticsImpl(private val firebaseAnalytics: FirebaseAnalytics) : 
     }
 
 
-    override fun logEven(name: String, bundle: Bundle) =
-        firebaseAnalytics.logEvent(name, bundle)
+    override fun logEven(name: String, builder: (ParametersBuilder) -> Unit) =
+        firebaseAnalytics.logEvent(name) { builder(this) }
 
 }
