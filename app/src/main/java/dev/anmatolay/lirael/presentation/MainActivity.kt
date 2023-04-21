@@ -64,15 +64,15 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
             }
         }
 
-        var firstLaunch = true
-        navController.addOnDestinationChangedListener { _, destination, _ ->
-            when (destination.id) {
-                R.id.splash_fragment -> {
-                    // Disable navigation back to splash screen form onboarding
-                    if (firstLaunch) firstLaunch = false else finish()
-                }
-            }
-        }
+//        var firstLaunch = true
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            when (destination.id) {
+//                R.id.splash_fragment -> {
+//                    // Disable navigation back to splash screen form onboarding
+//                    if (firstLaunch) firstLaunch = false else finish()
+//                }
+//            }
+//        }
 
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
@@ -80,8 +80,6 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
                 if (shouldShowExitConfirmationDialog && isStatisticsFragment) {
                     ExitConfirmationDialogFragment().show(supportFragmentManager, null)
                 } else {
-                    isEnabled = false
-                    // Because isEnabled passed to mEnabledConsumer it can't process the next back pressing
                     if (isStatisticsFragment) finish() else navController.popBackStack()
                 }
             }

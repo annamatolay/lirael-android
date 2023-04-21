@@ -15,14 +15,16 @@
             app:destination="@id/main_nav_graph"
             app:enterAnim="@anim/from_right_fade_in"
             app:exitAnim="@anim/to_left"
-            app:popUpTo="@id/main_nav_graph"
+            app:popUpTo="@id/onboarding_nav_graph"
             app:popUpToInclusive="true" />
 
         <action
             android:id="@+id/action_to_welcomeFragment"
             app:destination="@id/welcomeFragment"
-            app:enterAnim="@anim/from_right_fade_in"
+            app:enterAnim="@anim/from_right"
             app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right"
             app:popUpTo="@id/welcomeFragment"
             app:popUpToInclusive="true" />
     </fragment>
@@ -35,8 +37,10 @@
         <action
             android:id="@+id/action_to_nameFragment"
             app:destination="@id/nameFragment"
-            app:enterAnim="@anim/from_right_fade_in"
-            app:exitAnim="@anim/to_left" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 
     <fragment
@@ -47,8 +51,10 @@
         <action
             android:id="@+id/action_to_dietFragment"
             app:destination="@id/dietFragment"
-            app:enterAnim="@anim/from_right_fade_in"
-            app:exitAnim="@anim/to_left" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 
     <fragment
@@ -59,8 +65,10 @@
         <action
             android:id="@+id/action_to_premiumFragment"
             app:destination="@id/premiumFragment"
-            app:enterAnim="@anim/from_right_fade_in"
-            app:exitAnim="@anim/to_left" />
+            app:enterAnim="@anim/from_right"
+            app:exitAnim="@anim/to_left"
+            app:popEnterAnim="@anim/from_left"
+            app:popExitAnim="@anim/to_right" />
     </fragment>
 
     <fragment
@@ -73,7 +81,7 @@
             app:destination="@id/main_nav_graph"
             app:enterAnim="@anim/from_right_fade_in"
             app:exitAnim="@anim/to_left"
-            app:popUpTo="@id/main_nav_graph"
+            app:popUpTo="@id/onboarding_nav_graph"
             app:popUpToInclusive="true" />
     </fragment>
 
