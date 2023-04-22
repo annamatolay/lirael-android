@@ -11,7 +11,7 @@ data class RandomRecipeDto(
 ) {
     data class HowToStep(val text: String)
 
-    fun toModlel(): Recipe {
+    fun toModel(): Recipe {
         val instructionsList = mutableListOf<String>()
         instructions.forEach { instructionsList.add(it.text) }
         return Recipe(title, ingredients, instructionsList, image.toHttpUrlOrNull())

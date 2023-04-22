@@ -10,7 +10,7 @@ class RandomRecipeRepository(private val api: RandomRecipeApi) {
         api.service.getRecipes()
             .flatMap { recipeDtoList ->
                 val recipeModelList = mutableListOf<Recipe>()
-                recipeDtoList.forEach { recipeModelList.add(it.toModlel()) }
+                recipeDtoList.forEach { recipeModelList.add(it.toModel()) }
                 Single.just(recipeModelList.toList())
             }
 }
