@@ -2,28 +2,18 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
-import dev.anmatolay.lirael.domain.usecase.GetRandomRecipeUseCase
+import dev.anmatolay.lirael.domain.usecase.GetRandomRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.presentation.statistics.StatisticsState.Error.RECIPES_READ_ERROR
 import dev.anmatolay.lirael.presentation.statistics.StatisticsState.Error.STAT_READ_ERROR
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 class StatisticsViewModel(
     private val schedulerProvider: SchedulerProvider,
     private val getUserUseCase: GetUserUseCase,
-    private val getRandomRecipeUseCase: GetRandomRecipeUseCase,
+    private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
 ) : BaseUdfViewModel<StatisticsState, StatisticsEvent>() {
 
-//    override fun onViewCreated() {
-//        super.onViewCreated()
-//
-//        doOnUiEventReceived { uiEvent ->
-//            when (uiEvent) {
-//                StatisticsEvent.GetRandomRecipes -> fetchRandomRecipesAndTriggerUIStateChange()
-//            }
-//        }.subscribe().disposeOnDestroy()
-//    }
     override fun onViewResumed() {
         super.onViewResumed()
 
@@ -53,7 +43,7 @@ class StatisticsViewModel(
 
     private fun fetchRandomRecipesAndTriggerUIStateChange() {
         triggerUiStateChange(StatisticsState.RecipesState())
-        getRandomRecipeUseCase()
+        getRandomRecipesUseCase()
             .observeOn(schedulerProvider.mainThread())
             .subscribe(
                 {

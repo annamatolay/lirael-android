@@ -16,6 +16,7 @@ import dev.anmatolay.lirael.databinding.FragmentStatisticsBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.util.extension.mainActivity
+import dev.anmatolay.lirael.util.extension.setLayoutManagerAndItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
@@ -83,16 +84,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     private fun updateRecipes(recipes: List<Recipe>?) {
         if (recipes != null) {
             binding.recipesRecycleView.run {
-                layoutManager = LinearLayoutManager(this.context, LinearLayoutManager.HORIZONTAL, false)
+                setLayoutManagerAndItemDecoration(LinearLayoutManager.HORIZONTAL)
                 adapter = RandomRecipeAdapter(recipes)
-                addItemDecoration(
-                    DividerItemDecoration(
-                        this.context,
-                        LinearLayoutManager.HORIZONTAL
-                    ).apply {
-                        setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.item_divider, null)!!)
-                    }
-                )
             }
             binding.recipeProgressBar.isVisible = false
         }

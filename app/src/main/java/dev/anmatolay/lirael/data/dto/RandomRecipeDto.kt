@@ -8,10 +8,10 @@ data class RandomRecipeDto(
     val ingredients: List<String>,
     val instructions: List<HowToStep>,
     val image: String = "",
-) {
+): RecipeDto() {
     data class HowToStep(val text: String)
 
-    fun toModel(): Recipe {
+    override fun toModel(): Recipe {
         val instructionsList = mutableListOf<String>()
         instructions.forEach { instructionsList.add(it.text) }
         return Recipe(title, ingredients, instructionsList, image.toHttpUrlOrNull())

@@ -12,6 +12,7 @@ import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentOnboardingNameBinding
 import dev.anmatolay.lirael.util.extension.isLetters
+import dev.anmatolay.lirael.util.extension.isValid
 import dev.anmatolay.lirael.util.extension.navigateTo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -59,9 +60,4 @@ class NameFragment : BaseFragment<NameEvent>() {
         }
 
     }
-
-    private fun Editable.isValid(): Boolean =
-        this.toString().run {
-            isLetters() && !isNullOrBlank()
-        }
 }

@@ -59,4 +59,6 @@
     <string name="search_recipes_helper">Give an ingredient (like tomato) or part of the recipe\'s name (e.g. pasta) and let\'s cook something ;)</string>
     <string name="recipes_section_title_pick">Pick from presets</string>
     <string name="recipes_section_title_search">Find something new</string>
+    <string name="search_recipes_button">Search</string>
+    <string name="recipes_not_found_error">Couldn\'t find any recipe with the given keyword :(</string>
 </resources>

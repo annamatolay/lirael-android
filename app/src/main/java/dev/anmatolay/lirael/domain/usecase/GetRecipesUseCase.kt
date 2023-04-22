@@ -2,13 +2,14 @@ package dev.anmatolay.lirael.domain.usecase
 
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
 import dev.anmatolay.lirael.data.repository.RandomRecipeRepository
+import dev.anmatolay.lirael.data.repository.SearchRecipeRepository
 
-class GetRandomRecipeUseCase(
+class GetRecipesUseCase(
     private val schedulerProvider: SchedulerProvider,
-    private val repository: RandomRecipeRepository,
+    private val repository: SearchRecipeRepository,
 ) {
 
-    operator fun invoke() =
-        repository.getRecipes()
+    operator fun invoke(keyword: String) =
+        repository.getRecipes(keyword)
             .subscribeOn(schedulerProvider.io())
 }
