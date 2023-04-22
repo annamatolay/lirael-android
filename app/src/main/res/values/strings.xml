@@ -24,7 +24,7 @@
     <string name="stat_read_error">Failed to read your statistics :(</string>
     <string name="snackbar_error_retry">Retry</string>
     <string name="user_deletion_completed">You successfully deleted yourself</string>
-    <string name="user_deletion_error">Something went wrong during user deleteion</string>
+    <string name="user_deletion_error">Something went wrong during user deletion</string>
     <string name="confirm_deletion_dialog_title">Confirm Deletion</string>
     <string name="confirm_deletion_dialog_description">Are you sure you want to delete everything?</string>
     <string name="onboarding_button_next">Next</string>
@@ -57,6 +57,6 @@
     <string name="recipes_read_error">Failed to read recipes :(</string>
     <string name="search_recipe_hint">Search recipes</string>
     <string name="search_recipes_helper">Give an ingredient (like tomato) or part of the recipe\'s name (e.g. pasta) and let\'s cook something ;)</string>
-    <string name="recipes_section_title_pick">Pick from preset</string>
+    <string name="recipes_section_title_pick">Pick from presets</string>
     <string name="recipes_section_title_search">Find something new</string>
 </resources>
