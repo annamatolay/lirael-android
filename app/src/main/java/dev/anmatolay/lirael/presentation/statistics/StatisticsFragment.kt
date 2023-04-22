@@ -5,10 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
@@ -17,7 +17,6 @@ import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.util.extension.mainActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
 
@@ -37,10 +36,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         super.onCreate(savedInstanceState)
 
         activity?.run {
-            // FIXME NullPointerException when change ui mode
-            findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.VISIBLE
-            findViewById<View>(R.id.settings_item)?.isInvisible = false
-            findViewById<View>(R.id.ui_mode_item)?.isInvisible = false
+            findViewById<AppBarLayout>(R.id.app_bar)?.visibility = View.VISIBLE
+            findViewById<BottomNavigationView>(R.id.bottom_nav_view)?.visibility = View.VISIBLE
         }
     }
 
