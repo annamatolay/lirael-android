@@ -50,9 +50,13 @@
     <string name="onboarding_button_premium_positive">Sure</string>
     <string name="onboarding_button_premium_negative">Nope</string>
     <string name="onboarding_button_premium_neutral">Not sure</string>
-    <string name="onboarding_name_error">Should not be empty and should contains only letters and no space.</string>
+    <string name="input_text_error">Should contains at least one letter and no space!</string>
     <string name="recipe_card_ingredients">%d ingredients</string>
     <string name="recipe_card_instructions">%d instructions</string>
     <string name="recipe_card_steps">%d steps</string>
     <string name="recipes_read_error">Failed to read recipes :(</string>
+    <string name="search_recipe_hint">Search recipes</string>
+    <string name="search_recipes_helper">Give an ingredient (like tomato) or part of the recipe\'s name (e.g. pasta) and let\'s cook something ;)</string>
+    <string name="recipes_section_title_pick">Pick from preset</string>
+    <string name="recipes_section_title_search">Find something new</string>
 </resources>

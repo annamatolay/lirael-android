@@ -37,7 +37,7 @@ class NameFragment : BaseFragment<NameEvent>() {
         binding.nextButton.setOnClickListener {
             binding.textInputLayout.error = null
             if (binding.textInputLayout.editText?.text?.isValid() == false)
-                binding.textInputLayout.error = getString(R.string.onboarding_name_error)
+                binding.textInputLayout.error = getString(R.string.input_text_error)
             else
                 triggerEvent(NameEvent.UpdateUserName(binding.textInputLayout.editText!!.text.toString()))
         }
