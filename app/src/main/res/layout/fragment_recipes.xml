@@ -18,8 +18,23 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageView
+        android:id="@+id/expand_preset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_16dp"
+        android:padding="@dimen/spacing_4dp"
+        android:src="@drawable/ic_expand_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@+id/recipes_pick"
+        app:layout_constraintStart_toEndOf="@+id/recipes_pick"
+        app:layout_constraintTop_toTopOf="@+id/recipes_pick"
+        app:tint="?attr/colorPrimary"
+        tools:ignore="ContentDescription"
+        tools:visibility="visible" />
+
     <FrameLayout
-        android:id="@+id/frameLayout"
+        android:id="@+id/categories_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/spacing_16dp"
@@ -42,7 +57,7 @@
         android:textAppearance="?attr/textAppearanceOverline"
         android:textSize="21sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayout" />
+        app:layout_constraintTop_toBottomOf="@+id/categories_container" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/text_input_layout"
@@ -96,8 +111,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="@dimen/spacing_56dp"
-            android:visibility="gone"
-            tools:visibility="gone" />
+            android:visibility="gone" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recipes_recycle_view"

@@ -41,6 +41,12 @@ class RecipesFragment : BaseFragment<RecipesEvent>() {
     override fun onResume() {
         super.onResume()
 
+        with(binding) {
+            expandPreset.setOnClickListener {
+                categoriesContainer.isVisible = true
+                expandPreset.isVisible = false
+            }
+        }
         setupTextInput()
 
         viewModel.uiState.observe { state ->
@@ -78,17 +84,25 @@ class RecipesFragment : BaseFragment<RecipesEvent>() {
 
     private fun updateRecipes(recipes: List<Recipe>?) {
         if (recipes != null) {
-            binding.recipesRecycleView.run {
-                setLayoutManagerAndItemDecoration(LinearLayoutManager.VERTICAL)
-                adapter = FoundRecipeAdapter(recipes)
+            with(binding) {
+                recipesRecycleView.run {
+                    setLayoutManagerAndItemDecoration(LinearLayoutManager.VERTICAL)
+                    adapter = FoundRecipeAdapter(recipes)
+                    categoriesContainer.isVisible = false
+                    expandPreset.isVisible = true
+
+                }
+                recipesProgressBar.isVisible = false
             }
-            binding.recipesProgressBar.isVisible = false
         }
     }
 
     private fun handleError(error: RecipesState.Error?) {
         if (error != null) {
+            binding.categoriesContainer.isVisible = true
+            binding.expandPreset.isVisible = false
             binding.recipesProgressBar.isVisible = false
+            binding.recipesRecycleView.isVisible = false
             with(binding.errorImage) {
                 isVisible = true
                 when (error) {
