@@ -41,6 +41,9 @@
             app:exitAnim="@anim/to_left"
             app:popEnterAnim="@anim/from_left"
             app:popExitAnim="@anim/to_right" />
+        <action
+            android:id="@+id/action_to_termAndConditionsFragment"
+            app:destination="@id/termAndConditionsFragment" />
     </fragment>
 
     <fragment
@@ -86,5 +89,10 @@
     </fragment>
 
     <include app:graph="@navigation/main_nav_graph" />
+    <fragment
+        android:id="@+id/termAndConditionsFragment"
+        android:name="dev.anmatolay.lirael.presentation.onboarding.welcome.TermAndConditionsFragment"
+        android:label="TermAndConditions"
+        tools:layout="@layout/fragment_webview"/>
 
 </navigation>

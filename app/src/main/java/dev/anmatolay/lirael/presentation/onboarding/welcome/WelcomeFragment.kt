@@ -40,7 +40,7 @@ class WelcomeFragment : BaseFragment<WelcomeEvent>() {
         }
 
         binding.termLink.setOnClickListener {
-            Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show()
+            navigateTo(WelcomeFragmentDirections.actionToTermAndConditionsFragment())
         }
 
         viewModel.uiState.observe { state ->
