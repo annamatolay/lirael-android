@@ -25,6 +25,9 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "API_URL", '"http://localhost:8080"'
+            // Todo: get api keys from safe place (especially in release)
+            buildConfigField "String", "API_RAPID_KEY", RapidApiKey
+            buildConfigField "String", "API_NINJAS_KEY", NinjasApiKey
             manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
         }
 

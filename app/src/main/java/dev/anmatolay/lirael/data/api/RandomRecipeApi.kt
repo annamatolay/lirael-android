@@ -1,5 +1,6 @@
 package dev.anmatolay.lirael.data.api
 
+import dev.anmatolay.lirael.BuildConfig
 import dev.anmatolay.lirael.core.network.ApiClientFactory
 import dev.anmatolay.lirael.data.dto.RandomRecipeDto
 import io.reactivex.rxjava3.core.Single
@@ -16,7 +17,7 @@ class RandomRecipeApi(apiClientFactory: ApiClientFactory, url: String) {
 
         @GET("/ai-quotes/6")
         @Headers(
-            "X-RapidAPI-Key: e9af0e611fmshdf49bdd5f3fe5c7p139ad7jsn160fee931667",
+            "X-RapidAPI-Key: ${BuildConfig.API_RAPID_KEY}",
             "X-RapidAPI-Host: random-recipes.p.rapidapi.com"
         )
         fun getRecipes(): Single<List<RandomRecipeDto>>
