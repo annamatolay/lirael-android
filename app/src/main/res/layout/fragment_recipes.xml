@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_recipes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:layoutDescription="@xml/fragment_recipes_scene"
     tools:context=".presentation.recipes.RecipesFragment">
 
     <com.google.android.material.textview.MaterialTextView
@@ -25,7 +27,7 @@
         android:layout_marginStart="@dimen/spacing_16dp"
         android:padding="@dimen/spacing_4dp"
         android:src="@drawable/ic_expand_content"
-        android:visibility="gone"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="@+id/recipes_pick"
         app:layout_constraintStart_toEndOf="@+id/recipes_pick"
         app:layout_constraintTop_toTopOf="@+id/recipes_pick"
@@ -132,4 +134,4 @@
             tools:ignore="ContentDescription"
             tools:src="@drawable/cat_error_generic" />
     </FrameLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.motion.widget.MotionLayout>
