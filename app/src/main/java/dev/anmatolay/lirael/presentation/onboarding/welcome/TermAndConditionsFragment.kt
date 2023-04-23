@@ -8,6 +8,7 @@ import android.webkit.WebViewClient
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import dev.anmatolay.lirael.BuildConfig
 import dev.anmatolay.lirael.databinding.FragmentWebviewBinding
 import dev.anmatolay.lirael.util.extension.mainActivity
 
@@ -21,7 +22,7 @@ class TermAndConditionsFragment : Fragment() {
         FragmentWebviewBinding.inflate(inflater, container, false)
             .apply {
                 this.webview.apply {
-                    loadUrl("https://doc-hosting.flycricket.io/lirael-terms-of-use/391b7535-fda7-4146-9a7f-600db869ea80/terms")
+                    loadUrl(BuildConfig.TC_URL)
                     webViewClient = WebViewClient()
                     mainActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
                         override fun handleOnBackPressed() {

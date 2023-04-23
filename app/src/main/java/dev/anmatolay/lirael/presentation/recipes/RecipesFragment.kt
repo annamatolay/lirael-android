@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
 import android.widget.TextView.OnEditorActionListener
+import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
+import androidx.core.view.forEach
+import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import coil.load
@@ -53,6 +57,12 @@ class RecipesFragment : BaseFragment<RecipesEvent>() {
 
             updateRecipes(state.recipes)
             handleError(state.error)
+        }
+
+        binding.recipeCategories.categoriesGridLayout.forEach {
+            (it as LinearLayout)[1].setOnClickListener {
+                Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -42,16 +42,17 @@
         <Preference
             app:enabled="false"
             app:selectable="false"
-            app:summary="You agreed all these when you accepted Terms and Conditions during onboarding."
+            app:summary="During the beta you can't turn these off. You agreed all these when you accepted Terms and Conditions during onboarding."
             app:title="Kind reminder" />
 
         <Preference app:title="Open T&amp;C web page">
             <intent
                 android:action="android.intent.action.VIEW"
-                android:data="http://www.google.com" />
+                android:data="https://doc-hosting.flycricket.io/lirael-terms-of-use/391b7535-fda7-4146-9a7f-600db869ea80/terms" />
         </Preference>
 
         <SwitchPreferenceCompat
+            app:enabled="false"
             app:key="@string/key_pref_firebase_all"
             app:singleLineTitle="false"
             app:summaryOff="You help making this app better.\nThank you so much!"
@@ -92,9 +93,9 @@
     </PreferenceCategory>
 
     <Preference
-        app:key="@string/key_pref_user_delete"
-        app:title="Delete your data"
         app:allowDividerAbove="true"
+        app:icon="@drawable/ic_settings_delete"
+        app:key="@string/key_pref_user_delete"
         app:summary="This will delete everything related to your profile and close the app"
-        app:icon="@drawable/ic_settings_delete"/>
+        app:title="Delete your data" />
 </PreferenceScreen>

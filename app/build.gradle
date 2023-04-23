@@ -17,7 +17,7 @@ android {
         minSdk 26
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -25,6 +25,7 @@ android {
     buildTypes {
         debug {
             buildConfigField "String", "API_URL", '"http://localhost:8080"'
+            buildConfigField "String", "TC_URL", '"https://doc-hosting.flycricket.io/lirael-terms-of-use/391b7535-fda7-4146-9a7f-600db869ea80/terms"'
             // Todo: get api keys from safe place (especially in release)
             buildConfigField "String", "API_RAPID_KEY", RapidApiKey
             buildConfigField "String", "API_NINJAS_KEY", NinjasApiKey
@@ -35,6 +36,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             buildConfigField "String", "API_URL", '"https://example.com"'
+            buildConfigField "String", "TC_URL", '"https://doc-hosting.flycricket.io/lirael-terms-of-use/391b7535-fda7-4146-9a7f-600db869ea80/terms"'
+            // Todo: get api keys from safe place (especially in release)
+            buildConfigField "String", "API_RAPID_KEY", RapidApiKey
+            buildConfigField "String", "API_NINJAS_KEY", NinjasApiKey
             manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
         }
     }
