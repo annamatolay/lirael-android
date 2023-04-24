@@ -1,4 +1,4 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <!-- Base application theme. -->
     <style name="Theme.Lirael" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
@@ -32,5 +32,7 @@
         <item name="textAppearanceButton">@style/TextAppearance.Lirael.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.Lirael.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Lirael.Overline</item>
+
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
     </style>
 </resources>

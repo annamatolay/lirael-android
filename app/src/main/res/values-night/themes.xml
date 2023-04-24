@@ -32,5 +32,7 @@
         <item name="textAppearanceButton">@style/TextAppearance.Lirael.Button</item>
         <item name="textAppearanceCaption">@style/TextAppearance.Lirael.Caption</item>
         <item name="textAppearanceOverline">@style/TextAppearance.Lirael.Overline</item>
+
+        <item name="bottomSheetDialogTheme">@style/CustomBottomSheetDialog</item>
     </style>
 </resources>
