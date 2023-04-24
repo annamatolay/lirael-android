@@ -77,10 +77,11 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val isStatisticsFragment = navController.isCurrentFragmentLabel(R.string.title_statistics)
+                val isWelcomeFragment = navController.isCurrentFragmentLabel(R.string.onboarding_welcome_title)
                 if (shouldShowExitConfirmationDialog && isStatisticsFragment) {
                     ExitConfirmationDialogFragment().show(supportFragmentManager, null)
                 } else {
-                    if (isStatisticsFragment) finish() else navController.popBackStack()
+                    if (isStatisticsFragment || isWelcomeFragment) finish() else navController.popBackStack()
                 }
             }
         })
@@ -122,12 +123,6 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
 
     private fun NavController.isCurrentFragmentLabel(@StringRes label: Int) =
         this.currentBackStackEntry?.destination?.label == getString(label)
-
-    private fun NavController.isOnBoarding(): Boolean =
-        this.isCurrentFragmentLabel(R.string.onboarding_welcome_title) ||
-                this.isCurrentFragmentLabel(R.string.onboarding_name_title) ||
-                this.isCurrentFragmentLabel(R.string.onboarding_diet_title) ||
-                this.isCurrentFragmentLabel(R.string.onboarding_premium_title)
 
     private fun setUiMode(isDarkModeEnabled: Boolean) {
         if (isDarkModeEnabled) {
