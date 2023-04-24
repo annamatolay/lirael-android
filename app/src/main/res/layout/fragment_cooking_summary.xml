@@ -56,7 +56,7 @@
         <dev.anmatolay.lirael.core.presentation.BottomSheetListView
             android:id="@+id/ingredientsList"
             android:layout_width="match_parent"
-            android:layout_height="320dp"
+            android:layout_height="240dp"
             android:layout_margin="@dimen/spacing_16dp"
             android:orientation="vertical"
             android:textAppearance="?attr/textAppearanceBody1"

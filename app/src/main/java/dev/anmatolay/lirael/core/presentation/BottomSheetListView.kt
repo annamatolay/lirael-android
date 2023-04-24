@@ -29,7 +29,7 @@ class BottomSheetListView(context: Context?, attrs: AttributeSet?) : ListView(co
         if (view != null && view.childCount > 0) {
             val isOnTop = view.firstVisiblePosition != 0 || view.getChildAt(0).top != 0
             val isAllItemsVisible = isOnTop && view.lastVisiblePosition == view.childCount
-            Timber.d("canScrollVertically: isOnTop:$isOnTop isAllItemsVisible:$isAllItemsVisible")
+            // isAllItemsVisible can be true too (logged and checked)
             @Suppress("KotlinConstantConditions")
             if (isOnTop || isAllItemsVisible) {
                 canScroll = true
