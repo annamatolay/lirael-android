@@ -1,6 +1,7 @@
 package dev.anmatolay.lirael.core.di.module
 
 import dev.anmatolay.lirael.presentation.MainActivityViewModel
+import dev.anmatolay.lirael.presentation.cooking.CookingSummaryViewModel
 import dev.anmatolay.lirael.presentation.dialog.deletion.DeletionConfirmationViewModel
 import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationViewModel
 import dev.anmatolay.lirael.presentation.favourites.FavouritesViewModel
@@ -27,4 +28,5 @@ val viewModelModule = module {
     factory { ExitConfirmationViewModel(get()) }
     factory { SettingsViewModel(get(), get(), get()) }
     factory { DeletionConfirmationViewModel(get(), get()) }
+    factory { CookingSummaryViewModel(get(), get()) }
 }

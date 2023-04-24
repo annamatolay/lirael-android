@@ -4,9 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
@@ -15,6 +13,7 @@ import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentStatisticsBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
+import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 import dev.anmatolay.lirael.util.extension.mainActivity
 import dev.anmatolay.lirael.util.extension.setLayoutManagerAndItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -85,7 +84,9 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         if (recipes != null) {
             binding.recipesRecycleView.run {
                 setLayoutManagerAndItemDecoration(LinearLayoutManager.HORIZONTAL)
-                adapter = RandomRecipeAdapter(recipes)
+                adapter = RandomRecipeAdapter(recipes) {
+                    CookingSummaryFragment(it).show(childFragmentManager, null)
+                }
             }
             binding.recipeProgressBar.isVisible = false
         }

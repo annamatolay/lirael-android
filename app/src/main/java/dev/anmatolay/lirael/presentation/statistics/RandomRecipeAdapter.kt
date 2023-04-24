@@ -2,15 +2,16 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import coil.transform.RoundedCornersTransformation
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.databinding.LayoutItemRandomRecipeBinding
 import dev.anmatolay.lirael.domain.model.Recipe
+import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 
-class RandomRecipeAdapter(private val dataSet: List<Recipe>) : RecyclerView.Adapter<RandomRecipeAdapter.ViewHolder>() {
+class RandomRecipeAdapter(private val dataSet: List<Recipe>, private val function: (Recipe) -> Unit) :
+    RecyclerView.Adapter<RandomRecipeAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: LayoutItemRandomRecipeBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -28,10 +29,7 @@ class RandomRecipeAdapter(private val dataSet: List<Recipe>) : RecyclerView.Adap
                 context.getString(R.string.recipe_card_ingredients, recipe.ingredients.size)
             binding.instructionsCount.text =
                 context.getString(R.string.recipe_card_instructions, recipe.instructions.size)
-            holder.itemView.setOnClickListener {
-                // TODO: start cooking flow
-                Toast.makeText(holder.itemView.context, "Coming soon", Toast.LENGTH_SHORT).show()
-            }
+            holder.itemView.setOnClickListener { function.invoke(recipe) }
         }
 
         val image = recipe.imageUrl ?: R.drawable.cat_error_not_found

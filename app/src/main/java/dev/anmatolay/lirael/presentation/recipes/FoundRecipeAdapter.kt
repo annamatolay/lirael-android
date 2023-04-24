@@ -8,7 +8,8 @@ import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.databinding.LayoutItemFoundRecipesBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 
-class FoundRecipeAdapter(private val dataSet: List<Recipe>) : RecyclerView.Adapter<FoundRecipeAdapter.ViewHolder>() {
+class FoundRecipeAdapter(private val dataSet: List<Recipe>, private val function: (Recipe) -> Unit) :
+    RecyclerView.Adapter<FoundRecipeAdapter.ViewHolder>() {
 
     class ViewHolder(val binding: LayoutItemFoundRecipesBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -27,10 +28,7 @@ class FoundRecipeAdapter(private val dataSet: List<Recipe>) : RecyclerView.Adapt
             binding.instructionsCount.text =
                 context.getString(R.string.recipe_card_instructions, recipe.instructions.size)
             binding.servings.text = recipe.servings
-            holder.itemView.setOnClickListener {
-                // TODO: start cooking flow
-                Toast.makeText(holder.itemView.context, "Coming soon", Toast.LENGTH_SHORT).show()
-            }
+            holder.itemView.setOnClickListener { function.invoke(recipe) }
         }
     }
 

@@ -21,7 +21,7 @@ import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentRecipesBinding
 import dev.anmatolay.lirael.domain.model.Recipe
-import dev.anmatolay.lirael.presentation.statistics.RandomRecipeAdapter
+import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 import dev.anmatolay.lirael.util.extension.isValid
 import dev.anmatolay.lirael.util.extension.mainActivity
 import dev.anmatolay.lirael.util.extension.setLayoutManagerAndItemDecoration
@@ -96,7 +96,9 @@ class RecipesFragment : BaseFragment<RecipesEvent>() {
             with(binding) {
                 recipesRecycleView.run {
                     setLayoutManagerAndItemDecoration(LinearLayoutManager.VERTICAL)
-                    adapter = FoundRecipeAdapter(recipes)
+                    adapter = FoundRecipeAdapter(recipes) {
+                        CookingSummaryFragment(it).show(childFragmentManager, null)
+                    }
                     layoutRecipes.transitionToState(R.id.end)
 
                 }
