@@ -15,9 +15,4 @@
         android:id="@+id/favourites_fragment"
         android:icon="@drawable/ic_nav_bottom_favourites"
         android:title="@string/title_favourites" />
-
-    <item
-        android:id="@+id/custom_fragment"
-        android:icon="@drawable/ic_nav_bottom_custom"
-        android:title="@string/title_custom" />
 </menu>

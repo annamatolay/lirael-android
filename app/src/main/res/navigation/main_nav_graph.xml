@@ -30,12 +30,6 @@
         tools:layout="@layout/fragment_favourites" />
 
     <fragment
-        android:id="@+id/custom_fragment"
-        android:name="dev.anmatolay.lirael.presentation.custom.CustomFragment"
-        android:label="@string/title_custom"
-        tools:layout="@layout/fragment_custom" />
-
-    <fragment
         android:id="@+id/settings_container_fragment"
         android:name="dev.anmatolay.lirael.presentation.settings.SettingsContainerFragment"
         android:label="@string/title_settings"

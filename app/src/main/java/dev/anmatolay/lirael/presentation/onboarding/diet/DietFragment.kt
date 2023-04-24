@@ -9,8 +9,6 @@ import coil.load
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentOnboardingDietBinding
-import dev.anmatolay.lirael.presentation.Event
-import dev.anmatolay.lirael.presentation.custom.CustomViewModel
 import dev.anmatolay.lirael.util.extension.navigateTo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import timber.log.Timber
