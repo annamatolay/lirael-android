@@ -42,23 +42,6 @@ class CookingSummaryFragment
                     ingredientsList.apply {
                         adapter =
                             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, recipe!!.ingredients)
-                        setOnTouchListener { v, event ->
-                            when (event.action) {
-                                MotionEvent.ACTION_DOWN ->
-                                    // Disallow NestedScrollView to intercept touch events.
-                                    v.parent.requestDisallowInterceptTouchEvent(true)
-                                MotionEvent.ACTION_UP ->
-                                    // Allow NestedScrollView to intercept touch events.
-                                    v.run {
-                                        parent.requestDisallowInterceptTouchEvent(false)
-                                        performClick()
-                                    }
-                            }
-
-                            // Handle ListView touch events.
-                            v.onTouchEvent(event)
-                            true
-                        }
                     }
                 }
             }
