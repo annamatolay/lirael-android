@@ -15,6 +15,67 @@
         android:layout_weight="1">
 
         <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_cooked_per_opened"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="@dimen/spacing_8dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_24dp"
+            android:text="cooked/opened"
+            android:textAppearance="?attr/textAppearanceOverline"
+            android:textColor="?attr/colorPrimaryVariant"
+            app:layout_constraintBottom_toTopOf="@+id/emoji_cooked_per_opened"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:src="@drawable/bg_more_stat"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearance="@style/DiamondCut"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/emoji_cooked_per_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:text="&#127858;"
+            android:textColor="?attr/colorSurface"
+            android:textSize="32sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/percentage_cooked_per_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_24dp"
+            android:text="0%"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/colorPrimary"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/emoji_cooked_per_opened"
+            tools:text="0%" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <com.google.android.material.textview.MaterialTextView
             android:id="@+id/text_current_streak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -128,67 +189,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/emoji_longest_streak"
-            tools:text="0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_average_cooking"
-            android:layout_width="wrap_content"
-            android:gravity="center"
-            android:paddingHorizontal="@dimen/spacing_8dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/spacing_24dp"
-            android:text="Average cooking"
-            android:textAppearance="?attr/textAppearanceOverline"
-            android:textColor="?attr/colorPrimaryVariant"
-            app:layout_constraintBottom_toTopOf="@+id/emoji_average_cooking"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <com.google.android.material.imageview.ShapeableImageView
-            android:layout_width="120dp"
-            android:layout_height="120dp"
-            android:src="@drawable/bg_more_stat"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:shapeAppearance="@style/DiamondCut"
-            tools:ignore="ContentDescription" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/emoji_average_cooking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/spacing_8dp"
-            android:text="&#128368;"
-            android:textColor="?attr/colorSurface"
-            android:textSize="32sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:ignore="HardcodedText" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/number_average_cooking"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_24dp"
-            android:text="0"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorPrimary"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/emoji_average_cooking"
             tools:text="0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
