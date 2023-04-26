@@ -3,6 +3,7 @@ package dev.anmatolay.lirael.core.di.module
 import androidx.room.Room
 import dev.anmatolay.lirael.BuildConfig
 import dev.anmatolay.lirael.core.AppDatabase
+import dev.anmatolay.lirael.core.AppDatabase.Companion.MIGRATION_1_2
 import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
@@ -13,7 +14,9 @@ val databaseModule = module {
             androidContext(),
             AppDatabase::class.java,
             BuildConfig.APPLICATION_ID + ".db",
-        ).build()
+        ).addMigrations(
+            MIGRATION_1_2,
+        ).fallbackToDestructiveMigrationOnDowngrade().build()
     }
 
     single { get<AppDatabase>().userDao() }

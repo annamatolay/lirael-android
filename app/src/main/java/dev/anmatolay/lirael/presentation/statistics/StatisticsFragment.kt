@@ -68,15 +68,15 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?) {
         if (userRecipeStat != null)
             binding.layoutRecipeStats.run {
+                numberOpened.text = userRecipeStat.opened.toString()
                 numberCooked.text = userRecipeStat.cooked.toString()
                 numberSaved.text = userRecipeStat.saved.toString()
-                numberCreated.text = userRecipeStat.created.toString()
             }
         else
             binding.layoutRecipeStats.run {
+                numberOpened.text = "?"
                 numberCooked.text = "?"
                 numberSaved.text = "?"
-                numberCreated.text = "?"
             }
     }
 

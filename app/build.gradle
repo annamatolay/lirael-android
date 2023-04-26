@@ -21,6 +21,15 @@ android {
         versionName "1.0-beta"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments += [
+                        "room.schemaLocation": "$projectDir/schemas".toString(),
+                        "room.incremental"   : "true"
+                ]
+            }
+        }
     }
 
     buildTypes {
@@ -30,7 +39,7 @@ android {
             // Todo: get api keys from safe place (especially in release)
             buildConfigField "String", "API_RAPID_KEY", RapidApiKey
             buildConfigField "String", "API_NINJAS_KEY", NinjasApiKey
-            manifestPlaceholders = [crashlyticsCollectionEnabled:"false"]
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "false"]
         }
 
         release {
@@ -41,7 +50,7 @@ android {
             // Todo: get api keys from safe place (especially in release)
             buildConfigField "String", "API_RAPID_KEY", RapidApiKey
             buildConfigField "String", "API_NINJAS_KEY", NinjasApiKey
-            manifestPlaceholders = [crashlyticsCollectionEnabled:"true"]
+            manifestPlaceholders = [crashlyticsCollectionEnabled: "true"]
         }
     }
     compileOptions {
@@ -59,6 +68,10 @@ android {
 
     buildFeatures {
         viewBinding true
+    }
+
+    sourceSets {
+        androidTest.assets.srcDirs += files("$projectDir/schemas".toString())
     }
 }
 

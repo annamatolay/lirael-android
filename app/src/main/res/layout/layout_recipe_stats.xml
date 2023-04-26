@@ -14,7 +14,55 @@
         android:background="@drawable/bg_oval_gradient_shadow">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_current_streak"
+            android:id="@+id/text_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:text="@string/stat_card_text_opened"
+            android:textAppearance="?attr/textAppearanceBody1"
+            android:textColor="?attr/colorSurface"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/image_opened"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:padding="@dimen/m3_icon_padding"
+            android:src="@drawable/ic_stat_recipe_opened"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_opened"
+            app:tint="?attr/colorSurface"
+            tools:ignore="ContentDescription" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/number_opened"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center"
+            android:layout_margin="@dimen/spacing_8dp"
+            android:textAppearance="?attr/textAppearanceHeadline6"
+            android:textColor="?attr/colorSurface"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/image_opened"
+            tools:text="0" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/bg_oval_gradient_shadow">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/text_cooked"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
@@ -35,7 +83,7 @@
             android:src="@drawable/ic_stat_recipe_cooked"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_current_streak"
+            app:layout_constraintTop_toBottomOf="@+id/text_cooked"
             app:tint="?attr/colorSurface"
             tools:ignore="ContentDescription" />
 
@@ -67,6 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|center"
             android:layout_margin="@dimen/spacing_8dp"
+            android:padding="2dp"
             android:text="@string/stat_card_text_saved"
             android:textAppearance="?attr/textAppearanceBody1"
             android:textColor="?attr/colorSurface"
@@ -100,55 +149,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/image_saved"
-            tools:text="0" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:background="@drawable/bg_oval_gradient_shadow">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/text_created"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_margin="@dimen/spacing_8dp"
-            android:padding="2dp"
-            android:text="@string/stat_card_text_created"
-            android:textAppearance="?attr/textAppearanceBody1"
-            android:textColor="?attr/colorSurface"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/image_created"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:layout_margin="@dimen/spacing_8dp"
-            android:padding="@dimen/m3_icon_padding"
-            android:src="@drawable/ic_stat_recipe_created"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_created"
-            app:tint="?attr/colorSurface"
-            tools:ignore="ContentDescription" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/number_created"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center"
-            android:layout_margin="@dimen/spacing_8dp"
-            android:textAppearance="?attr/textAppearanceHeadline6"
-            android:textColor="?attr/colorSurface"
-            android:textSize="20sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/image_created"
             tools:text="0" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>
