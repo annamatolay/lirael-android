@@ -17,18 +17,19 @@ class StatisticsViewModel(
     override fun onViewResumed() {
         super.onViewResumed()
 
-        getUserDataAndTriggerUIStateChange()
+        getUserStatisticsAndTriggerUIStateChange()
 
         doOnUiEventReceived { uiEvent ->
             when (uiEvent) {
+                StatisticsEvent.GetUserStatistics -> getUserStatisticsAndTriggerUIStateChange()
                 StatisticsEvent.GetRandomRecipes -> fetchRandomRecipesAndTriggerUIStateChange()
-                StatisticsEvent.RetryGetStatOnClicked -> getUserDataAndTriggerUIStateChange()
+                StatisticsEvent.RetryGetStatOnClicked -> getUserStatisticsAndTriggerUIStateChange()
                 StatisticsEvent.RetryGetRandomRecipes -> fetchRandomRecipesAndTriggerUIStateChange()
             }
         }.subscribe().disposeOnPause()
     }
 
-    private fun getUserDataAndTriggerUIStateChange() {
+    private fun getUserStatisticsAndTriggerUIStateChange() {
         getUserUseCase()
             .observeOn(schedulerProvider.mainThread())
             .subscribe(

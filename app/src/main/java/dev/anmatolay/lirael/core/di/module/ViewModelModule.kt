@@ -28,5 +28,5 @@ val viewModelModule = module {
     factory { ExitConfirmationViewModel(get()) }
     factory { SettingsViewModel(get(), get(), get()) }
     factory { DeletionConfirmationViewModel(get(), get()) }
-    factory { CookingSummaryViewModel(get(), get()) }
+    factory { CookingSummaryViewModel(get(), get(), get()) }
 }

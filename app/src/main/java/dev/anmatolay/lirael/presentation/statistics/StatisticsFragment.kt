@@ -85,7 +85,9 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             binding.recipesRecycleView.run {
                 setLayoutManagerAndItemDecoration(LinearLayoutManager.HORIZONTAL)
                 adapter = RandomRecipeAdapter(recipes) {
-                    CookingSummaryFragment(it).show(childFragmentManager, null)
+                    CookingSummaryFragment(it) {
+                        triggerEvent(StatisticsEvent.GetUserStatistics)
+                    }.show(childFragmentManager, null)
                 }
             }
             binding.recipeProgressBar.isVisible = false

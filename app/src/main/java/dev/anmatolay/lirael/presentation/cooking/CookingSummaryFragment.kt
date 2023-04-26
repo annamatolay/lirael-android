@@ -1,9 +1,9 @@
 package dev.anmatolay.lirael.presentation.cooking
 
+import android.content.DialogInterface
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -19,6 +19,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CookingSummaryFragment
 @JvmOverloads constructor(
     private var recipe: Recipe? = null,
+    val function: () -> Unit = {},
 ) : BaseBottomSheetDialogFragment<CookingEvent>() {
 
     override val viewModel by viewModel<CookingSummaryViewModel>()
@@ -51,5 +52,10 @@ class CookingSummaryFragment
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
         outState.putParcelable(KEY_OPENED_RECIPE, recipe)
+    }
+
+    override fun onDismiss(dialog: DialogInterface) {
+        function.invoke()
+        super.onDismiss(dialog)
     }
 }
