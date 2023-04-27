@@ -1,18 +1,21 @@
 package dev.anmatolay.lirael.presentation.cooking
 
 import android.content.DialogInterface
-import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.core.view.isVisible
+import dev.anmatolay.lirael.MainNavGraphDirections
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseBottomSheetDialogFragment
 import dev.anmatolay.lirael.databinding.FragmentCookingSummaryBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.util.Constants.KEY_OPENED_RECIPE
+import dev.anmatolay.lirael.util.extension.getRecipeParcelable
+import dev.anmatolay.lirael.util.extension.mainActivity
+import dev.anmatolay.lirael.util.extension.navigateTo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -25,12 +28,8 @@ class CookingSummaryFragment
     override val viewModel by viewModel<CookingSummaryViewModel>()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        @Suppress("DEPRECATION")
         if (recipe == null)
-            recipe = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
-                savedInstanceState?.getParcelable(KEY_OPENED_RECIPE, Recipe::class.java)
-            else
-                savedInstanceState?.getParcelable(KEY_OPENED_RECIPE)
+            recipe = savedInstanceState?.getRecipeParcelable()
 
         return FragmentCookingSummaryBinding.inflate(inflater, container, false)
             .apply {
@@ -43,6 +42,10 @@ class CookingSummaryFragment
                     ingredientsList.apply {
                         adapter =
                             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, recipe!!.ingredients)
+                    }
+                    button.setOnClickListener {
+                        dismiss()
+                        navigateTo(MainNavGraphDirections.actionToCookingStepFragment(recipe!!))
                     }
                 }
             }

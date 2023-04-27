@@ -22,6 +22,7 @@
     <string name="stat_card_text_saved">Saved</string>
     <string name="stat_card_text_cooked">Cooked</string>
     <string name="stat_read_error">Failed to read your statistics :(</string>
+    <string name="stat_update_error">Failed to update your statistics :(</string>
     <string name="snackbar_error_retry">Retry</string>
     <string name="user_deletion_completed">You successfully deleted yourself</string>
     <string name="user_deletion_error">Something went wrong during user deletion</string>
@@ -64,4 +65,9 @@
     <string name="cooking_summary_error">Failed to show cooking summary :(</string>
     <string name="cooking_summary_button">Let\'s cook</string>
     <string name="cooking_summary_title_ingredients">Ingredients</string>
+    <string name="cooking_step">%d/%d steps</string>
+    <string name="cooking_step_button_positive">I\'m done</string>
+    <string name="cooking_step_button_negative">Stop cooking</string>
+    <string name="cooking_step_recipe_not_found">Recipe not found</string>
+    <string name="cooking_step_instruction_not_found">Instruction not found :(</string>
 </resources>

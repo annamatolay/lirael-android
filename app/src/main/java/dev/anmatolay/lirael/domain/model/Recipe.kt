@@ -4,6 +4,7 @@ import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import dev.anmatolay.lirael.presentation.cooking.step.RecipeAdapterItem
 import kotlinx.parcelize.IgnoredOnParcel
 import kotlinx.parcelize.Parcelize
 import okhttp3.HttpUrl
@@ -22,7 +23,7 @@ data class Recipe(
     val imageUrl: HttpUrl? = null,
     @IgnoredOnParcel
     val servings: String? = null,
-): Parcelable {
+) : Parcelable {
     constructor(title: String, ingredients: List<String>, instructions: List<String>, imageUrl: HttpUrl?) : this(
         id = 0,
         title = title,
@@ -38,4 +39,13 @@ data class Recipe(
         instructions = instructions,
         servings = servings,
     )
+
+    fun toRecipeItem(position: Int): RecipeAdapterItem =
+        RecipeAdapterItem(
+            position,
+            instructions.lastIndex,
+            this.title,
+            this.instructions[position],
+            position == instructions.lastIndex,
+        )
 }

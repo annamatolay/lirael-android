@@ -64,16 +64,6 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
             }
         }
 
-//        var firstLaunch = true
-//        navController.addOnDestinationChangedListener { _, destination, _ ->
-//            when (destination.id) {
-//                R.id.splash_fragment -> {
-//                    // Disable navigation back to splash screen form onboarding
-//                    if (firstLaunch) firstLaunch = false else finish()
-//                }
-//            }
-//        }
-
         onBackPressedDispatcher.addCallback(this, object : OnBackPressedCallback(true) {
             override fun handleOnBackPressed() {
                 val isStatisticsFragment = navController.isCurrentFragmentLabel(R.string.title_statistics)

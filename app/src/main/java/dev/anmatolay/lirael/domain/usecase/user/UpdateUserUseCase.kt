@@ -13,7 +13,7 @@ class UpdateUserUseCase(
         repository.update(name)
             .subscribeOn(schedulerProvider.io())
 
-    operator fun invoke(recipeStatistic: User.RecipeStatistic) =
-        repository.update(recipeStatistic)
+    operator fun invoke(user: User) =
+        repository.update(user)
             .subscribeOn(schedulerProvider.io())
 }

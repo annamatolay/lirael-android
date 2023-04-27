@@ -35,7 +35,7 @@ abstract class BaseUdfViewModel<State : UiState, Event : UiEvent> : ViewModel() 
     protected fun doOnUiEventReceived(action: (UiEvent) -> Unit) = eventRelay.doOnNext { action(it) }
 
     protected fun triggerUiStateChange(state: State) {
-        _uiState.value = state
+        _uiState.postValue(state)
     }
 
     protected fun Disposable.disposeOnPause() = foregroundDisposables.add(this)

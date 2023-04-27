@@ -8,8 +8,7 @@
     <activity
         android:id="@+id/main_activity"
         android:name="dev.anmatolay.lirael.presentation.MainActivity"
-        tools:layout="@layout/activity_main">
-    </activity>
+        tools:layout="@layout/activity_main" />
 
     <fragment
         android:id="@+id/statistics_fragment"
@@ -35,7 +34,20 @@
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_container_settings" />
 
+    <fragment
+        android:id="@+id/cooking_step_fragment"
+        android:name="dev.anmatolay.lirael.presentation.cooking.step.CookingStepViewPagerFragment"
+        android:label="CookingStep"
+        tools:layout="@layout/fragment_cooking_step" >
+        <argument android:name="recipe"
+            app:argType="dev.anmatolay.lirael.domain.model.Recipe" />
+    </fragment>
+
     <action
         android:id="@+id/action_to_settingsContainerFragment"
         app:destination="@id/settings_container_fragment" />
+
+    <action
+        android:id="@+id/action_to_cooking_step_fragment"
+        app:destination="@id/cooking_step_fragment" />
 </navigation>

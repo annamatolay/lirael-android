@@ -18,10 +18,11 @@ class CookingSummaryViewModel(
 
         getUserUseCase()
             .observeOn(schedulerProvider.mainThread())
-            .flatMapCompletable { updateUserUseCase(it.recipeStatistic.copy(opened = it.recipeStatistic.opened + 1)) }
+            .map { it.copy(recipeStatistic = it.recipeStatistic.copy(opened = it.recipeStatistic.opened + 1)) }
+            .flatMapCompletable { updateUserUseCase(it) }
             .subscribe(
-                {},
-                { Timber.e(it) }
+                { Timber.d("Recipe stats updated") },
+                { Timber.e(it) },
             )
             .disposeOnDestroy()
     }

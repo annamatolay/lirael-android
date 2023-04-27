@@ -5,4 +5,5 @@ object Constants {
     const val USER_DEFAULT_ID = "null"
     const val KEY_HIDE_EXIT_DIALOG = "key_show_exit_dialog"
     const val KEY_OPENED_RECIPE = "key_opened_recipe"
+    const val KEY_RECIPE_ADAPTER_ITEM = "key_recipe_adapter_item"
 }

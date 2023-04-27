@@ -36,10 +36,7 @@ class UserRepository(
             .flatMap { userDao.read(it) }
             .flatMapCompletable { userDao.update(it.copy(name = name)) }
 
-    fun update(recipeStatistic: User.RecipeStatistic): Completable =
-        getCachedUserIdOrDefault()
-            .flatMap { userDao.read(it) }
-            .flatMapCompletable { userDao.update(it.copy(recipeStatistic = recipeStatistic)) }
+    fun update(user: User): Completable = userDao.update(user)
 
     fun delete() = userDao.deleteAll()
 
