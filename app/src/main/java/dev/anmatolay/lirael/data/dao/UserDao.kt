@@ -9,7 +9,7 @@ import io.reactivex.rxjava3.core.Single
 @Dao
 interface UserDao {
 
-    @Insert(onConflict = OnConflictStrategy.REPLACE)// FIXME
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun create(user: User): Completable
 
     @Query("SELECT * FROM user WHERE id LIKE :id")
