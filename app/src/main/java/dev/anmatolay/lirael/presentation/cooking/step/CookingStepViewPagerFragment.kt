@@ -1,5 +1,6 @@
 package dev.anmatolay.lirael.presentation.cooking.step
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +12,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.adapter.FragmentViewHolder
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.databinding.FragmentCookingStepviewPagerBinding
 import dev.anmatolay.lirael.domain.model.Recipe
@@ -36,12 +39,6 @@ class CookingStepViewPagerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         startCookingFlow(args.recipe)
-
-        binding.viewPager[binding.viewPager.currentItem]
-        val page: Fragment? =
-            mainActivity().supportFragmentManager.findFragmentByTag("android:switcher:" + R.id.view_pager + ":" + binding.viewPager.getCurrentItem())
-
-        //        binding.viewPager.isUserInputEnabled = false
 
         with(activity) {
             this?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner) {
@@ -71,6 +68,22 @@ class CookingStepViewPagerFragment : Fragment() {
                     binding.viewPager.isUserInputEnabled = isEnabled
                 }
             }
+        }
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        with(requireActivity()) {
+            findViewById<AppBarLayout>(R.id.app_bar).visibility = View.GONE
+            findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.GONE
+        }
+    }
+
+    override fun onDetach() {
+        super.onDetach()
+        with(requireActivity()) {
+            findViewById<AppBarLayout>(R.id.app_bar).visibility = View.VISIBLE
+            findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.VISIBLE
         }
     }
 
