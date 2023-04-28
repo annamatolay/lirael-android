@@ -17,6 +17,7 @@ import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 import dev.anmatolay.lirael.util.extension.mainActivity
 import dev.anmatolay.lirael.util.extension.setLayoutManagerAndItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import kotlin.math.roundToInt
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
 
@@ -66,19 +67,38 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     }
 
     private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?) {
-        if (userRecipeStat != null)
-            binding.layoutRecipeStats.run {
+        if (userRecipeStat != null) {
+            with(binding.layoutRecipeStats) {
                 numberOpened.text = userRecipeStat.opened.toString()
                 numberCooked.text = userRecipeStat.cooked.toString()
                 numberSaved.text = userRecipeStat.saved.toString()
             }
-        else
-            binding.layoutRecipeStats.run {
+            with(binding.layoutMoreRecipeStats) {
+                percentageCookedPerOpened.text =
+                    if (userRecipeStat.cooked > 0)
+                        calculateCookedPerOpened(userRecipeStat).toString() + "%"
+                    else
+                        "0%"
+                // TODO: update when data ready
+                numberCurrentStreak.text = "0"
+                numberLongestStreak.text = "0"
+            }
+        } else {
+            with(binding.layoutRecipeStats) {
                 numberOpened.text = "?"
                 numberCooked.text = "?"
                 numberSaved.text = "?"
             }
+            with(binding.layoutMoreRecipeStats) {
+                percentageCookedPerOpened.text = "?%"
+                numberCurrentStreak.text = "?"
+                numberLongestStreak.text = "?"
+            }
+        }
     }
+
+    private fun calculateCookedPerOpened(userRecipeStat: User.RecipeStatistic) =
+        ((userRecipeStat.cooked.toFloat() / userRecipeStat.opened.toFloat()) * 100).roundToInt()
 
     private fun updateRecipes(recipes: List<Recipe>?) {
         if (recipes != null) {

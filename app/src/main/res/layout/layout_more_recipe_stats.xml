@@ -59,7 +59,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_24dp"
-            android:text="0%"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimary"
             android:textSize="20sp"
@@ -116,11 +115,10 @@
             tools:ignore="HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/number_cooked"
+            android:id="@+id/number_current_streak"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_24dp"
-            android:text="0"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimary"
             android:textSize="20sp"
@@ -181,7 +179,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/spacing_24dp"
-            android:text="0"
             android:textAppearance="?attr/textAppearanceHeadline6"
             android:textColor="?attr/colorPrimary"
             android:textSize="20sp"
