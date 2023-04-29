@@ -5,6 +5,8 @@ import dev.anmatolay.lirael.domain.usecase.recipe.SearchRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.user.SaveUserUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
+import dev.anmatolay.lirael.domain.usecase.recipe.GetPresetRecipesUseCase
+import dev.anmatolay.lirael.domain.usecase.recipe.PopulatePresetRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.DeleteFavouriteRecipeUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.GetAllFavouriteRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.GetFavouriteRecipeUseCase
@@ -25,4 +27,6 @@ val useCaseModule = module {
     factory { GetAllFavouriteRecipesUseCase(get(), get()) }
     factory { DeleteFavouriteRecipeUseCase(get(), get()) }
     factory { SaveFavouriteRecipeUseCase(get(), get()) }
+    factory { PopulatePresetRecipesUseCase(get(), get()) }
+    factory { GetPresetRecipesUseCase(get(), get()) }
 }

@@ -7,10 +7,10 @@ import android.view.ViewGroup
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.TextView.OnEditorActionListener
-import android.widget.Toast
 import androidx.core.content.ContextCompat.getSystemService
-import androidx.core.view.forEach
+import androidx.core.view.forEachIndexed
 import androidx.core.view.get
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -19,6 +19,7 @@ import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentRecipesBinding
+import dev.anmatolay.lirael.domain.model.PresetRecipe
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 import dev.anmatolay.lirael.util.extension.isValid
@@ -58,9 +59,14 @@ class RecipesFragment : BaseFragment<RecipesEvent>() {
             handleError(state.error)
         }
 
-        binding.recipeCategories.categoriesGridLayout.forEach {
-            (it as LinearLayout)[1].setOnClickListener {
-                Toast.makeText(context, "Coming soon", Toast.LENGTH_SHORT).show()
+
+        binding.recipeCategories.categoriesGridLayout.forEachIndexed { index, view ->
+            val category = PresetRecipe.Category.values()[index]
+
+            ((view as LinearLayout)[0] as TextView).text = category.name
+
+            view[1].setOnClickListener {
+                triggerEvent(RecipesEvent.PresetOnClicked(category))
             }
         }
     }

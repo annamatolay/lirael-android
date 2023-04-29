@@ -17,18 +17,18 @@ import dev.anmatolay.lirael.presentation.statistics.StatisticsViewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    factory { MainActivityViewModel(get(), get()) }
+    factory { MainActivityViewModel(get(), get(), get(), get(), get()) }
     factory { SplashViewModel(get(), get()) }
     factory { WelcomeViewModel(get(), get(), get()) }
     factory { NameViewModel(get(), get()) }
     factory { DietViewModel(get(), get()) }
     factory { PremiumViewModel(get(), get(), get()) }
     factory { StatisticsViewModel(get(), get(), get()) }
-    factory { RecipesViewModel(get(), get()) }
+    factory { RecipesViewModel(get(), get(), get()) }
     factory { FavouritesViewModel(get(), get(), get(), get()) }
     factory { ExitConfirmationViewModel(get()) }
     factory { SettingsViewModel(get(), get(), get()) }
     factory { DeletionConfirmationViewModel(get(), get()) }
     factory { CookingSummaryViewModel(get(), get(), get(), get(), get(), get()) }
-    factory { CookingStepViewModel(get(), get(), get(), get(),get()) }
+    factory { CookingStepViewModel(get(), get(), get(), get(), get()) }
 }

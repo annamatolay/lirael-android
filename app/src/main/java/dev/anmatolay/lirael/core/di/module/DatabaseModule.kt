@@ -15,13 +15,18 @@ val databaseModule = module {
             androidContext(),
             AppDatabase::class.java,
             BuildConfig.APPLICATION_ID + ".db",
-        ).addMigrations(
-            MIGRATION_1_2,
-            MIGRATION_2_3,
-        ).fallbackToDestructiveMigrationOnDowngrade().build()
+        )
+            .addMigrations(
+                MIGRATION_1_2,
+                MIGRATION_2_3,
+            )
+            .fallbackToDestructiveMigrationOnDowngrade()
+            .build()
     }
 
     single { get<AppDatabase>().userDao() }
 
     single { get<AppDatabase>().recipeDao() }
+
+    single { get<AppDatabase>().presetRecipeDao() }
 }

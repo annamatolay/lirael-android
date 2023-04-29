@@ -10,7 +10,7 @@ import kotlinx.parcelize.Parcelize
 import okhttp3.HttpUrl
 
 @Parcelize
-@Entity(tableName = "recipe")
+@Entity(tableName = "recipe_favourite")
 data class Recipe(
     val title: String,
     val ingredients: List<String>,

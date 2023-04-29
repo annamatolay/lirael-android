@@ -13,10 +13,10 @@ interface RecipeDao {
     @Insert(onConflict = OnConflictStrategy.ABORT)
     fun create(recipe: Recipe): Completable
 
-    @Query("SELECT * FROM recipe WHERE title LIKE :title")
+    @Query("SELECT * FROM recipe_favourite WHERE title LIKE :title")
     fun read(title: String): Single<Recipe>
 
-    @Query("SELECT * FROM recipe")
+    @Query("SELECT * FROM recipe_favourite")
     fun readAll(): Single<List<Recipe>>
 
     @Delete
