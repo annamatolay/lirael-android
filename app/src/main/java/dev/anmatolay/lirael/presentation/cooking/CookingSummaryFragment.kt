@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import android.widget.Toast
 import androidx.core.view.isVisible
+import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.MainNavGraphDirections
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseBottomSheetDialogFragment
@@ -89,11 +89,11 @@ class CookingSummaryFragment
             if (state.error != null) {
                 when (state.error) {
                     CookingSummaryState.Error.DB_READ_ERROR ->
-                        mainActivity().makeSnackbar(R.string.favourite_read_error, Toast.LENGTH_LONG)
+                        mainActivity().makeSnackbar(R.string.favourite_read_error, Snackbar.LENGTH_LONG)
                     CookingSummaryState.Error.DB_CREATE_ERROR ->
-                        mainActivity().makeSnackbar(R.string.favourite_save_error, Toast.LENGTH_LONG)
+                        mainActivity().makeSnackbar(R.string.favourite_save_error, Snackbar.LENGTH_LONG)
                     CookingSummaryState.Error.DB_DELETE_ERROR ->
-                        mainActivity().makeSnackbar(R.string.favourite_delete_error, Toast.LENGTH_LONG)
+                        mainActivity().makeSnackbar(R.string.favourite_delete_error, Snackbar.LENGTH_LONG)
                 }
             }
         }

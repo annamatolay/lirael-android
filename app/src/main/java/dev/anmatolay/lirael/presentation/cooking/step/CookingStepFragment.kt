@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.core.view.isVisible
 import coil.load
+import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentCookingStepBinding
@@ -60,9 +60,9 @@ class CookingStepFragment @JvmOverloads constructor(
 
                 when (state.error) {
                     CookingStepState.Error.USER_STAT_UPDATE_FAILED ->
-                        mainActivity().makeSnackbar(R.string.stat_read_error, Toast.LENGTH_LONG)
+                        mainActivity().makeSnackbar(R.string.stat_read_error, Snackbar.LENGTH_LONG)
                     CookingStepState.Error.RECIPE_DB_CREATE_ERROR ->
-                        mainActivity().makeSnackbar(R.string.favourite_save_error, Toast.LENGTH_LONG)
+                        mainActivity().makeSnackbar(R.string.favourite_save_error, Snackbar.LENGTH_LONG)
                     null -> {
                         // Do nothing
                     }
