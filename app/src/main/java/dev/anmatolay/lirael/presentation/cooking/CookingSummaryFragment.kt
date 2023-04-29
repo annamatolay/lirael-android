@@ -16,6 +16,7 @@ import dev.anmatolay.lirael.databinding.FragmentCookingSummaryBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.util.Constants.KEY_OPENED_RECIPE
 import dev.anmatolay.lirael.util.extension.getRecipeParcelable
+import dev.anmatolay.lirael.util.extension.mainActivity
 import dev.anmatolay.lirael.util.extension.navigateTo
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -81,6 +82,17 @@ class CookingSummaryFragment
                             }
                         }
                     }
+                }
+            }
+
+            if (state.error != null) {
+                when (state.error) {
+                    CookingSummaryState.Error.DB_READ_ERROR ->
+                        mainActivity().makeSnackbar(R.string.favourite_read_error, Toast.LENGTH_LONG)
+                    CookingSummaryState.Error.DB_CREATE_ERROR ->
+                        mainActivity().makeSnackbar(R.string.favourite_save_error, Toast.LENGTH_LONG)
+                    CookingSummaryState.Error.DB_DELETE_ERROR ->
+                        mainActivity().makeSnackbar(R.string.favourite_delete_error, Toast.LENGTH_LONG)
                 }
             }
         }

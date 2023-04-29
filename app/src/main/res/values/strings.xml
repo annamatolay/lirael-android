@@ -70,4 +70,7 @@
     <string name="cooking_step_button_negative">Stop cooking</string>
     <string name="cooking_step_recipe_not_found">Recipe not found</string>
     <string name="cooking_step_instruction_not_found">Instruction not found :(</string>
+    <string name="favourite_read_error">Failed to read favourite recipe(s) :(</string>
+    <string name="favourite_save_error">Failed to save favourite recipe :(</string>
+    <string name="favourite_delete_error">Failed to delete favourite recipe :(</string>
 </resources>
