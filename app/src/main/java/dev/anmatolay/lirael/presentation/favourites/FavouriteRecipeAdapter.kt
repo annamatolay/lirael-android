@@ -1,19 +1,23 @@
-package dev.anmatolay.lirael.presentation.recipes
+package dev.anmatolay.lirael.presentation.favourites
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dev.anmatolay.lirael.R
-import dev.anmatolay.lirael.databinding.LayoutItemFoundRecipesBinding
+import dev.anmatolay.lirael.databinding.LayoutItemFavouriteRecipesBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 
-class FoundRecipeAdapter(private val dataSet: List<Recipe>, private val function: (Recipe) -> Unit) :
-    RecyclerView.Adapter<FoundRecipeAdapter.ViewHolder>() {
+class FavouriteRecipeAdapter(
+    private val dataSet: List<Recipe>,
+    private val doOnDeleteClick: (Recipe) -> Unit,
+    private val doOnClick: (Recipe) -> Unit,
+) :
+    RecyclerView.Adapter<FavouriteRecipeAdapter.ViewHolder>() {
 
-    class ViewHolder(val binding: LayoutItemFoundRecipesBinding) : RecyclerView.ViewHolder(binding.root)
+    class ViewHolder(val binding: LayoutItemFavouriteRecipesBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val binding = LayoutItemFoundRecipesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding = LayoutItemFavouriteRecipesBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
 
@@ -26,8 +30,8 @@ class FoundRecipeAdapter(private val dataSet: List<Recipe>, private val function
                 context.getString(R.string.recipe_card_ingredients, recipe.ingredients.size)
             binding.instructionsCount.text =
                 context.getString(R.string.recipe_card_instructions, recipe.instructions.size)
-            binding.servings.text = recipe.servings
-            holder.itemView.setOnClickListener { function.invoke(recipe) }
+            binding.deleteButton.setOnClickListener { doOnDeleteClick.invoke(recipe) }
+            itemView.setOnClickListener { doOnClick.invoke(recipe) }
         }
     }
 
