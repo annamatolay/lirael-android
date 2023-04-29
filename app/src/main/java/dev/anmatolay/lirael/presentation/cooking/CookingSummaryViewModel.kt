@@ -68,7 +68,7 @@ class CookingSummaryViewModel(
                     if (event.isDeletion) {
                         deleteFavouriteRecipeUseCase(event.recipe)
                             .observeOn(schedulerProvider.mainThread())
-                            .andThen(updateRecipeSavedStat(-1))
+                            .andThen(updateUserUseCase.updateRecipeSavedStat(-1))
                             .subscribe(
                                 { triggerUiStateChange(CookingSummaryState(isLoading = false, isSaved = false)) },
                                 {
@@ -85,7 +85,7 @@ class CookingSummaryViewModel(
                     } else {
                         saveFavouriteRecipeUseCase(event.recipe)
                             .observeOn(schedulerProvider.mainThread())
-                            .andThen(updateRecipeSavedStat(1))
+                            .andThen(updateUserUseCase.updateRecipeSavedStat(1))
                             .subscribe(
                                 { triggerUiStateChange(CookingSummaryState(isLoading = false, isSaved = true)) },
                                 {
@@ -104,9 +104,4 @@ class CookingSummaryViewModel(
             }
         }.subscribe().disposeOnPause()
     }
-
-    private fun updateRecipeSavedStat(modifier: Int): Completable =
-        getUserUseCase()
-            .map { it.copy(recipeStatistic = it.recipeStatistic.copy(saved = it.recipeStatistic.saved + modifier)) }
-            .flatMapCompletable { updateUserUseCase(it) }
 }

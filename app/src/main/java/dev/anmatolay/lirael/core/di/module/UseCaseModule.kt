@@ -16,7 +16,7 @@ import org.koin.dsl.module
 val useCaseModule = module {
     factory { GetUserUseCase(get(), get()) }
     factory { SaveUserUseCase(get(), get()) }
-    factory { UpdateUserUseCase(get(), get()) }
+    factory { UpdateUserUseCase(get(), get(), get()) }
     factory { DeleteUserUseCase(get(), get()) }
     factory { MonitoringUseCase(get(), get(), get()) }
     factory { GetRandomRecipesUseCase(get(), get()) }

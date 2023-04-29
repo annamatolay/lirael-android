@@ -30,5 +30,5 @@ val viewModelModule = module {
     factory { SettingsViewModel(get(), get(), get()) }
     factory { DeletionConfirmationViewModel(get(), get()) }
     factory { CookingSummaryViewModel(get(), get(), get(), get(), get(), get()) }
-    factory { CookingStepViewModel(get(), get(), get()) }
+    factory { CookingStepViewModel(get(), get(), get(), get()) }
 }

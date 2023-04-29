@@ -18,6 +18,7 @@ import com.google.android.material.snackbar.Snackbar
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseActivity
 import dev.anmatolay.lirael.databinding.ActivityMainBinding
+import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationDialogFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -25,6 +26,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class MainActivity : BaseActivity<MainActivityEvent>() {
 
     var shouldShowExitConfirmationDialog = true
+    var recipe: Recipe? = null
     override val viewModel by viewModel<MainActivityViewModel>()
     private lateinit var binding: ActivityMainBinding
     private lateinit var appBarConfiguration: AppBarConfiguration

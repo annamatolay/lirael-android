@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.view.isVisible
 import dev.anmatolay.lirael.MainNavGraphDirections
 import dev.anmatolay.lirael.R
@@ -60,6 +59,8 @@ class CookingSummaryFragment
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        mainActivity().recipe = recipe
 
         triggerEvent(CookingSummaryEvent.CheckFavouriteSaved(recipe!!.title))
 

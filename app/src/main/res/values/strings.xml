@@ -66,7 +66,8 @@
     <string name="cooking_summary_button">Let\'s cook</string>
     <string name="cooking_summary_title_ingredients">Ingredients</string>
     <string name="cooking_step">%d/%d steps</string>
-    <string name="cooking_step_button_positive">I\'m done</string>
+    <string name="cooking_step_button_positive">Save &amp; done</string>
+    <string name="cooking_step_button_neutral">Done</string>
     <string name="cooking_step_button_negative">Stop cooking</string>
     <string name="cooking_step_recipe_not_found">Recipe not found</string>
     <string name="cooking_step_instruction_not_found">Instruction not found :(</string>

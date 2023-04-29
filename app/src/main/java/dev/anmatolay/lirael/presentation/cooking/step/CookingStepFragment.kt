@@ -50,17 +50,9 @@ class CookingStepFragment @JvmOverloads constructor(
 
         viewModel.uiState.observe { state ->
             with(binding) {
-                progressBar.isVisible = state.isLoading
-                if (state.isLoading) {
-                    positiveButton.isVisible = false
-                    negativeButton.isEnabled = false
-                    isViewPagerUserInputEnabled.invoke(false)
-                } else {
-                    positiveButton.isVisible = true
-                    positiveButton.isEnabled = true
-                    negativeButton.isEnabled = true
-                    isViewPagerUserInputEnabled.invoke(true)
-                }
+                positiveProgressBar.isVisible = state.isPositiveLoading
+                neutralProgressBar.isVisible = state.isNeutralLoading
+                handleButtonsAndViewPagerInput(state)
 
                 if (state.isUpdateDone) {
                     dismiss.invoke()
@@ -69,6 +61,8 @@ class CookingStepFragment @JvmOverloads constructor(
                 when (state.error) {
                     CookingStepState.Error.USER_STAT_UPDATE_FAILED ->
                         mainActivity().makeSnackbar(R.string.stat_read_error, Toast.LENGTH_LONG)
+                    CookingStepState.Error.RECIPE_DB_CREATE_ERROR ->
+                        mainActivity().makeSnackbar(R.string.favourite_save_error, Toast.LENGTH_LONG)
                     null -> {
                         // Do nothing
                     }
@@ -111,35 +105,65 @@ class CookingStepFragment @JvmOverloads constructor(
             negativeButton.setOnClickListener { dismiss.invoke() }
             positiveButton.isVisible = recipeItem?.isLastItem == true
             positiveButton.setOnClickListener {
-                binding.positiveButton.isEnabled = false
-                binding.negativeButton.isEnabled = false
-                isViewPagerUserInputEnabled.invoke(false)
-
-                with(binding.confetti) {
-                    isVisible = true
-                    playAnimation()
-                    addAnimatorListener(object : Animator.AnimatorListener {
-
-                        override fun onAnimationEnd(animation: Animator) {
-                            triggerEvent(CookingStepEvent.OnPositiveButtonClicked)
-                        }
-
-                        override fun onAnimationCancel(animation: Animator) {
-                            binding.positiveButton.isEnabled = true
-                            binding.negativeButton.isEnabled = true
-                            isViewPagerUserInputEnabled.invoke(true)
-                        }
-
-                        override fun onAnimationStart(animation: Animator) {
-                            // Do nothing
-                        }
-
-                        override fun onAnimationRepeat(animation: Animator) {
-                            // Do nothing
-                        }
-                    })
-                }
+                handleOnClick { triggerEvent(CookingStepEvent.OnPositiveButtonClicked(mainActivity().recipe)) }
             }
+            neutralButton.isVisible = recipeItem?.isLastItem == true
+            neutralButton.setOnClickListener {
+                handleOnClick { triggerEvent(CookingStepEvent.OnNeutralButtonClicked) }
+            }
+        }
+    }
+
+    private fun handleOnClick(doOnClick: () -> Unit) {
+        binding.positiveButton.isEnabled = false
+        binding.neutralButton.isEnabled = false
+        binding.negativeButton.isEnabled = false
+        isViewPagerUserInputEnabled.invoke(false)
+
+        with(binding.confetti) {
+            isVisible = true
+            playAnimation()
+            addAnimatorListener(object : Animator.AnimatorListener {
+
+                override fun onAnimationEnd(animation: Animator) {
+                    doOnClick.invoke()
+                }
+
+                override fun onAnimationCancel(animation: Animator) {
+                    binding.positiveButton.isEnabled = true
+                    binding.negativeButton.isEnabled = true
+                    isViewPagerUserInputEnabled.invoke(true)
+                }
+
+                override fun onAnimationStart(animation: Animator) {
+                    // Do nothing
+                }
+
+                override fun onAnimationRepeat(animation: Animator) {
+                    // Do nothing
+                }
+            })
+        }
+    }
+
+    private fun FragmentCookingStepBinding.handleButtonsAndViewPagerInput(state: CookingStepState) {
+        if (state.isPositiveLoading) {
+            positiveButton.isVisible = false
+            neutralButton.isEnabled = false
+            negativeButton.isEnabled = false
+            isViewPagerUserInputEnabled.invoke(false)
+        } else if (state.isNeutralLoading) {
+            neutralButton.isVisible = false
+            positiveButton.isEnabled = false
+            negativeButton.isEnabled = false
+            isViewPagerUserInputEnabled.invoke(false)
+        } else {
+            positiveButton.isVisible = true
+            neutralButton.isVisible = true
+            positiveButton.isEnabled = true
+            neutralButton.isEnabled = true
+            negativeButton.isEnabled = true
+            isViewPagerUserInputEnabled.invoke(true)
         }
     }
 }
