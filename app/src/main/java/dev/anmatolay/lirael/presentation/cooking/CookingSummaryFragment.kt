@@ -23,6 +23,7 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 class CookingSummaryFragment
 @JvmOverloads constructor(
     private var recipe: Recipe? = null,
+    private val isFavouriteButtonEnabled: Boolean = true,
     private val doOnDismiss: () -> Unit = {},
 ) : BaseBottomSheetDialogFragment<CookingSummaryEvent>() {
 
@@ -43,6 +44,7 @@ class CookingSummaryFragment
                     favouriteButton.isEnabled = false
                 } else {
                     title.text = recipe!!.title
+                    favouriteButton.isEnabled = isFavouriteButtonEnabled
                     ingredientsList.apply {
                         adapter =
                             ArrayAdapter(requireContext(), android.R.layout.simple_list_item_1, recipe!!.ingredients)

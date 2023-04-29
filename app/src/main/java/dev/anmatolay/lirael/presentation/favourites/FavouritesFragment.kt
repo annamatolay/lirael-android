@@ -54,7 +54,7 @@ class FavouritesFragment : BaseFragment<FavouriteEvent>() {
             binding.favouriteRecycleView.run {
                 setLayoutManagerAndItemDecoration(LinearLayoutManager.VERTICAL)
                 adapter = FavouriteRecipeAdapter(recipes, { triggerEvent(FavouriteEvent.OnDeleteClicked(it)) }) {
-                    CookingSummaryFragment(it).show(childFragmentManager, null)
+                    CookingSummaryFragment(it, isFavouriteButtonEnabled = false).show(childFragmentManager, null)
                 }
             }
         }
