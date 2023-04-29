@@ -46,12 +46,14 @@ class CookingStepFragment @JvmOverloads constructor(
 
         recipeItem = arguments?.getRecipeItemParcelable()
 
+        triggerEvent(CookingStepEvent.CheckIsSavedAsFavourite(recipeItem?.title))
+
         binding.setUpLayout()
 
         viewModel.uiState.observe { state ->
             with(binding) {
-                positiveProgressBar.isVisible = state.isPositiveLoading
-                neutralProgressBar.isVisible = state.isNeutralLoading
+                positiveProgressBar.isVisible = state.isPositiveButtonLoading
+                neutralProgressBar.isVisible = state.isNeutralButtonLoading
                 handleButtonsAndViewPagerInput(state)
 
                 if (state.isUpdateDone) {
@@ -103,7 +105,6 @@ class CookingStepFragment @JvmOverloads constructor(
                     pickedImage
             )
             negativeButton.setOnClickListener { dismiss.invoke() }
-            positiveButton.isVisible = recipeItem?.isLastItem == true
             positiveButton.setOnClickListener {
                 handleOnClick { triggerEvent(CookingStepEvent.OnPositiveButtonClicked(mainActivity().recipe)) }
             }
@@ -147,23 +148,21 @@ class CookingStepFragment @JvmOverloads constructor(
     }
 
     private fun FragmentCookingStepBinding.handleButtonsAndViewPagerInput(state: CookingStepState) {
-        if (state.isPositiveLoading) {
+        if (state.isPositiveButtonLoading) {
             positiveButton.isVisible = false
             neutralButton.isEnabled = false
             negativeButton.isEnabled = false
             isViewPagerUserInputEnabled.invoke(false)
-        } else if (state.isNeutralLoading) {
+        } else if (state.isNeutralButtonLoading) {
             neutralButton.isVisible = false
-            positiveButton.isEnabled = false
             negativeButton.isEnabled = false
             isViewPagerUserInputEnabled.invoke(false)
         } else {
-            positiveButton.isVisible = true
-            neutralButton.isVisible = true
-            positiveButton.isEnabled = true
+            positiveButton.isVisible = recipeItem?.isLastItem == true
             neutralButton.isEnabled = true
             negativeButton.isEnabled = true
             isViewPagerUserInputEnabled.invoke(true)
         }
+        positiveButton.isEnabled = state.isPositiveButtonEnabled
     }
 }

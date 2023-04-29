@@ -33,7 +33,7 @@
         android:name="dev.anmatolay.lirael.presentation.settings.SettingsContainerFragment"
         android:label="@string/title_settings"
         tools:layout="@layout/fragment_container_settings" />
-
+<!--TODO: rename-->
     <fragment
         android:id="@+id/cooking_step_fragment"
         android:name="dev.anmatolay.lirael.presentation.cooking.step.CookingStepViewPagerFragment"
