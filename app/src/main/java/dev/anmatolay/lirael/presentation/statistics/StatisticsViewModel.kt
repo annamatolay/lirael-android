@@ -2,7 +2,7 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
-import dev.anmatolay.lirael.domain.usecase.GetRandomRecipesUseCase
+import dev.anmatolay.lirael.domain.usecase.recipe.GetRandomRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.presentation.statistics.StatisticsState.Error.RECIPES_READ_ERROR
 import dev.anmatolay.lirael.presentation.statistics.StatisticsState.Error.STAT_READ_ERROR

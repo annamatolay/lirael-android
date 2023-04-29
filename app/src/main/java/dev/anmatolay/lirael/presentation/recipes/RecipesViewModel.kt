@@ -2,14 +2,14 @@ package dev.anmatolay.lirael.presentation.recipes
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
-import dev.anmatolay.lirael.domain.usecase.GetRecipesUseCase
+import dev.anmatolay.lirael.domain.usecase.recipe.SearchRecipesUseCase
 import dev.anmatolay.lirael.presentation.recipes.RecipesState.Error.API_ERROR
 import dev.anmatolay.lirael.presentation.recipes.RecipesState.Error.NOT_FOUND
 import timber.log.Timber
 
 class RecipesViewModel(
     private val schedulerProvider: SchedulerProvider,
-    private val getRecipesUseCase: GetRecipesUseCase,
+    private val searchRecipesUseCase: SearchRecipesUseCase,
 ) : BaseUdfViewModel<RecipesState, RecipesEvent>() {
 
     override fun onViewResumed() {
@@ -20,7 +20,7 @@ class RecipesViewModel(
                 //                is RecipesEvent.GetPreset -> TODO
                 is RecipesEvent.SearchRecipe -> {
                     triggerUiStateChange(RecipesState(isRecipesLoading = true))
-                    getRecipesUseCase(event.keyword)
+                    searchRecipesUseCase(event.keyword)
                         .observeOn(schedulerProvider.mainThread())
                         .subscribe(
                             { recipesList ->
