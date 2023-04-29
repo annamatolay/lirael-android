@@ -8,6 +8,7 @@ import dev.anmatolay.lirael.data.dao.RecipeDao
 import dev.anmatolay.lirael.data.dao.UserDao
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
+import dev.anmatolay.lirael.util.Constants.STRING_SEPARATOR
 
 @Database(
     version = 3,
@@ -45,9 +46,9 @@ abstract class AppDatabase : RoomDatabase() {
     class Converter {
 
         @TypeConverter
-        fun List<String>.toStringData() = this.toString().drop(1).dropLast(1)
+        fun List<String>.toStringData() = this.joinToString(STRING_SEPARATOR)
 
         @TypeConverter
-        fun String.toList() = this.split(", ")
+        fun String.toList() = this.split(STRING_SEPARATOR)
     }
 }
