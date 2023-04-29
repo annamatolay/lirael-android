@@ -12,7 +12,7 @@ data class SearchRecipeDto(
 
     override fun toModel(): Recipe {
         val ingredientsList = ingredients.split("|")
-        val instructionsList = ingredients.split(". ")
+        val instructionsList = instructions.split(". ")
         return Recipe(title, ingredientsList, instructionsList, servings)
     }
 }
