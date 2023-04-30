@@ -11,7 +11,7 @@ data class PresetRecipeDto(
 
     fun toModel(category: PresetRecipe.Category): PresetRecipe {
         val ingredientsList = ingredients.split("|")
-        val instructionsList = instructions.split(". ")
+        val instructionsList = instructions.split(Regex("(?<=\\D[.] )"))
         return PresetRecipe(title, ingredientsList, instructionsList, servings, category)
     }
 }

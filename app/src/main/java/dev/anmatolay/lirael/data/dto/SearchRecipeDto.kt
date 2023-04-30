@@ -2,6 +2,7 @@ package dev.anmatolay.lirael.data.dto
 
 import dev.anmatolay.lirael.domain.model.Recipe
 import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
+import java.util.regex.Pattern
 
 data class SearchRecipeDto(
     val title: String,
@@ -12,7 +13,8 @@ data class SearchRecipeDto(
 
     override fun toModel(): Recipe {
         val ingredientsList = ingredients.split("|")
-        val instructionsList = instructions.split(". ")
+        // look behind, not number ending with a . and space
+        val instructionsList = instructions.split(Regex("(?<=\\D[.] )"))
         return Recipe(title, ingredientsList, instructionsList, servings)
     }
 }
