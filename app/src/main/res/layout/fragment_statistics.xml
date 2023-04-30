@@ -113,12 +113,13 @@
                 layout="@layout/layout_more_recipe_stats" />
         </FrameLayout>
 
-        <CalendarView
+        <dev.anmatolay.lirael.core.view.calendar.LiraelCalendarView
             android:id="@+id/calendar_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/spacing_8dp"
-            android:padding="@dimen/spacing_8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_container_more_recipe_stats" />
     </androidx.constraintlayout.widget.ConstraintLayout>

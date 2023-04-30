@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/day_layout"
+    android:layout_width="42dp"
+    android:layout_height="42dp"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:padding="@dimen/spacing_4dp"
+    android:background="@drawable/bg_calendar_default">
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/day_text_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:textAppearance="?attr/textAppearanceOverline"
+        android:textSize="16sp"
+        tools:text="19"/>
+</FrameLayout>

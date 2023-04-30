@@ -20,6 +20,7 @@ import dev.anmatolay.lirael.core.presentation.BaseActivity
 import dev.anmatolay.lirael.databinding.ActivityMainBinding
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.presentation.dialog.exit.ExitConfirmationDialogFragment
+import dev.anmatolay.lirael.util.extension.isDarkModeEnable
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -57,8 +58,8 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
                         true
                     }
                     R.id.ui_mode_item -> {
-                        setUiMode(!isDarkModeEnable())
-                        triggerEvent(MainActivityEvent.UiModeChanged(!isDarkModeEnable()))
+                        setUiMode(!resources.isDarkModeEnable())
+                        triggerEvent(MainActivityEvent.UiModeChanged(!resources.isDarkModeEnable()))
                         true
                     }
                     else -> false
@@ -84,7 +85,7 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
         inflater.inflate(R.menu.toolbar_menu, menu)
         val menuItem = menu?.getItem(0) ?: return super.onCreateOptionsMenu(menu)
 
-        if (isDarkModeEnable()) {
+        if (resources.isDarkModeEnable()) {
             menuItem.setIcon(R.drawable.ic_toolbar_mode_light)
         } else {
             menuItem.setIcon(R.drawable.ic_toolbar_mode_dark)
@@ -122,16 +123,5 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
         } else {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
-    }
-
-    private fun isDarkModeEnable() = when (resources.configuration.uiMode) {
-        // When you change UI mode in setting and warm start app
-        // then config values will be exactly one more than it should be
-        // https://issuetracker.google.com/issues/134379747
-        Configuration.UI_MODE_NIGHT_YES -> true
-        Configuration.UI_MODE_NIGHT_YES + 1 -> true
-        Configuration.UI_MODE_NIGHT_NO -> false
-        Configuration.UI_MODE_NIGHT_NO + 1 -> false
-        else -> false
     }
 }
