@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.core.presentation
+package dev.anmatolay.lirael.core.view
 
 import android.annotation.SuppressLint
 import android.content.Context
