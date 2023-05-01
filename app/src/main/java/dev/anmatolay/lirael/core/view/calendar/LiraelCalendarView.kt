@@ -5,14 +5,16 @@ import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.GridLayoutManager
-import dev.anmatolay.lirael.core.view.calendar.Day.Companion.toMarkedDay
-import dev.anmatolay.lirael.core.view.calendar.Day.Companion.toNotMarkedDay
-import dev.anmatolay.lirael.core.view.calendar.Day.Companion.toNotMarkedDays
+import dev.anmatolay.lirael.core.view.calendar.adapter.CalendarAdapter
+import dev.anmatolay.lirael.core.view.calendar.adapter.Day
+import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toMarkedDay
+import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toNotMarkedDay
+import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toNotMarkedDays
 import dev.anmatolay.lirael.databinding.LayoutCalendarLiraelBinding
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
-import java.util.*
+import java.util.Locale
 
 
 // TODO: Add swipe support

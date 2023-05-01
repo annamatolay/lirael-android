@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.core.view.calendar
+package dev.anmatolay.lirael.core.view.calendar.adapter
 
 data class Day(val value: String, val isMarked: Boolean = false) {
     companion object {

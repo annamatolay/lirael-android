@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.core.view.calendar
+package dev.anmatolay.lirael.core.view.calendar.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
