@@ -11,10 +11,11 @@ import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toMarkedDay
 import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toNotMarkedDay
 import dev.anmatolay.lirael.core.view.calendar.adapter.Day.Companion.toNotMarkedDays
 import dev.anmatolay.lirael.databinding.LayoutCalendarLiraelBinding
+import dev.anmatolay.lirael.util.Constants
+import dev.anmatolay.lirael.util.LocalDateProvider
+import org.koin.java.KoinJavaComponent.inject
 import java.time.LocalDate
 import java.time.YearMonth
-import java.time.format.DateTimeFormatter
-import java.util.Locale
 
 
 // TODO: Add swipe support
@@ -24,13 +25,12 @@ class LiraelCalendarView(
 ) : LinearLayout(context, attrs) {
 
     private val binding: LayoutCalendarLiraelBinding
-    private var selectedDate = LocalDate.now()
+
+    private val localDateProvider by inject<LocalDateProvider>(LocalDateProvider::class.java)
+    private var selectedDate = localDateProvider.now()
 
     // TODO: make it map (key: formatted date, value list of dayOfMonth) to access marked days O(1) (instead of O(n) with filtering)
-    private var markedDates = mutableListOf<LocalDate>()
-
-    // LLLL is equivalent of MMMM without localization issue  with Java 8 (in some cases, fixed in Java 9)
-    private val formatter = DateTimeFormatter.ofPattern("LLLL yyyy", Locale.getDefault())
+    private var markedDates = mutableListOf<Pair<LocalDate, Int>>()
 
     init {
         binding = LayoutCalendarLiraelBinding.inflate(LayoutInflater.from(context), this, false)
@@ -51,10 +51,11 @@ class LiraelCalendarView(
             setUpCalendar(withMarkedDays = false)
     }
 
-    fun setUpCalendar(vararg markedDaysInEpoch: Long) {
-        if (markedDaysInEpoch.isNotEmpty()) {
+    // first: Epoch date, cooked count
+    fun setUpCalendar(vararg markedDays: Pair<Long, Int>) {
+        if (markedDays.isNotEmpty()) {
             this.markedDates.addAll(
-                markedDaysInEpoch.map { LocalDate.ofEpochDay(it) }
+                markedDays.map { LocalDate.ofEpochDay(it.first) to it.second }
             )
             this.markedDates = this.markedDates.distinct().toMutableList()
         }
@@ -69,14 +70,10 @@ class LiraelCalendarView(
                 stringDaysInMonth().toNotMarkedDays()
 
         with(binding) {
-            val formattedSelectedDate = selectedDate.format(formatter)
-            val formattedCurrentDate = LocalDate.now().format(formatter)
-            val isCurrentYearAndMonth = formattedCurrentDate == formattedSelectedDate
-
-            monthText.text = formattedSelectedDate
+            monthText.text = selectedDate.format(Constants.getDefaultDateTimeFormatter())
             val layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             recyclerView.layoutManager = layoutManager
-            recyclerView.adapter = CalendarAdapter(daysInMonth, isCurrentYearAndMonth)
+            recyclerView.adapter = CalendarAdapter(daysInMonth, selectedDate)
         }
 
         removeView(binding.root)
@@ -87,14 +84,14 @@ class LiraelCalendarView(
         val stringMarkedDay =
             // Todo: optimise with map
             this.markedDates
-                .filter { selectedDate.month.equals(it.month) }
-                .map { it.dayOfMonth.toString() }
+                .filter { selectedDate.month.equals(it.first.month) && selectedDate.year == it.first.year}
+                .associate { it.first.dayOfMonth.toString() to it.second }
 
         val markedDaysInMonth =
             stringDaysInMonth()
                 .map {
-                    if (stringMarkedDay.contains(it))
-                        it.toMarkedDay()
+                    if (stringMarkedDay.containsKey(it))
+                        it.toMarkedDay(stringMarkedDay[it]!!)
                     else
                         it.toNotMarkedDay()
                 }

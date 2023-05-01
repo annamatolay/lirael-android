@@ -17,7 +17,6 @@ import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
 import dev.anmatolay.lirael.util.extension.mainActivity
 import dev.anmatolay.lirael.util.extension.setLayoutManagerAndItemDecoration
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import java.time.LocalDate
 import kotlin.math.roundToInt
 
 class StatisticsFragment : BaseFragment<StatisticsEvent>() {
@@ -61,9 +60,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             binding.recipesRecycleView.isVisible = !state.isRecipesLoading
         }
 
-        // TODO: get data from shared pref
-        val t = LocalDate.now()
-        binding.calendarView.setUpCalendar(t.toEpochDay(), t.minusDays(1).toEpochDay(), t.minusDays(2).toEpochDay(), t.minusMonths(1).toEpochDay(),)
+        // TODO: put and get data from shared pref
+        binding.calendarView.setUpCalendar()
     }
 
     private fun updateName(data: String?) {
