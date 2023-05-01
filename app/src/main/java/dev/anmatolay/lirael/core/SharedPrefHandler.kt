@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.content.SharedPreferences.Editor
 import dev.anmatolay.lirael.BuildConfig
+import dev.anmatolay.lirael.util.CookingHistoryMap
 import timber.log.Timber
 
 class SharedPrefHandler(context: Context) {
@@ -29,7 +30,34 @@ class SharedPrefHandler(context: Context) {
     fun putInt(key: String, value: Int) =
         edit { it.putInt(key, value) }
 
-    private inline fun <reified T>T.logResult(key: String): T =
+    fun getCookingHistoryMap(key: String): CookingHistoryMap? {
+        val value = sharedPref.getString(key, null).logResult(key)
+        if (value.isNullOrBlank()) return null
+
+        val result = value.split("; ").associate { stringMap ->
+            val (first, second) = stringMap.split(" : ")
+            val data =
+                second.split(", ")
+                    .associate { nestedStringMap ->
+                        val (left, right) = nestedStringMap.split("=")
+                        left.toLong() to right.toInt()
+                    }
+            first to data
+        }
+
+        return result
+    }
+
+    fun putCookingHistoryMap(key: String, value: CookingHistoryMap) {
+        val data = value.entries
+            .joinToString(separator = "; ") {
+                it.key + " - " + it.value.entries.joinToString()
+            }
+
+        edit { it.putString(key, data) }
+    }
+
+    private inline fun <reified T> T.logResult(key: String): T =
         this.apply { Timber.i("${T::class.java.typeName} data retrieved. KEY: $key VALUE: $this") }
 
     private fun edit(action: (Editor) -> Editor) =
