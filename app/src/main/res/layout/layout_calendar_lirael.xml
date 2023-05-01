@@ -28,7 +28,7 @@
             tools:ignore="ContentDescription,HardcodedText" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/month_text"
+            android:id="@+id/month_year_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"

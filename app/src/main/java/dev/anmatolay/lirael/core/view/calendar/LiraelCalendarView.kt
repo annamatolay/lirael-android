@@ -70,7 +70,7 @@ class LiraelCalendarView(
                 stringDaysInMonth().toNotMarkedDays()
 
         with(binding) {
-            monthText.text = selectedDate.format(Constants.getDefaultDateTimeFormatter())
+            monthYearText.text = localDateProvider.getFormattedMonthAndYear(selectedDate)
             val layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             recyclerView.layoutManager = layoutManager
             recyclerView.adapter = CalendarAdapter(daysInMonth, selectedDate)

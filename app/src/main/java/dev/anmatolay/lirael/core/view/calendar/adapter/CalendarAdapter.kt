@@ -59,7 +59,7 @@ class CalendarAdapter(
                         day.cooked,
                         day.cooked,
                         day.value,
-                        selectedDate.format(Constants.getDefaultDateTimeFormatter())
+                        localDateProvider.getFormattedMonthAndYear(selectedDate),
                     )
 
                 Toast.makeText(context, text, Toast.LENGTH_SHORT)

@@ -11,6 +11,8 @@ interface LocalDateProvider {
     // LLLL is equivalent of MMMM without localization issue  with Java 8 (in some cases, fixed in Java 9)
     fun getDefaultDateTimeFormatter(pattern: String = "LLLL yyyy"): DateTimeFormatter =
         DateTimeFormatter.ofPattern(pattern, Locale.getDefault())
+
+    fun getFormattedMonthAndYear(date: LocalDate): String = date.format(getDefaultDateTimeFormatter())
 }
 
 class LocalDateProviderImpl : LocalDateProvider {
