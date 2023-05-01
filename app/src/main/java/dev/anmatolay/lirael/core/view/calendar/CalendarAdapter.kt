@@ -8,7 +8,7 @@ import dev.anmatolay.lirael.databinding.LayoutCalendarLiraelItemBinding
 import dev.anmatolay.lirael.util.extension.isDarkModeEnable
 import java.time.LocalDate
 
-class CalendarAdapter(private val daysInMonth: List<Day>, private val selectedDate: LocalDate) :
+class CalendarAdapter(private val daysInMonth: List<Day>, private val isCurrentYearAndMonth: Boolean) :
     RecyclerView.Adapter<CalendarAdapter.CalendarViewHolder>() {
 
     class CalendarViewHolder(val binding: LayoutCalendarLiraelItemBinding) : RecyclerView.ViewHolder(binding.root)
@@ -26,7 +26,7 @@ class CalendarAdapter(private val daysInMonth: List<Day>, private val selectedDa
             holder.binding.dayLayout.background = null
         } else {
             holder.binding.dayTextView.text = daysInMonth[position].value
-            if (day.isEqualWithToday() && selectedDate.isEqual(LocalDate.now()))
+            if (day.isEqualWithToday() && isCurrentYearAndMonth)
                 holder.binding.dayLayout.setBackgroundResource(R.drawable.bg_calendar_current)
             else if (day.isMarked) {
                 holder.binding.dayLayout.setBackgroundResource(R.drawable.bg_calendar_marked)

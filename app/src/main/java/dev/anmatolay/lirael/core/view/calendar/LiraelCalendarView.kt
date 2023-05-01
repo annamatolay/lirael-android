@@ -23,6 +23,7 @@ class LiraelCalendarView(
 
     private val binding: LayoutCalendarLiraelBinding
     private var selectedDate = LocalDate.now()
+
     // TODO: make it map (key: formatted date, value list of dayOfMonth) to access marked days O(1) (instead of O(n) with filtering)
     private var markedDates = mutableListOf<LocalDate>()
 
@@ -49,7 +50,7 @@ class LiraelCalendarView(
     }
 
     fun setUpCalendar(vararg markedDaysInEpoch: Long) {
-        if (markedDates.isNotEmpty()) {
+        if (markedDaysInEpoch.isNotEmpty()) {
             this.markedDates.addAll(
                 markedDaysInEpoch.map { LocalDate.ofEpochDay(it) }
             )
@@ -66,10 +67,14 @@ class LiraelCalendarView(
                 stringDaysInMonth().toNotMarkedDays()
 
         with(binding) {
-            monthText.text = selectedDate.format(formatter)
+            val formattedSelectedDate = selectedDate.format(formatter)
+            val formattedCurrentDate = LocalDate.now().format(formatter)
+            val isCurrentYearAndMonth = formattedCurrentDate == formattedSelectedDate
+
+            monthText.text = formattedSelectedDate
             val layoutManager = GridLayoutManager(context, DAYS_OF_WEEK)
             recyclerView.layoutManager = layoutManager
-            recyclerView.adapter = CalendarAdapter(daysInMonth, selectedDate)
+            recyclerView.adapter = CalendarAdapter(daysInMonth, isCurrentYearAndMonth)
         }
 
         removeView(binding.root)
