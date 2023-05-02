@@ -54,10 +54,16 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
                     updateRecipeStatistics(state.userRecipeStat)
                 }
                 is StatisticsState.RecipesState -> updateRecipes(state.recipes)
-                is StatisticsState.ErrorState -> showErrorSnackbarIfErrorNotNull(state.error)
+                is StatisticsState.ErrorState -> handleError(state.error)
             }
 
-            binding.recipesRecycleView.isVisible = !state.isRecipesLoading
+            with(binding) {
+                recipesRecycleView.isVisible = !state.isRecipesLoading
+                if (state.isRecipesLoading) {
+                    reload.isVisible = false
+                    errorImage.isVisible = false
+                }
+            }
         }
 
         // TODO: put and get data from shared pref
@@ -113,23 +119,42 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
                     }.show(childFragmentManager, null)
                 }
             }
-            binding.recipeProgressBar.isVisible = false
+            with(binding) {
+                recipeProgressBar.isVisible = false
+                reload.isVisible = false
+            }
         }
     }
 
-    private fun showErrorSnackbarIfErrorNotNull(error: StatisticsState.Error?) {
-        if (error != null)
+    private fun handleError(error: StatisticsState.Error?) {
+        if (error != null) {
             with(mainActivity()) {
                 when (error) {
                     StatisticsState.Error.STAT_READ_ERROR ->
                         makeErrorSnackbar(R.string.stat_read_error) {
                             triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
                         }.show()
-                    StatisticsState.Error.RECIPES_READ_ERROR ->
+                    StatisticsState.Error.RECIPES_READ_ERROR -> {
                         makeErrorSnackbar(R.string.recipes_read_error) {
                             triggerEvent(StatisticsEvent.RetryGetRandomRecipes)
                         }.show()
+
+                        with(binding) {
+                            recipeProgressBar.isVisible = false
+                            recipesRecycleView.isVisible = false
+                            errorImage.isVisible = true
+                            with(reload) {
+                                isVisible = true
+                                setOnClickListener {
+                                    triggerEvent(StatisticsEvent.RetryGetRandomRecipes)
+                                    recipeProgressBar.isVisible = true
+                                }
+                            }
+
+                        }
+                    }
                 }
             }
+        }
     }
 }

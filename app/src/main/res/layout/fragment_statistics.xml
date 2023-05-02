@@ -59,6 +59,21 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_container_recipe_stats" />
 
+        <ImageView
+            android:id="@+id/reload"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_16dp"
+            android:padding="@dimen/spacing_4dp"
+            android:src="@drawable/ic_action_reload"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/random"
+            app:layout_constraintStart_toEndOf="@+id/random"
+            app:layout_constraintTop_toTopOf="@+id/random"
+            app:tint="?attr/colorPrimary"
+            tools:ignore="ContentDescription"
+            tools:visibility="visible" />
+
         <FrameLayout
             android:id="@+id/recipes_container"
             android:layout_width="match_parent"
@@ -75,8 +90,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="@dimen/spacing_56dp"
-                android:visibility="visible"
-                tools:visibility="visible" />
+                android:visibility="visible" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recipes_recycle_view"
@@ -86,7 +100,16 @@
                 android:visibility="gone"
                 tools:itemCount="1"
                 tools:listitem="@layout/layout_item_random_recipe"
-                tools:visibility="gone" />
+                tools:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/error_image"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/cat_error_generic"
+                android:visibility="gone"
+                tools:ignore="ContentDescription" />
         </FrameLayout>
 
         <com.google.android.material.textview.MaterialTextView
