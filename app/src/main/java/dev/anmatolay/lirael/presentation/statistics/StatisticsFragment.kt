@@ -27,11 +27,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View =
-        FragmentStatisticsBinding.inflate(inflater, container, false)
-            .apply { binding = this }
-            .root
+        savedInstanceState: Bundle?,
+    ): View = FragmentStatisticsBinding.inflate(inflater, container, false).apply { binding = this }.root
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,7 +49,13 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
                 is StatisticsState.UserDataState -> {
                     updateName(state.name)
                     updateRecipeStatistics(state.userRecipeStat)
+                    if (state.cookingHistory == null) {
+                        binding.calendarView.setUpCalendar()
+                    } else {
+                        binding.calendarView.setUpCalendar(state.cookingHistory)
+                    }
                 }
+
                 is StatisticsState.RecipesState -> updateRecipes(state.recipes)
                 is StatisticsState.ErrorState -> handleError(state.error)
             }
@@ -65,9 +68,6 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
                 }
             }
         }
-
-        // TODO: put and get data from shared pref
-        binding.calendarView.setUpCalendar()
     }
 
     private fun updateName(data: String?) {
@@ -84,10 +84,8 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             }
             with(binding.layoutMoreRecipeStats) {
                 percentageCookedPerOpened.text =
-                    if (userRecipeStat.cooked > 0)
-                        calculateCookedPerOpened(userRecipeStat).toString() + "%"
-                    else
-                        "0%"
+                    if (userRecipeStat.cooked > 0) calculateCookedPerOpened(userRecipeStat).toString() + "%"
+                    else "0%"
                 // TODO: update when data ready
                 numberCurrentStreak.text = "0"
                 numberLongestStreak.text = "0"
@@ -130,10 +128,10 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         if (error != null) {
             with(mainActivity()) {
                 when (error) {
-                    StatisticsState.Error.STAT_READ_ERROR ->
-                        makeErrorSnackbar(R.string.stat_read_error) {
-                            triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
-                        }.show()
+                    StatisticsState.Error.STAT_READ_ERROR -> makeErrorSnackbar(R.string.stat_read_error) {
+                        triggerEvent(StatisticsEvent.RetryGetStatOnClicked)
+                    }.show()
+
                     StatisticsState.Error.RECIPES_READ_ERROR -> {
                         makeErrorSnackbar(R.string.recipes_read_error) {
                             triggerEvent(StatisticsEvent.RetryGetRandomRecipes)

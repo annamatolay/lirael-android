@@ -23,12 +23,12 @@ val viewModelModule = module {
     factory { NameViewModel(get(), get()) }
     factory { DietViewModel(get(), get()) }
     factory { PremiumViewModel(get(), get(), get()) }
-    factory { StatisticsViewModel(get(), get(), get()) }
+    factory { StatisticsViewModel(get(), get(), get(), get(), get()) }
     factory { RecipesViewModel(get(), get(), get()) }
     factory { FavouritesViewModel(get(), get(), get(), get()) }
     factory { ExitConfirmationViewModel(get()) }
     factory { SettingsViewModel(get(), get(), get()) }
     factory { DeletionConfirmationViewModel(get(), get()) }
     factory { CookingSummaryViewModel(get(), get(), get(), get(), get(), get()) }
-    factory { CookingStepViewModel(get(), get(), get(), get(), get()) }
+    factory { CookingStepViewModel(get(), get(), get(), get(), get(), get(), get(), get()) }
 }

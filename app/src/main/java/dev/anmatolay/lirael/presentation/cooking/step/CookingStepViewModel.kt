@@ -3,14 +3,17 @@ package dev.anmatolay.lirael.presentation.cooking.step
 import androidx.room.rxjava3.EmptyResultSetException
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
+import dev.anmatolay.lirael.domain.model.CookingHistory
 import dev.anmatolay.lirael.domain.model.User
+import dev.anmatolay.lirael.domain.usecase.cooking.GetCookingHistoryUseCase
+import dev.anmatolay.lirael.domain.usecase.cooking.PutCookingHistoryUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.GetFavouriteRecipeUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.SaveFavouriteRecipeUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.user.UpdateUserUseCase
-import dev.anmatolay.lirael.presentation.cooking.CookingSummaryState
 import dev.anmatolay.lirael.presentation.cooking.step.CookingStepState.Error.RECIPE_DB_CREATE_ERROR
 import dev.anmatolay.lirael.presentation.cooking.step.CookingStepState.Error.USER_STAT_UPDATE_FAILED
+import dev.anmatolay.lirael.util.LocalDateProvider
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import timber.log.Timber
@@ -21,6 +24,9 @@ class CookingStepViewModel(
     private val updateUserUseCase: UpdateUserUseCase,
     private val getFavouriteRecipeUseCase: GetFavouriteRecipeUseCase,
     private val saveFavouriteRecipeUseCase: SaveFavouriteRecipeUseCase,
+    private val localDateProvider: LocalDateProvider,
+    private val getCookingHistoryUseCase: GetCookingHistoryUseCase,
+    private val putCookingHistoryUseCase: PutCookingHistoryUseCase,
 ) : BaseUdfViewModel<CookingStepState, CookingStepEvent>() {
 
     override fun onViewCreated() {
@@ -66,6 +72,7 @@ class CookingStepViewModel(
                             .disposeOnDestroy()
                     }
                 }
+
                 is CookingStepEvent.OnPositiveButtonClicked -> {
                     triggerUiStateChange(CookingStepState(isPositiveButtonLoading = true))
 
@@ -89,6 +96,8 @@ class CookingStepViewModel(
                             .updateCookedStat()
                             .subscribe(
                                 {
+                                    saveCookingHistory()
+
                                     triggerUiStateChange(
                                         CookingStepState(
                                             isPositiveButtonLoading = false,
@@ -110,6 +119,7 @@ class CookingStepViewModel(
 
                     }
                 }
+
                 CookingStepEvent.OnNeutralButtonClicked -> {
                     triggerUiStateChange(CookingStepState(isNeutralButtonLoading = true))
 
@@ -118,6 +128,8 @@ class CookingStepViewModel(
                         .updateCookedStat()
                         .subscribe(
                             {
+                                saveCookingHistory()
+
                                 triggerUiStateChange(
                                     CookingStepState(
                                         isNeutralButtonLoading = false,
@@ -144,4 +156,11 @@ class CookingStepViewModel(
     private fun Single<User>.updateCookedStat(): Completable = this
         .map { it.copy(recipeStatistic = it.recipeStatistic.copy(cooked = it.recipeStatistic.cooked + 1)) }
         .flatMapCompletable { updateUserUseCase(it) }
+
+    private fun saveCookingHistory() {
+        val data =
+            getCookingHistoryUseCase() ?: CookingHistory(localDateProvider.now().toEpochDay())
+        ++data.numberOfCooking
+        putCookingHistoryUseCase(data)
+    }
 }

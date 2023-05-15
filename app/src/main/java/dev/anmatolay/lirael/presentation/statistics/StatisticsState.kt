@@ -1,9 +1,11 @@
 package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.UiState
+import dev.anmatolay.lirael.domain.model.CookingHistory
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 
+//TODO: clean-up?
 sealed class StatisticsState(
     open val name: String? = null,
     open val userRecipeStat: User.RecipeStatistic? = null,
@@ -15,6 +17,7 @@ sealed class StatisticsState(
     class UserDataState(
         override val name: String? = null,
         override val userRecipeStat: User.RecipeStatistic? = null,
+        val cookingHistory: List<CookingHistory>? = null,
     ) : StatisticsState()
 
     class RecipesState(
