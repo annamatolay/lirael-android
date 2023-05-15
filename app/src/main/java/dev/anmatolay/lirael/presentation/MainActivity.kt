@@ -1,6 +1,5 @@
 package dev.anmatolay.lirael.presentation
 
-import android.content.res.Configuration
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -45,8 +44,9 @@ class MainActivity : BaseActivity<MainActivityEvent>() {
 
         val navController = findNavigationController()
 
+        appBarConfiguration = AppBarConfiguration(setOf(R.id.statistics_fragment), binding.drawerLayout)
         binding.bottomNavView.setupWithNavController(navController)
-        appBarConfiguration = AppBarConfiguration(setOf(R.id.statistics_fragment))
+        binding.navigation.setupWithNavController(navController)
         setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         binding.toolbar.run {

@@ -74,6 +74,10 @@
     <string name="favourite_read_error">Failed to read favourite recipe(s) :(</string>
     <string name="favourite_save_error">Failed to save favourite recipe :(</string>
     <string name="favourite_delete_error">Failed to delete favourite recipe :(</string>
+    <string name="title_about">About</string>
+    <string name="title_premium">Premium</string>
+    <string name="title_subscription">Subscription</string>
+    <string name="title_nutrition">Nutrition statistics</string>
     <plurals name="calendar_day_cooked_info">
         <item quantity="one">%d time cooked on %s %s</item>
         <item quantity="other">%d times cooked on %s %s</item>

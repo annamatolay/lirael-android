@@ -43,6 +43,12 @@
             app:argType="dev.anmatolay.lirael.domain.model.Recipe" />
     </fragment>
 
+    <fragment
+        android:id="@+id/about_fragment"
+        android:name="dev.anmatolay.lirael.presentation.about.AboutFragment"
+        android:label="@string/title_about"
+        tools:layout="@layout/fragment_about" />
+
     <action
         android:id="@+id/action_to_settingsContainerFragment"
         app:destination="@id/settings_container_fragment" />
