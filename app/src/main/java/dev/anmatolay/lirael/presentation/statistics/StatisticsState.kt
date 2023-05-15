@@ -2,6 +2,7 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.UiState
 import dev.anmatolay.lirael.domain.model.CookingHistory
+import dev.anmatolay.lirael.domain.model.CookingStrike
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 
@@ -18,6 +19,7 @@ sealed class StatisticsState(
         override val name: String? = null,
         override val userRecipeStat: User.RecipeStatistic? = null,
         val cookingHistory: List<CookingHistory>? = null,
+        val cookingStrike: CookingStrike? = null,
     ) : StatisticsState()
 
     class RecipesState(

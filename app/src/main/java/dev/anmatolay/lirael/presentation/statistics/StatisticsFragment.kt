@@ -11,6 +11,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentStatisticsBinding
+import dev.anmatolay.lirael.domain.model.CookingStrike
 import dev.anmatolay.lirael.domain.model.Recipe
 import dev.anmatolay.lirael.domain.model.User
 import dev.anmatolay.lirael.presentation.cooking.CookingSummaryFragment
@@ -48,7 +49,7 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
             when (state) {
                 is StatisticsState.UserDataState -> {
                     updateName(state.name)
-                    updateRecipeStatistics(state.userRecipeStat)
+                    updateRecipeStatistics(state.userRecipeStat, state.cookingStrike)
                     if (state.cookingHistory == null) {
                         binding.calendarView.setUpCalendar()
                     } else {
@@ -75,7 +76,7 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
         binding.greeting.text = getString(R.string.stat_greetings, name)
     }
 
-    private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?) {
+    private fun updateRecipeStatistics(userRecipeStat: User.RecipeStatistic?, cookingStrike: CookingStrike?) {
         if (userRecipeStat != null) {
             with(binding.layoutRecipeStats) {
                 numberOpened.text = userRecipeStat.opened.toString()
@@ -86,9 +87,13 @@ class StatisticsFragment : BaseFragment<StatisticsEvent>() {
                 percentageCookedPerOpened.text =
                     if (userRecipeStat.cooked > 0) calculateCookedPerOpened(userRecipeStat).toString() + "%"
                     else "0%"
-                // TODO: update when data ready
-                numberCurrentStreak.text = "0"
-                numberLongestStreak.text = "0"
+                if (cookingStrike == null) {
+                    numberCurrentStreak.text = "0"
+                    numberLongestStreak.text = "0"
+                } else {
+                    numberCurrentStreak.text = cookingStrike.current.toString()
+                    numberLongestStreak.text = cookingStrike.longest.toString()
+                }
             }
         } else {
             with(binding.layoutRecipeStats) {

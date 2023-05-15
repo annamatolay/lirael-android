@@ -5,6 +5,7 @@ import dev.anmatolay.lirael.domain.usecase.recipe.SearchRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.user.SaveUserUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.domain.usecase.MonitoringUseCase
+import dev.anmatolay.lirael.domain.usecase.cooking.GetCookingStreaks
 import dev.anmatolay.lirael.domain.usecase.cooking.GetCookingHistoryUseCase
 import dev.anmatolay.lirael.domain.usecase.cooking.PutCookingHistoryUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.GetPresetRecipesUseCase
@@ -33,4 +34,5 @@ val useCaseModule = module {
     factory { GetPresetRecipesUseCase(get(), get()) }
     factory { GetCookingHistoryUseCase(get(), get()) }
     factory { PutCookingHistoryUseCase(get(), get()) }
+    factory { GetCookingStreaks(get(), get(), get()) }
 }

@@ -2,6 +2,7 @@ package dev.anmatolay.lirael.presentation.statistics
 
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
+import dev.anmatolay.lirael.domain.usecase.cooking.GetCookingStreaks
 import dev.anmatolay.lirael.domain.usecase.cooking.GetCookingHistoryUseCase
 import dev.anmatolay.lirael.domain.usecase.recipe.GetRandomRecipesUseCase
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
@@ -16,6 +17,7 @@ class StatisticsViewModel(
     private val getUserUseCase: GetUserUseCase,
     private val getRandomRecipesUseCase: GetRandomRecipesUseCase,
     private val getCookingHistoryUseCase: GetCookingHistoryUseCase,
+    private val getCookingStreaks: GetCookingStreaks,
 ) : BaseUdfViewModel<StatisticsState, StatisticsEvent>() {
 
     override fun onViewResumed() {
@@ -45,6 +47,7 @@ class StatisticsViewModel(
                             getCookingHistoryUseCase(
                                 localDateProvider.getFormattedMonthAndYear(localDateProvider.now())
                             ),
+                            getCookingStreaks(),
                         )
                     )
                 },

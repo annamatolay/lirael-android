@@ -15,9 +15,7 @@ class GetCookingHistoryUseCase(
             .getCookingHistoryMap()?.get(localDateProvider.getFormattedMonthAndYear(localDateProvider.now()))
             ?.toCookingHistory()
 
-    private fun dateInEpoch() = localDateProvider.now().toEpochDay()
-
-    operator fun invoke(formattedMonthAndYear: String = "") =
+    operator fun invoke(formattedMonthAndYear: String) =
         sharedPrefHandler
             .getCookingHistoryMap()?.get(formattedMonthAndYear)
             ?.map { CookingHistory(it.key, it.value) }
@@ -27,4 +25,6 @@ class GetCookingHistoryUseCase(
             null
         else
             CookingHistory(dateInEpoch(), this[dateInEpoch()] ?: 0)
+
+    private fun dateInEpoch() = localDateProvider.now().toEpochDay()
 }
