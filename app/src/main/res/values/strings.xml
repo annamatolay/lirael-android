@@ -84,7 +84,8 @@
 Chef cats during instructions - Hansuan_Fabregas (Pixabay)
 Error cats - ???\n
 Confetti animation - Sammie Ho (lottiefiles)\n
-T&amp;C generator - Nishant (nisrulz.com)</string>
+T&amp;C generator - Nishant (nisrulz.com)\n
+Recipe API (for finding recipes) - API Ninjas</string>
     <plurals name="calendar_day_cooked_info">
         <item quantity="one">%d time cooked on %s %s</item>
         <item quantity="other">%d times cooked on %s %s</item>
