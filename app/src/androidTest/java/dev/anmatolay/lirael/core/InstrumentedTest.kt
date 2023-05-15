@@ -11,13 +11,12 @@ import org.koin.test.KoinTest
 
 @Suppress("CanBeParameter", "MemberVisibilityCanBePrivate")
 open class InstrumentedTest(
-    activityScenarioRule: ActivityScenarioRule<*> = ActivityScenarioRule(MainActivity::class.java),
     val modules: MutableList<Module> = mutableListOf(),
     val mockEndpointList: MutableList<MockServer.MockEndpoint> = mutableListOf()
 ) : KoinTest {
 
     @get:Rule
-    val activityRule = activityScenarioRule
+    val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
     @get:Rule
     val koinTestRule = KoinTestRule(modules)
