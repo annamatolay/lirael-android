@@ -1,11 +1,11 @@
 package dev.anmatolay.lirael.presentation.splash
 
+import dev.anmatolay.lirael.BuildConfig
 import dev.anmatolay.lirael.core.presentation.BaseUdfViewModel
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
 import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
 import dev.anmatolay.lirael.util.Constants
 import io.reactivex.rxjava3.core.Observable
-import io.reactivex.rxjava3.functions.BiFunction
 import timber.log.Timber
 import java.util.concurrent.TimeUnit
 
@@ -24,7 +24,7 @@ class SplashViewModel(
         super.onViewResumed()
 
         val timerObservable =
-            Observable.timer(3L, TimeUnit.SECONDS)
+            Observable.timer(SPLASH_DELAY, TimeUnit.SECONDS)
                 .observeOn(schedulerProvider.mainThread())
 
         val userObservable =
@@ -42,5 +42,13 @@ class SplashViewModel(
             }
             .subscribe()
             .disposeOnPause()
+    }
+
+    companion object {
+        private val SPLASH_DELAY =
+            if (BuildConfig.DEBUG)
+                0L
+            else
+                3L
     }
 }
