@@ -6,8 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isInvisible
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
 import dev.anmatolay.lirael.databinding.FragmentContainerSettingsBinding
 
@@ -31,12 +31,14 @@ class SettingsContainerFragment : Fragment() {
     }
 
     override fun onAttach(context: Context) {
-        super.onAttach(context)
-
         // Messing with navigation to let user open settings again and again
         activity?.findViewById<View>(R.id.settings_item)?.isInvisible = true
         // recreate app bar icons enabling settings too
         activity?.findViewById<View>(R.id.ui_mode_item)?.isInvisible = true
+
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.GONE
+
+        super.onAttach(context)
     }
 
     override fun onDetach() {
@@ -44,5 +46,7 @@ class SettingsContainerFragment : Fragment() {
 
         activity?.findViewById<View>(R.id.settings_item)?.isInvisible = false
         activity?.findViewById<View>(R.id.ui_mode_item)?.isInvisible = false
+        requireActivity().findViewById<BottomNavigationView>(R.id.bottom_nav_view).visibility = View.VISIBLE
+
     }
 }
