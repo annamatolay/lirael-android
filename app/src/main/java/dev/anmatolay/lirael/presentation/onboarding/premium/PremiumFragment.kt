@@ -4,13 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import coil.dispose
 import coil.load
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dev.anmatolay.lirael.R
-import dev.anmatolay.lirael.core.SharedPrefHandler
-import dev.anmatolay.lirael.core.analytics.AnalyticsWrapper
 import dev.anmatolay.lirael.core.presentation.BaseFragment
 import dev.anmatolay.lirael.databinding.FragmentOnboardingPremiumBinding
 import dev.anmatolay.lirael.util.extension.navigateTo
@@ -56,9 +52,4 @@ class PremiumFragment : BaseFragment<PremiumEvent>() {
         super.onDestroyView()
     }
 
-    override fun onDetach() {
-        super.onDetach()
-
-
-    }
 }

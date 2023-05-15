@@ -30,7 +30,7 @@ class CookingSummaryFragment
     override val viewModel by viewModel<CookingSummaryViewModel>()
     private lateinit var binding: FragmentCookingSummaryBinding
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         if (recipe == null)
             recipe = savedInstanceState?.getRecipeParcelable()
 
