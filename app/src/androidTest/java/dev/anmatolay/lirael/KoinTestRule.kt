@@ -1,7 +1,7 @@
 package dev.anmatolay.lirael
 
 import androidx.room.Room
-import androidx.test.platform.app.InstrumentationRegistry
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import com.google.firebase.analytics.FirebaseAnalytics
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.crashlytics.FirebaseCrashlytics
@@ -29,10 +29,7 @@ class KoinTestRule(
 ) : TestWatcher() {
 
     private val appDatabase =
-        Room.inMemoryDatabaseBuilder(
-            InstrumentationRegistry.getInstrumentation().targetContext.applicationContext,
-            AppDatabase::class.java
-        )
+        Room.inMemoryDatabaseBuilder(getApplicationContext(), AppDatabase::class.java)
             .fallbackToDestructiveMigration()
             .allowMainThreadQueries()
             .build()
@@ -41,9 +38,7 @@ class KoinTestRule(
         // Stop Koin started out of control
         stopKoin()
         startKoin {
-            androidContext(
-                InstrumentationRegistry.getInstrumentation().targetContext.applicationContext
-            )
+            androidContext(getApplicationContext())
             modules(
                 appModule,
                 viewModelModule,
