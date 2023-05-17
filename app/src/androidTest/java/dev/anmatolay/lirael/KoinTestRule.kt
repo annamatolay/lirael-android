@@ -51,9 +51,9 @@ class KoinTestRule(
                     factory<Authenticator> { FakeAuthenticatorImpl() }
                     factory<AnalyticsWrapper> { FakeAnalyticsImpl() }
                     factory<UserProperty> { MockUserPropertyImpl }
-                    factory<FirebaseAnalytics> { mockk() }
-                    factory<FirebaseCrashlytics> { mockk() }
-                    factory<FirebaseAuth> { mockk() }
+                    factory<FirebaseAnalytics> { mockk(relaxed = true) }
+                    factory<FirebaseCrashlytics> { mockk(relaxed = true) }
+                    factory<FirebaseAuth> { mockk(relaxed = true) }
                     single { appDatabase }
                 }
             )
