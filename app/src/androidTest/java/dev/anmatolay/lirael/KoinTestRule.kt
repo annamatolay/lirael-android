@@ -13,6 +13,8 @@ import dev.anmatolay.lirael.core.authentication.impl.FakeAuthenticatorImpl
 import dev.anmatolay.lirael.core.di.module.*
 import dev.anmatolay.lirael.core.threading.SchedulerProvider
 import dev.anmatolay.lirael.core.threading.impl.TestSchedulerProvider
+import dev.anmatolay.lirael.domain.usecase.user.GetUserUseCase
+import dev.anmatolay.lirael.domain.usecase.user.impl.FakeGetUserUseCaseImpl
 import dev.anmatolay.lirael.util.MockUserPropertyImpl
 import dev.anmatolay.lirael.util.UserProperty
 import io.mockk.mockk
@@ -25,6 +27,7 @@ import org.koin.core.module.Module
 import org.koin.dsl.module
 
 class KoinTestRule(
+    private val isDefaultUser: Boolean,
     private val modules: List<Module>
 ) : TestWatcher() {
 
@@ -55,6 +58,7 @@ class KoinTestRule(
                     factory<FirebaseCrashlytics> { mockk(relaxed = true) }
                     factory<FirebaseAuth> { mockk(relaxed = true) }
                     single { appDatabase }
+                    factory<GetUserUseCase> { FakeGetUserUseCaseImpl(isDefaultUser) }
                 }
             )
             modules(modules)

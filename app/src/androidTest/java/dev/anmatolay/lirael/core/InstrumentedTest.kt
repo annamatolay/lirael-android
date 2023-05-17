@@ -14,6 +14,7 @@ import org.koin.test.KoinTest
 @Suppress("CanBeParameter", "MemberVisibilityCanBePrivate")
 open class InstrumentedTest(
     val launchActivity: Boolean = true,
+    val isDefaultUser: Boolean = false,
     val modules: MutableList<Module> = mutableListOf(),
     val mockEndpointList: MutableList<MockServer.MockEndpoint> = mutableListOf()
 ) : KoinTest {
@@ -22,7 +23,7 @@ open class InstrumentedTest(
     val activityRule = lazyActivityScenarioRule<MainActivity>(launchActivity)
 
     @get:Rule
-    val koinTestRule = KoinTestRule(modules)
+    val koinTestRule = KoinTestRule(isDefaultUser, modules)
 
     val context: Context = ApplicationProvider.getApplicationContext()
 

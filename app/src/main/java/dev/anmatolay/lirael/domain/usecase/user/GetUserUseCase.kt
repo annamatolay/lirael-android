@@ -1,16 +1,11 @@
 package dev.anmatolay.lirael.domain.usecase.user
 
-import dev.anmatolay.lirael.core.threading.SchedulerProvider
-import dev.anmatolay.lirael.data.repository.UserRepository
+import dev.anmatolay.lirael.domain.model.User
+import io.reactivex.rxjava3.core.Single
 
-class GetUserUseCase(
-    private val schedulerProvider: SchedulerProvider,
-    private val repository: UserRepository,
-) {
+interface GetUserUseCase {
 
-    fun getCachedUserIdOrDefault() = repository.getCachedUserIdOrDefault()
+    fun getCachedUserIdOrDefault(): Single<String>
 
-    operator fun invoke() =
-        repository.getUserOrDefault()
-            .subscribeOn(schedulerProvider.io())
+    operator fun invoke(): Single<User>
 }

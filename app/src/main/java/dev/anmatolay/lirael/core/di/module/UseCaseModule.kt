@@ -16,10 +16,11 @@ import dev.anmatolay.lirael.domain.usecase.recipe.favourite.GetFavouriteRecipeUs
 import dev.anmatolay.lirael.domain.usecase.recipe.favourite.SaveFavouriteRecipeUseCase
 import dev.anmatolay.lirael.domain.usecase.user.DeleteUserUseCase
 import dev.anmatolay.lirael.domain.usecase.user.UpdateUserUseCase
+import dev.anmatolay.lirael.domain.usecase.user.impl.GetUserUseCaseImpl
 import org.koin.dsl.module
 
 val useCaseModule = module {
-    factory { GetUserUseCase(get(), get()) }
+    factory<GetUserUseCase> { GetUserUseCaseImpl(get(), get()) }
     factory { SaveUserUseCase(get(), get()) }
     factory { UpdateUserUseCase(get(), get(), get()) }
     factory { DeleteUserUseCase(get(), get()) }
