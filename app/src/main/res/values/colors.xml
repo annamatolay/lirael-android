@@ -18,6 +18,7 @@
     <color name="black_700">#434343</color>
     <color name="black_900">#1F1A1D</color>
     <color name="black">#FF000000</color>
+    <color name="black_toolbar_title">#DE000000</color>
     <color name="white_200">#F5F5F5</color>
     <color name="white_400">#DEDEDE</color>
     <color name="white">#FFFFFFFF</color>
