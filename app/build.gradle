@@ -75,6 +75,8 @@ android {
     }
 
     testOptions {
+        animationsDisabled = true
+
         // MockKAgentException: MockK could not self-attach a jvmti agent to the current VM. This feature is required for inline mocking.
         // Bug: MockKAgentException when creating a mock on >= Api level 28 due to missing 64 binaries
         // https://github.com/mockk/mockk/issues/297#issuecomment-901924678
