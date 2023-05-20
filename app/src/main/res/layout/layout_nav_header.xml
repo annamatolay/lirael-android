@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@mipmap/ic_launcher_background"
@@ -21,22 +22,16 @@
             style="?attr/textAppearanceHeadline3"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="start|center"
             android:layout_weight="1"
+            android:gravity="start|center"
             android:text="@string/app_name"
-            android:textColor="@color/white"
-            app:layout_constraintEnd_toStartOf="@+id/imageView"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            android:textColor="@color/white" />
 
         <ImageView
             android:id="@+id/nav_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:importantForAccessibility="no"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@mipmap/ic_launcher_foreground" />
     </LinearLayout>
 
