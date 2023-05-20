@@ -1,4 +1,4 @@
-package dev.anmatolay.lirael.core.kakaocup
+package dev.anmatolay.lirael.core.kakaocup.matcher
 
 import android.graphics.Typeface
 import android.os.Build
